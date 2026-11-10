@@ -14,7 +14,7 @@ const p = (name: string): Skill => ({ name, level: "practiced" });
  * discovered = notions acquises sans projet à montrer (niveau disponible, inutilisé pour l'instant).
  */
 const AREAS: { Icon: typeof Server; skills: Skill[]; span: string }[] = [
-  { Icon: Server, span: "lg:col-span-2", skills: [m("Python"), m("FastAPI"), m("Node.js"), m("Express.js"), m("API REST"), p("Java"), p("Spring Boot")] },
+  { Icon: Server, span: "lg:col-span-2", skills: [m("Python"), m("FastAPI"), m("Node.js"), m("Express.js"), m("API REST"), m("Java"), m("Spring Boot")] },
   { Icon: Smartphone, span: "lg:col-span-2", skills: [m("Flutter"), m("Dart"), p("Riverpod"), p("Kotlin · Android")] },
   { Icon: Monitor, span: "lg:col-span-2", skills: [m("JavaScript"), m("React"), p("TypeScript"), p("Vue.js"), p("Tailwind CSS")] },
   { Icon: BrainCircuit, span: "lg:col-span-3", skills: [m("Gemini API"), p("Agents & function calling"), p("Speech-to-Text"), p("PayPal API"), p("Mobile Money")] },

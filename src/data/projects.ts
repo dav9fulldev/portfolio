@@ -300,8 +300,8 @@ export const projects: Project[] = [
       en: "A single web platform: a public site to inform and recruit, a member portal, and a back office organised by department (programme, finance, secretariat, logistics) to run the community.",
     },
     role: {
-      fr: "Conception et développement de la plateforme web.",
-      en: "Design and development of the web platform.",
+      fr: "Projet d'équipe. J'ai mis en place l'architecture, développé le backend et conçu la sécurité de la plateforme.",
+      en: "Team project. I set up the architecture, built the backend and designed the platform's security.",
     },
     features: {
       fr: [
