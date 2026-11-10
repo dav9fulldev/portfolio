@@ -112,6 +112,11 @@ const fr = {
     mastered: "Maîtrisé",
     practiced: "Pratiqué en projet",
     discovered: "Découvert",
+    carousel: "carrousel",
+    slide: "domaine",
+    goTo: "Aller au domaine",
+    prev: "Domaine précédent",
+    next: "Domaine suivant",
     areas: [
       { t: "Software Engineering & Backend", d: "Conception d'API REST, logique métier côté serveur et architecture applicative." },
       { t: "Développement mobile", d: "Applications Flutter : gestion d'état, authentification, intégrations natives Android." },
@@ -305,6 +310,11 @@ const en: Dict = {
     mastered: "Proficient",
     practiced: "Used on projects",
     discovered: "Explored",
+    carousel: "carousel",
+    slide: "area",
+    goTo: "Go to area",
+    prev: "Previous area",
+    next: "Next area",
     areas: [
       { t: "Software Engineering & Backend", d: "REST API design, server-side business logic and application architecture." },
       { t: "Mobile development", d: "Flutter apps: state management, authentication, native Android integrations." },

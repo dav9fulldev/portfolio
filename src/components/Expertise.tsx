@@ -2,6 +2,7 @@ import { BrainCircuit, Database, Monitor, Server, Smartphone } from "lucide-reac
 import { useI18n } from "../i18n/LanguageContext";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
+import { CarouselNav, SLIDE, TRACK, useCarousel } from "./Carousel";
 
 type Level = "mastered" | "practiced" | "discovered";
 type Skill = { name: string; level: Level };
@@ -35,6 +36,7 @@ const CHIP: Record<Level, string> = {
 export function Expertise() {
   const { t } = useI18n();
   const e = t.expertise;
+  const carousel = useCarousel<HTMLUListElement>();
 
   return (
     <section id="expertise" className="border-t border-line bg-ink-2/60 py-24 md:py-32">
@@ -50,9 +52,19 @@ export function Expertise() {
           </span>
         </Reveal>
 
-        <ul className="mt-10 grid gap-px overflow-hidden rounded-[1.4rem] border border-line bg-line md:grid-cols-2 lg:grid-cols-6">
+        <ul
+          ref={carousel.ref}
+          onScroll={carousel.onScroll}
+          aria-roledescription={e.carousel}
+          className={`${TRACK} mt-10 md:grid md:grid-cols-2 md:gap-px md:overflow-hidden md:rounded-[1.4rem] md:border md:border-line md:bg-line lg:grid-cols-6`}
+        >
           {AREAS.map(({ Icon, skills, span }, i) => (
-            <li key={i} className={`${span} ${i === AREAS.length - 1 ? "md:col-span-2" : ""} group bg-ink p-7 transition-colors duration-500 hover:bg-ink-2 md:p-9`}>
+            <li
+              key={i}
+              aria-roledescription={e.slide}
+              aria-label={`${i + 1} / ${AREAS.length} : ${e.areas[i].t}`}
+              className={`${SLIDE} ${span} ${i === AREAS.length - 1 ? "md:col-span-2" : ""} group relative rounded-[1.4rem] border border-line bg-ink p-7 transition-colors duration-500 hover:bg-ink-2 md:rounded-none md:border-0 md:p-9`}
+            >
               <Reveal delay={(i % 2) * 0.06}>
                 <div className="flex items-center justify-between">
                   <Icon size={22} strokeWidth={1.5} className="text-gold" aria-hidden="true" />
@@ -79,6 +91,8 @@ export function Expertise() {
             </li>
           ))}
         </ul>
+
+        <CarouselNav names={e.areas.map((a) => a.t)} active={carousel.active} goTo={carousel.goTo} labels={e} />
       </div>
     </section>
   );
