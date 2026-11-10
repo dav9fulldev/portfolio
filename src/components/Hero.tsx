@@ -99,23 +99,20 @@ export function Hero() {
         >
           <figure className="relative">
             <div aria-hidden="true" className="absolute inset-0 translate-x-3 translate-y-3 rounded-[1.75rem] border border-gold/40" />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-gradient-to-b from-deep to-ink-2">
-              {/* Décor derrière le portrait détouré : grille fine + halo bleu discret */}
-              <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_50%_35%,black,transparent_75%)]" />
-              <div aria-hidden="true" className="absolute left-1/2 top-[28%] h-64 w-64 -translate-x-1/2 rounded-full bg-electric/25 blur-[90px]" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-white">
               {site.photo ? (
                 <img
                   src={site.photo}
                   alt={t.hero.photoAlt}
-                  width={900}
-                  height={1478}
+                  width={779}
+                  height={1280}
                   fetchPriority="high"
-                  className="relative h-full w-full object-cover object-[50%_0%] pt-6"
+                  className="h-full w-full object-cover object-[50%_0%]"
                 />
               ) : (
-                <div className="grid h-full place-items-center font-display text-8xl text-gold">BDY</div>
+                <div className="grid h-full place-items-center bg-deep font-display text-8xl text-gold">BDY</div>
               )}
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
+              <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink via-ink/70 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
                 <div>
                   <p className="eyebrow !text-[0.62rem] text-paper/70">{t.hero.currently}</p>
