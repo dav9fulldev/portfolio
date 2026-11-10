@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { ArrowUpRight, Download, Info, Lock, X } from "lucide-react";
+import { ArrowUpRight, Download, Info, Lock, PlayCircle, X } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import type { Project } from "../data/projects";
 import { ProjectCover } from "./ProjectCover";
@@ -107,6 +107,11 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
                 <Download size={15} /> {t.projects.release}
               </a>
             )}
+            {p.links.video && (
+              <a href={p.links.video} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
+                <PlayCircle size={15} /> {t.projects.video}
+              </a>
+            )}
             {p.links.repo && (
               <a href={p.links.repo} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
                 <GithubIcon size={15} /> {t.projects.repo}
@@ -167,11 +172,11 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
             </div>
           </dl>
 
-          {p.gallery?.map((src) => (
+          {p.gallery?.map((src, i) => (
             <img
               key={src}
               src={src}
-              alt={`${p.name} — ${t.projects.visual}`}
+              alt={`${p.name} — ${t.projects.visual} ${i + 1}`}
               loading="lazy"
               className="mt-8 w-full rounded-2xl border border-line"
             />

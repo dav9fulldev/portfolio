@@ -23,7 +23,7 @@ export function ProjectCover({ cover, name, large = false }: { cover: Cover; nam
           className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.04]"
           style={{ objectPosition: cover.position ?? "center top" }}
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
       </div>
     );
   }

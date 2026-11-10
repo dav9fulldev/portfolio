@@ -29,7 +29,7 @@ export type Project = {
   status: L;
   /** D'où viennent les informations affichées — transparence vis-à-vis du jury */
   source: L;
-  links: { repo?: string; demo?: string; site?: string; release?: string; devpost?: string; origin?: string };
+  links: { repo?: string; demo?: string; site?: string; release?: string; video?: string; devpost?: string; origin?: string };
 };
 
 export const projects: Project[] = [
@@ -142,53 +142,82 @@ export const projects: Project[] = [
   {
     slug: "sika-pay",
     name: "SIKA Pay",
-    category: { fr: "Fintech · Agent IA · Mobile", en: "Fintech · AI agent · Mobile" },
+    category: { fr: "Fintech · Paiement conversationnel · Agent IA", en: "Fintech · Conversational payments · AI agent" },
     year: "2026",
     featured: true,
-    cover: { kind: "phone", src: asset("/projects/sika-app.jpg") },
-    gallery: [asset("/projects/sika-architecture.jpg")],
+    cover: { kind: "image", src: asset("/projects/sikapay-rules.jpg"), position: "center" },
+    gallery: [asset("/projects/sikapay-paid.jpg"), asset("/projects/sika-architecture.jpg")],
     tagline: {
-      fr: "Un agent de paiement IA qui explique, vérifie et demande avant de payer.",
-      en: "An AI payment agent that explains, checks and asks before it pays.",
+      fr: "Un agent de paiement intelligent qui recherche, compare et prépare les achats avec PayPal — en laissant l'utilisateur maître de son argent.",
+      en: "An intelligent payment agent that searches, compares and prepares purchases with PayPal — while keeping users in control of their money.",
     },
     problem: {
-      fr: "Un assistant IA capable de dépenser de l'argent soulève des questions de confiance : bon produit, bon prix, budget respecté, paiement réellement effectué, résistance aux manipulations.",
-      en: "An AI assistant that can spend money raises trust questions: right product, right price, budget respected, payment actually made, resistance to manipulation.",
+      fr: "Les assistants IA peuvent faciliter les achats, mais leur donner la capacité de dépenser soulève des problèmes de confiance, de budget et de sécurité. L'utilisateur doit comprendre ce qu'il achète, vérifier le montant et garder la main sur la validation.",
+      en: "AI assistants can make shopping easier, but letting them spend money raises trust, budgeting and security concerns. Users need to understand what they are buying, check the amount and stay in charge of approval.",
     },
     solution: {
-      fr: "Gemini comprend l'intention et appelle des outils, mais c'est le serveur qui fixe les montants et l'identité, et PayPal qui déplace l'argent. L'utilisateur garde le contrôle à chaque étape.",
-      en: "Gemini understands intent and calls tools, but the server sets amounts and identity, and PayPal moves the money. The user stays in control at every step.",
+      fr: "Une application Android qui transforme une demande en langage naturel en parcours d'achat contrôlé. Gemini interprète, recherche et prépare ; le backend calcule les montants, vérifie les limites et applique les règles ; PayPal (Sandbox) gère le paiement, déclaré réussi uniquement après vérification de la capture.",
+      en: "An Android app that turns a natural-language request into a controlled purchasing journey. Gemini interprets, searches and prepares; the backend computes amounts, checks limits and enforces rules; PayPal (Sandbox) handles payment, reported as successful only after the capture is verified.",
     },
     role: {
-      fr: "Projet personnel présenté au PayPal AI Hackathon 2026 : application Flutter, backend FastAPI et intégrations PayPal / Gemini.",
-      en: "Personal project submitted to the PayPal AI Hackathon 2026: Flutter app, FastAPI backend and PayPal / Gemini integrations.",
+      fr: "Développé seul pour le PayPal AI Hackathon 2026 : conception produit, application Flutter, backend FastAPI, intégrations Gemini, PayPal et Channel3, dashboard web, déploiements automatisés et tests. Né de SIKA, mon assistant Mobile Money (Google « All Things Agentic », 2026), dont la couche de paiement a été remplacée par PayPal.",
+      en: "Built solo for the PayPal AI Hackathon 2026: product design, Flutter app, FastAPI backend, Gemini, PayPal and Channel3 integrations, web dashboard, automated deployments and tests. Evolved from SIKA, my Mobile Money assistant (Google “All Things Agentic”, 2026), with the payment layer replaced by PayPal.",
     },
     features: {
       fr: [
-        "Agent Gemini avec appel d'outils dans une boucle bornée",
-        "Paiements PayPal réels en environnement sandbox (Orders v2)",
-        "Autorisations plafonnées par achat, par jour et dans le temps",
-        "Comparaison d'offres web et alertes de prix",
-        "APK Android signé publié à chaque version",
+        "✅ Assistant conversationnel FR / EN : Gemini interprète la demande et appelle des outils autorisés",
+        "✅ Recherche et comparaison de produits chez de vrais marchands via Channel3",
+        "✅ Paiement PayPal Orders v2 (Sandbox) : prix et budget vérifiés côté serveur, capture contrôlée",
+        "✅ Contrôle hybride : autorisation révocable, plafonds par achat et par jour, durée de validité",
+        "✅ Compte PayPal enregistré (Vault), abonnements, résumé des dépenses",
+        "✅ Idempotence PayPal : aucune double capture, résultats incertains réconciliés",
+        "✅ Alertes de prix et de stock (webhooks Channel3 + notifications push)",
+        "✅ Dashboard web en lecture seule (AG Studio) avec assistant Gemini",
+        "🚧 Conversation vocale avec Gemini Live (expérimentale)",
+        "💡 Paiements réels : non prévus dans cette version, limitée au Sandbox",
       ],
       en: [
-        "Gemini agent with tool calling in a bounded loop",
-        "Real PayPal payments in the sandbox environment (Orders v2)",
-        "Authorisations capped per purchase, per day and over time",
-        "Web offer comparison and price alerts",
-        "Signed Android APK published with each release",
+        "✅ FR / EN conversational assistant: Gemini interprets requests and calls allow-listed tools",
+        "✅ Product search and comparison across real merchants via Channel3",
+        "✅ PayPal Orders v2 payments (Sandbox): server-side price and budget checks, controlled capture",
+        "✅ Hybrid control: revocable authorisation, per-purchase and daily caps, expiry",
+        "✅ Saved PayPal account (Vault), subscriptions, spending summary",
+        "✅ PayPal idempotency: no double capture, uncertain results reconciled",
+        "✅ Price and stock alerts (Channel3 webhooks + push notifications)",
+        "✅ Read-only web dashboard (AG Studio) with a Gemini assistant",
+        "🚧 Voice conversation with Gemini Live (experimental)",
+        "💡 Live payments: not in this version, restricted to Sandbox",
       ],
     },
-    stack: ["Flutter", "Dart", "Python", "FastAPI", "PostgreSQL", "Gemini", "PayPal API", "Cloud Run", "Docker"],
+    stack: [
+      "Flutter",
+      "Dart",
+      "Riverpod",
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "Gemini / Vertex AI",
+      "PayPal REST API",
+      "Channel3",
+      "Firebase Cloud Messaging",
+      "Google Cloud Run",
+      "Docker",
+      "GitHub Actions",
+    ],
     status: {
-      fr: "Fonctionnel en sandbox — application Android téléchargeable",
-      en: "Working in sandbox — Android app available for download",
+      fr: "MVP avancé — v3.5.1 (31 octobre 2026), APK Android distribué, paiements en Sandbox uniquement",
+      en: "Advanced MVP — v3.5.1 (31 October 2026), Android APK distributed, Sandbox payments only",
     },
-    source: { fr: "README, architecture et releases du dépôt public", en: "Public repository README, architecture and releases" },
+    source: {
+      fr: "Code et releases du dépôt public, page DevPost et vidéo de démonstration",
+      en: "Public repository code and releases, DevPost page and demo video",
+    },
     links: {
       repo: "https://github.com/dav9fulldev/sika-agent",
-      devpost: "https://devpost.com/software/sika-fzlh9s",
       release: "https://github.com/dav9fulldev/sika-agent/releases/latest",
+      video: "https://youtu.be/Ccu4y-DcZWM",
+      devpost: "https://devpost.com/software/sika-pay",
     },
   },
   {
