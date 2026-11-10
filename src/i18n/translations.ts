@@ -133,7 +133,7 @@ const fr = {
       {
         date: "2025",
         t: "2ᵉ prix — AbiHack avec Google",
-        org: "StoryGriot AI · projet en équipe",
+        org: "StoryGriot AI · projet en binôme, 48 h",
         d: "Solution d'IA au service de la valorisation des histoires et des cultures africaines.",
       },
       {
@@ -303,7 +303,7 @@ const en: Dict = {
       {
         date: "2025",
         t: "2nd prize — AbiHack with Google",
-        org: "StoryGriot AI · team project",
+        org: "StoryGriot AI · team of two, 48 hours",
         d: "An AI solution that showcases African stories and cultures.",
       },
       {

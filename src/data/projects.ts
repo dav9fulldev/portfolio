@@ -250,8 +250,8 @@ export const projects: Project[] = [
       en: "Inspired by the West African griot tradition, a platform that turns the audio recording of a story into a multimedia experience: transcription, translation, illustrations and synchronised playback.",
     },
     role: {
-      fr: "Membre d'une équipe de trois développeurs (avec Gosse Yannick Gbaka et Georges Kennel Kassi).",
-      en: "Member of a three-developer team (with Gosse Yannick Gbaka and Georges Kennel Kassi).",
+      fr: "Porteur de l'idée et développeur frontend ; projet réalisé en binôme en 48 h pendant le hackathon.",
+      en: "Idea owner and frontend developer; built as a team of two in 48 hours during the hackathon.",
     },
     features: {
       fr: [
