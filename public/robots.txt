@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dav9fulldev.github.io/sitemap.xml

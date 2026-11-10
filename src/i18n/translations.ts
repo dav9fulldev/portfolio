@@ -1,0 +1,301 @@
+export type Lang = "fr" | "en";
+
+const fr = {
+  meta: {
+    title: "Brou David Yao — Ingénieur développeur Full-Stack & Mobile",
+    description:
+      "Portfolio de Brou David Yao, ingénieur développeur junior à Abidjan : développement Full-Stack et Mobile, fintech et intelligence artificielle.",
+  },
+  nav: {
+    home: "Accueil",
+    about: "À propos",
+    projects: "Projets",
+    expertise: "Expertise",
+    journey: "Parcours",
+    contact: "Contact",
+    menu: "Ouvrir le menu",
+    close: "Fermer le menu",
+    switchTo: "Switch to English",
+    skip: "Aller au contenu",
+  },
+  hero: {
+    eyebrow: "Ingénieur développeur junior · Abidjan, Côte d'Ivoire",
+    titleA: "Je transforme des idées en",
+    titleB: "solutions numériques utiles.",
+    sub: "Développement Full-Stack & Mobile · Fintech · Intelligence artificielle",
+    body: "Je conçois et je développe des produits de bout en bout — application mobile, API, intégration de l'IA — en partant d'un problème concret, souvent ancré dans les réalités du marché africain.",
+    ctaProjects: "Découvrir mes projets",
+    ctaCv: "Télécharger mon CV",
+    ctaContact: "Me contacter",
+    signature: "Building technology for impact",
+    currently: "Actuellement",
+    currentlyRole: "Ingénieur développeur junior",
+    photoAlt: "Portrait de Brou David Yao",
+  },
+  about: {
+    label: "À propos",
+    title: "L'ingénierie au service des idées.",
+    p1: "Diplômé d'une Licence MIAGE à l'Université Polytechnique de Bingerville (2025, mention Très Bien), j'ai une double lecture des projets : la rigueur du développeur et la compréhension des enjeux de gestion d'une entreprise.",
+    p2: "Aujourd'hui ingénieur développeur junior chez GIM-UEMOA, je m'intéresse particulièrement à la monétique, aux paiements et à l'IA appliquée. En dehors du travail, je construis mes propres produits et je les confronte au terrain lors de hackathons.",
+    principlesTitle: "Ma manière de travailler",
+    principles: [
+      { t: "Partir du problème", d: "Comprendre l'usage réel avant d'écrire la première ligne de code." },
+      { t: "Livrer de bout en bout", d: "Mobile, backend, données et déploiement : un produit qui fonctionne vraiment." },
+      { t: "L'IA là où elle aide", d: "Intégrer des modèles génératifs avec des garde-fous côté serveur." },
+    ],
+    facts: [
+      { k: "Formation", v: "Licence MIAGE — UPB, mention Très Bien" },
+      { k: "Poste", v: "Ingénieur développeur junior — GIM-UEMOA" },
+      { k: "Distinction", v: "2ᵉ prix AbiHack avec Google — StoryGriot AI" },
+      { k: "Programme", v: "UniPod Guinée / Transform Africa — Bootcamp IA" },
+    ],
+  },
+  projects: {
+    label: "Projets",
+    title: "Des idées transformées en produits.",
+    intro:
+      "Une sélection de réalisations vérifiables. Les dépôts publics sont liés ; les projets dont le code n'est pas public sont indiqués comme tels.",
+    featured: "À la une",
+    details: "Voir le projet",
+    repo: "Code source",
+    demo: "Démo en ligne",
+    release: "Télécharger l'APK",
+    privateRepo: "Code non public",
+    problem: "Problème",
+    solution: "Solution",
+    role: "Mon rôle",
+    features: "Fonctionnalités clés",
+    stack: "Technologies",
+    status: "Statut",
+    source: "Source des informations",
+    close: "Fermer",
+    others: "Autres réalisations",
+    filterAll: "Tous",
+  },
+  expertise: {
+    label: "Expertise",
+    title: "Quatre domaines, une approche produit.",
+    intro: "Je distingue honnêtement ce que j'utilise au quotidien de ce que j'ai pratiqué sur des projets.",
+    mastered: "Utilisé régulièrement",
+    practiced: "Pratiqué en projet",
+    areas: [
+      {
+        t: "Software Engineering & Backend",
+        d: "Conception d'API REST, logique métier côté serveur, persistance et déploiement conteneurisé.",
+      },
+      {
+        t: "Développement mobile",
+        d: "Applications Flutter de production : gestion d'état, authentification, intégrations natives Android.",
+      },
+      {
+        t: "IA appliquée",
+        d: "Agents basés sur Gemini avec appel d'outils, assistants vocaux et garde-fous côté backend.",
+      },
+      {
+        t: "Fintech & innovation produit",
+        d: "Paiements, budget, Mobile Money : des parcours qui expliquent, vérifient et demandent avant d'agir.",
+      },
+    ],
+  },
+  journey: {
+    label: "Parcours",
+    title: "Les étapes clés.",
+    items: [
+      {
+        date: "2025 — aujourd'hui",
+        t: "Ingénieur développeur junior",
+        org: "GIM-UEMOA · Abidjan",
+        d: "Développement au sein du Groupement Interbancaire Monétique de l'UEMOA, au cœur des paiements électroniques de la sous-région.",
+      },
+      {
+        date: "Nov. — Déc. 2025",
+        t: "Bootcamp IA & développement de produits",
+        org: "UniPod Guinée · Transform Africa",
+        d: "Programme intensif consacré à l'intelligence artificielle et à la conception de produits numériques.",
+      },
+      {
+        date: "2025",
+        t: "2ᵉ prix — AbiHack avec Google",
+        org: "StoryGriot AI · projet en équipe",
+        d: "Solution d'IA au service de la valorisation des histoires et des cultures africaines.",
+      },
+      {
+        date: "2025",
+        t: "Licence MIAGE — mention Très Bien",
+        org: "Université Polytechnique de Bingerville",
+        d: "Méthodes Informatiques Appliquées à la Gestion des Entreprises.",
+      },
+    ],
+  },
+  contact: {
+    label: "Contact",
+    title: "Construisons quelque chose d'utile.",
+    body: "Je suis ouvert aux collaborations, aux opportunités professionnelles et aux projets technologiques ambitieux.",
+    email: "M'écrire un e-mail",
+    cv: "Télécharger mon CV",
+    copy: "Copier l'adresse",
+    copied: "Adresse copiée",
+  },
+  footer: {
+    tagline: "Software Engineer · Fintech · AI · Digital Innovation",
+    rights: "Tous droits réservés.",
+    top: "Retour en haut",
+  },
+  notFound: {
+    title: "Page introuvable",
+    body: "Cette page n'existe pas ou a été déplacée.",
+    back: "Retour à l'accueil",
+  },
+};
+
+export type Dict = typeof fr;
+
+const en: Dict = {
+  meta: {
+    title: "Brou David Yao — Full-Stack & Mobile Software Engineer",
+    description:
+      "Portfolio of Brou David Yao, junior software engineer in Abidjan: Full-Stack and Mobile development, fintech and artificial intelligence.",
+  },
+  nav: {
+    home: "Home",
+    about: "About",
+    projects: "Projects",
+    expertise: "Expertise",
+    journey: "Journey",
+    contact: "Contact",
+    menu: "Open menu",
+    close: "Close menu",
+    switchTo: "Passer en français",
+    skip: "Skip to content",
+  },
+  hero: {
+    eyebrow: "Junior software engineer · Abidjan, Côte d'Ivoire",
+    titleA: "I turn ideas into",
+    titleB: "useful digital solutions.",
+    sub: "Full-Stack & Mobile development · Fintech · Artificial intelligence",
+    body: "I design and build products end to end — mobile app, API, AI integration — starting from a concrete problem, often rooted in the realities of African markets.",
+    ctaProjects: "Explore my projects",
+    ctaCv: "Download my CV",
+    ctaContact: "Get in touch",
+    signature: "Building technology for impact",
+    currently: "Currently",
+    currentlyRole: "Junior software engineer",
+    photoAlt: "Portrait of Brou David Yao",
+  },
+  about: {
+    label: "About",
+    title: "Engineering in service of ideas.",
+    p1: "I hold a Bachelor's degree in MIAGE (Computer Science applied to Business Management) from the Université Polytechnique de Bingerville (2025, highest honours). I read every project two ways: with a developer's rigour and with an understanding of how a business actually runs.",
+    p2: "I am now a junior software engineer at GIM-UEMOA, with a strong interest in card payments, digital payments and applied AI. Outside work, I build my own products and test them in the field at hackathons.",
+    principlesTitle: "How I work",
+    principles: [
+      { t: "Start from the problem", d: "Understand real usage before writing the first line of code." },
+      { t: "Ship end to end", d: "Mobile, backend, data and deployment: a product that actually works." },
+      { t: "AI where it helps", d: "Integrate generative models with server-side safeguards." },
+    ],
+    facts: [
+      { k: "Education", v: "BSc MIAGE — UPB, highest honours" },
+      { k: "Role", v: "Junior software engineer — GIM-UEMOA" },
+      { k: "Award", v: "2nd prize, AbiHack with Google — StoryGriot AI" },
+      { k: "Programme", v: "UniPod Guinea / Transform Africa — AI Bootcamp" },
+    ],
+  },
+  projects: {
+    label: "Projects",
+    title: "Ideas turned into products.",
+    intro:
+      "A selection of verifiable work. Public repositories are linked; projects whose code is not public are marked as such.",
+    featured: "Featured",
+    details: "View project",
+    repo: "Source code",
+    demo: "Live demo",
+    release: "Download the APK",
+    privateRepo: "Code not public",
+    problem: "Problem",
+    solution: "Solution",
+    role: "My role",
+    features: "Key features",
+    stack: "Technologies",
+    status: "Status",
+    source: "Information source",
+    close: "Close",
+    others: "Other work",
+    filterAll: "All",
+  },
+  expertise: {
+    label: "Expertise",
+    title: "Four areas, one product mindset.",
+    intro: "I separate what I use day to day from what I have practised on projects.",
+    mastered: "Used regularly",
+    practiced: "Practised on projects",
+    areas: [
+      {
+        t: "Software Engineering & Backend",
+        d: "REST API design, server-side business logic, persistence and containerised deployment.",
+      },
+      {
+        t: "Mobile development",
+        d: "Production Flutter apps: state management, authentication, native Android integrations.",
+      },
+      {
+        t: "Applied AI",
+        d: "Gemini-based agents with tool calling, voice assistants and backend safeguards.",
+      },
+      {
+        t: "Fintech & product innovation",
+        d: "Payments, budgeting, Mobile Money: flows that explain, check and ask before acting.",
+      },
+    ],
+  },
+  journey: {
+    label: "Journey",
+    title: "Key milestones.",
+    items: [
+      {
+        date: "2025 — present",
+        t: "Junior software engineer",
+        org: "GIM-UEMOA · Abidjan",
+        d: "Software development at the interbank card-payment group of the WAEMU region, at the heart of electronic payments in West Africa.",
+      },
+      {
+        date: "Nov. — Dec. 2025",
+        t: "AI & product development bootcamp",
+        org: "UniPod Guinea · Transform Africa",
+        d: "Intensive programme on artificial intelligence and digital product design.",
+      },
+      {
+        date: "2025",
+        t: "2nd prize — AbiHack with Google",
+        org: "StoryGriot AI · team project",
+        d: "An AI solution that showcases African stories and cultures.",
+      },
+      {
+        date: "2025",
+        t: "BSc MIAGE — highest honours",
+        org: "Université Polytechnique de Bingerville",
+        d: "Computer Science applied to Business Management.",
+      },
+    ],
+  },
+  contact: {
+    label: "Contact",
+    title: "Let's build something useful.",
+    body: "I am open to collaborations, job opportunities and ambitious technology projects.",
+    email: "Send me an email",
+    cv: "Download my CV",
+    copy: "Copy address",
+    copied: "Address copied",
+  },
+  footer: {
+    tagline: "Software Engineer · Fintech · AI · Digital Innovation",
+    rights: "All rights reserved.",
+    top: "Back to top",
+  },
+  notFound: {
+    title: "Page not found",
+    body: "This page does not exist or has moved.",
+    back: "Back to home",
+  },
+};
+
+export const dictionaries: Record<Lang, Dict> = { fr, en };

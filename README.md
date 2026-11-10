@@ -1,61 +1,79 @@
-# Portofolio Web — [Henry GOSSOU]
+# Portfolio — Brou David Yao
 
-Selamat datang di portofolio web pribadi saya! 🌐  
-Dibuat dengan React + Vite, ini adalah showcase dari project, skill, dan karya yang ingin saya bagikan.
+Portfolio professionnel bilingue (FR / EN) de **Brou David Yao**, ingénieur développeur junior (Full-Stack & Mobile · Fintech · IA) à Abidjan.
 
-##  Struktur Project
+**En ligne :** https://dav9fulldev.github.io/
 
-- `public/` — file statis (favicon, assets, dsb.)  
-- `src/` — code utama React (komponen, utilitas, dsb.)  
-- `index.html` — entry point halaman web  
-- `package.json` & `package-lock.json` — manajemen dependencies dan script  
-- `vite.config.js` — konfigurasi build dan dev server Vite  
-- `eslint.config.js` — aturan linting agar kodenya tetap bersih dan konsisten  
+## Stack
 
-##  Fitur Utama
+- [Vite 7](https://vite.dev) + [React 19](https://react.dev) + TypeScript
+- [Tailwind CSS 4](https://tailwindcss.com) (tokens de design dans `src/index.css`)
+- [Motion](https://motion.dev) pour les animations (désactivées si l'utilisateur réduit les animations)
+- [Lucide](https://lucide.dev) pour les icônes
+- Polices : Instrument Serif, Geist, Geist Mono (Google Fonts)
 
-- Dibangun dengan **React + Vite** — ringan, cepat reload, dan performa build optimal  
-- **ESLint** telah terkonfigurasi agar coding style tetap rapi  
-- Struktur modular dan siap dikembangkan—bisa ditambahkan halaman “About”, “Projects”, dsb.
+## Démarrer
 
-##  Cara Jalankan
-
-1. Clone repository ini:
-```bash
-git clone https://github.com/rissss21/portofolio.git
-cd portofolio
-````
-
-2. Install dependencies:
 ```bash
 npm install
-````
+npm run dev        # http://localhost:5173
+npm run build      # vérification TypeScript + build de production dans dist/
+npm run preview    # sert dist/ sur http://localhost:4173
+```
 
-3. Jalankan server lokal dengan hot reload:
+Node 20 ou plus récent recommandé.
+
+## Personnaliser
+
+| Quoi | Où |
+| --- | --- |
+| E-mail, GitHub, GitLab, **LinkedIn**, CV, photo | `src/config/site.ts` (un champ vide masque le lien) |
+| Tous les textes FR / EN (menu, sections, parcours…) | `src/i18n/translations.ts` |
+| Projets (descriptions bilingues, stack, liens, visuels) | `src/data/projects.ts` |
+| Compétences et niveaux | `src/components/Expertise.tsx` (`AREAS`) |
+| CV | `public/cv/Brou-David-Yao-CV.pdf` |
+| Photo | `public/images/brou-david-yao.jpg` |
+| Visuels de projets | `public/projects/` |
+| Métadonnées SEO, Open Graph, JSON-LD | `index.html`, `public/og-image.png` |
+| Sitemap / robots | `public/sitemap.xml`, `public/robots.txt` |
+
+La langue par défaut est le français. On peut forcer la langue via `?lang=en`. Chaque projet a un lien direct : `/#projects/<slug>` (ex. `/#projects/restogestion`).
+
+## Structure
+
+```
+src/
+├── App.tsx                 # assemblage des sections + page 404
+├── config/site.ts          # informations personnelles
+├── i18n/                   # dictionnaires FR/EN + contexte de langue
+├── data/projects.ts        # contenu des projets
+├── hooks/useActiveSection.ts
+└── components/             # Header, Hero, About, Projects, ProjectDetail, Expertise, Journey, Contact, Footer…
+```
+
+## Déploiement
+
+### GitHub Pages (configuration actuelle)
+
+Le site est publié depuis la branche `gh-pages` du dépôt `dav9fulldev/dav9fulldev.github.io` :
+
 ```bash
-npm run dev
-````
+npm run deploy     # build + publication de dist/ sur la branche gh-pages
+```
 
-4. Buat versi production:
-```bash
-npm run build
-````
+Le build copie `index.html` en `404.html` pour que les URL inconnues affichent la page 404 du site.
+Pour publier dans un dépôt « projet » (ex. `github.com/dav9fulldev/portfolio`), mettre `base: "/portfolio/"` dans `vite.config.ts` et adapter les URL absolues de `index.html`, `robots.txt` et `sitemap.xml`.
 
-## &#x20;Quick Preview
+### Vercel (alternative)
 
-Jika sudah di-deploy (contoh: GitHub Pages, Netlify, Vercel), kamu bisa tambahkan link deploy di sini, misalnya:
-[🔗 Lihat versi live](https://username.github.io/portofolio/)
+1. Importer le dépôt sur https://vercel.com/new
+2. Framework : **Vite** — Build : `npm run build` — Output : `dist`
+3. Déployer, puis mettre à jour `site.url`, la balise `canonical`, l'Open Graph, `robots.txt` et `sitemap.xml` avec le nouveau domaine.
 
-## Tentang Saya
+## Contact
 
-Hai, saya Faris Edrik P (username GitHub: `rissss21`).
-Saya seorang Developer yang suka bikin aplikasi web ringan dengan tampilan modern dan performa tinggi. Scroll aja di project saya, dan jangan sungkan untuk reach out kalau ada pertanyaan!
+Aucun service d'envoi n'est configuré : le contact passe par e-mail (`mailto:`). Pour ajouter un formulaire (Formspree, Web3Forms…), voir `.env.example`.
 
-* **Email:** [email\_farisedrik21@gmail.com](mailto:email_farisedrik21@gmail.com)
-* **LinkedIn:** [linkedin.com/in/farisedp](https://www.linkedin.com/in/farisedp/)
-* **Instagram (opsional):** @farisedrikprayoga
+## Principes de contenu
 
----
-
-
-[1]: https://github.com/rissss21/portofolio "GitHub - rissss21/portofolio"
+Toutes les informations proviennent des dépôts publics (README, code, releases) ou du parcours fourni par l'auteur. Les projets dont le code n'est pas public (RestoGestion, StoryGriot AI, U-Report Cocody) sont signalés comme tels, et aucune statistique n'est inventée.
