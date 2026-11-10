@@ -1,8 +1,8 @@
 name: Build & deploy
 
 # PR vers master : build de vérification uniquement.
-# Push / merge sur master : build puis publication sur la branche gh-pages
-# (source GitHub Pages du dépôt) → https://dav9fulldev.github.io/portfolio/
+# Merge / push sur master : build puis publication directe sur GitHub Pages
+# (aucune branche gh-pages) → https://dav9fulldev.github.io/portfolio/
 on:
   pull_request:
     branches: [master]
@@ -11,7 +11,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -33,11 +35,19 @@ jobs:
       - name: Build (typecheck + Vite)
         run: npm run build
 
-      - name: Deploy to gh-pages
+      - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
-          commit_message: "Deploy ${{ github.sha }}"
+          path: ./dist
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

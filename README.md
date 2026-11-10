@@ -58,13 +58,13 @@ src/
 Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) :
 
 - sur chaque **Pull Request vers `master`** : installe, vérifie le typage et construit le site (contrôle, sans publication) ;
-- sur chaque **merge / push sur `master`** : construit puis publie `dist/` sur la branche `gh-pages`, servie par GitHub Pages sur https://dav9fulldev.github.io/portfolio/.
+- sur chaque **merge / push sur `master`** : construit puis publie directement sur GitHub Pages (sans branche `gh-pages`) : https://dav9fulldev.github.io/portfolio/.
 
 Processus : créer une branche → ouvrir une PR vers `master` → vérifier que le check « Build & deploy » est vert → merger. Le site est en ligne 1 à 2 minutes plus tard.
 
-Prérequis (déjà en place) : *Settings → Pages → Source : Deploy from a branch → `gh-pages` / root*.
+Prérequis (déjà en place) : *Settings → Pages → Source : GitHub Actions*. Les branches de PR sont supprimées automatiquement après le merge : seule `master` reste.
 
-Déploiement manuel de secours : `npm run deploy`.
+Redéploiement manuel : onglet *Actions → Build & deploy → Run workflow* sur `master`.
 
 Le build copie `index.html` en `404.html` pour que les URL inconnues affichent la page 404 du site.
 
