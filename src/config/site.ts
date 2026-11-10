@@ -17,7 +17,7 @@ export const site = {
   /** Fichier dans /public. Laisser "" pour masquer le bouton CV. */
   cv: asset("/cv/Brou-David-Yao-CV.pdf"),
   /** Fichier dans /public. Laisser "" pour afficher le monogramme à la place. */
-  photo: asset("/images/brou-david-yao.jpg"),
+  photo: asset("/images/brou-david-yao.webp"),
 } as const;
 
 export type Site = typeof site;
