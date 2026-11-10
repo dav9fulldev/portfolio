@@ -32,7 +32,7 @@ Node 20 ou plus récent recommandé.
 | Projets (descriptions bilingues, stack, liens, visuels) | `src/data/projects.ts` |
 | Compétences et niveaux | `src/components/Expertise.tsx` (`AREAS`) |
 | CV | `public/cv/Brou-David-Yao-CV.pdf` |
-| Photo | `public/images/Photo.png` (référencée dans `src/config/site.ts`) |
+| Photo | `public/images/portrait.jpg` (référencée dans `src/config/site.ts`) |
 | Visuels de projets | `public/projects/` |
 | Métadonnées SEO, Open Graph, JSON-LD | `index.html`, `public/og-image.png` |
 | Sitemap / robots | `public/sitemap.xml`, `public/robots.txt` |

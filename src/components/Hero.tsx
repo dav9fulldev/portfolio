@@ -99,27 +99,28 @@ export function Hero() {
         >
           <figure className="relative">
             <div aria-hidden="true" className="absolute inset-0 translate-x-3 translate-y-3 rounded-[1.75rem] border border-gold/40" />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-white">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-[#0b3fa8]">
               {site.photo ? (
                 <img
                   src={site.photo}
                   alt={t.hero.photoAlt}
-                  width={779}
-                  height={1280}
+                  width={1100}
+                  height={1324}
                   fetchPriority="high"
-                  className="h-full w-full object-cover object-[50%_0%]"
+                  className="h-full w-full object-cover object-[50%_15%]"
                 />
               ) : (
                 <div className="grid h-full place-items-center bg-deep font-display text-8xl text-gold">BDY</div>
               )}
-              <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink via-ink/70 to-transparent" />
+              {/* Légende posée sur la photo : couleurs fixes (sombres) quel que soit le thème */}
+              <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#0b1220]/95 via-[#0b1220]/60 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
                 <div>
-                  <p className="eyebrow !text-[0.62rem] text-paper/70">{t.hero.currently}</p>
-                  <p className="mt-1 text-[0.95rem] text-paper">{t.hero.currentlyRole}</p>
-                  <p className="text-sm text-gold-soft">GIM-UEMOA</p>
+                  <p className="eyebrow !text-[0.62rem] !text-[#f5f3ee]/70">{t.hero.currently}</p>
+                  <p className="mt-1 text-[0.95rem] text-[#f5f3ee]">{t.hero.currentlyRole}</p>
+                  <p className="text-sm text-[#d9c39a]">GIM-UEMOA</p>
                 </div>
-                <p className="flex items-center gap-1 text-xs text-paper/70">
+                <p className="flex items-center gap-1 text-xs text-[#f5f3ee]/75">
                   <MapPin size={12} /> Abidjan
                 </p>
               </figcaption>
