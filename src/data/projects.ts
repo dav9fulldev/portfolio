@@ -281,6 +281,59 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "ureport-cocody",
+    name: "U-Report Cocody",
+    category: { fr: "Civic tech · Plateforme web · Jeunesse", en: "Civic tech · Web platform · Youth" },
+    year: "2026",
+    highlight: { fr: "En ligne", en: "Live" },
+    cover: { kind: "image", src: asset("/projects/ureport-cocody.jpg"), position: "center top" },
+    tagline: {
+      fr: "La plateforme de la communauté U-Report de Cocody : événements, présence par QR Code, espace membre, cotisations et back-office.",
+      en: "The platform of Cocody's U-Report community: events, QR-code attendance, member area, membership fees and back office.",
+    },
+    problem: {
+      fr: "Une communauté de jeunes engagés doit annoncer ses actions, inscrire et pointer les participants, suivre ses membres et ses cotisations — souvent avec des outils dispersés (messageries, tableurs).",
+      en: "A community of engaged young people must announce its actions, register and check in participants, and track members and fees — often with scattered tools (messaging apps, spreadsheets).",
+    },
+    solution: {
+      fr: "Une plateforme web unique : un site public pour informer et recruter, un portail membre, et un back-office organisé par département (programme, finances, secrétariat, logistique) pour piloter la communauté.",
+      en: "A single web platform: a public site to inform and recruit, a member portal, and a back office organised by department (programme, finance, secretariat, logistics) to run the community.",
+    },
+    role: {
+      fr: "Conception et développement de la plateforme web.",
+      en: "Design and development of the web platform.",
+    },
+    features: {
+      fr: [
+        "✅ Site public : événements, articles, galerie, présentation, contact",
+        "✅ Inscription aux activités et validation de présence par QR Code",
+        "✅ Portail membre : profil, distinctions et certificats",
+        "✅ Cotisations avec choix Wave ou Orange Money, et reçu imprimable",
+        "✅ Back-office par département : articles, événements, inscriptions, logistique, tâches, newsletter, partenaires",
+        "✅ Statistiques et rapports avec graphiques, recherche de membres, espace super-admin",
+        "✅ Assistant virtuel conversationnel",
+        "✅ Pages légales et consentement aux cookies",
+      ],
+      en: [
+        "✅ Public site: events, articles, gallery, about, contact",
+        "✅ Activity registration and QR-code attendance check-in",
+        "✅ Member portal: profile, awards and certificates",
+        "✅ Membership fees with Wave or Orange Money option, and printable receipt",
+        "✅ Department-based back office: articles, events, registrations, logistics, tasks, newsletter, partners",
+        "✅ Statistics and reports with charts, member search, super-admin area",
+        "✅ Conversational virtual assistant",
+        "✅ Legal pages and cookie consent",
+      ],
+    },
+    stack: ["React", "Vite", "React Router", "Recharts", "Framer Motion", "Axios", "API REST", "Vercel", "Render"],
+    status: { fr: "En ligne", en: "Live" },
+    source: {
+      fr: "Site en production et analyse de son application web (code source non public)",
+      en: "Live site and analysis of its web application (source code not public)",
+    },
+    links: { demo: "https://ureport-cocody.vercel.app/" },
+  },
+  {
     slug: "alerto",
     name: "ALERTO",
     category: { fr: "Civic tech · PWA · IA", en: "Civic tech · PWA · AI" },
@@ -376,14 +429,5 @@ export const otherProjects: MinorProject[] = [
     },
     stack: ["Vue.js 3", "Vue Router", "Axios"],
     repo: "https://github.com/dav9fulldev/FrontendProjetFraudecta",
-  },
-  {
-    name: "U-Report Cocody",
-    desc: {
-      fr: "Application web pour faciliter les interactions et les remontées d'informations citoyennes.",
-      en: "Web app making citizen interactions and feedback easier.",
-    },
-    stack: [],
-    note: { fr: "Code non public", en: "Code not public" },
   },
 ];

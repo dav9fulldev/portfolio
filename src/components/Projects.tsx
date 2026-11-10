@@ -12,8 +12,8 @@ import { RestoSpotlight } from "./RestoSpotlight";
 
 // Composition éditoriale : alternance de largeurs sur une grille de 12 colonnes.
 // RestoGestion dispose de sa propre présentation éditoriale (RestoSpotlight), au-dessus de la grille.
-const SPANS = ["lg:col-span-6", "lg:col-span-6", "lg:col-span-4", "lg:col-span-4", "lg:col-span-4"];
-const ORDER = ["paymechap", "sika-pay", "storygriot-ai", "sankofart-residence", "alerto"];
+const SPANS = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7", "lg:col-span-6", "lg:col-span-6"];
+const ORDER = ["paymechap", "sika-pay", "ureport-cocody", "storygriot-ai", "sankofart-residence", "alerto"];
 const HASH_PREFIX = "#projects/";
 
 export function Projects() {
@@ -54,7 +54,7 @@ export function Projects() {
           {ordered.map((p, i) => {
             const large = i < 2;
             return (
-              <li key={p.slug} className={`${SPANS[i]} ${i === ORDER.length - 1 ? "md:col-span-2" : ""}`}>
+              <li key={p.slug} className={`${SPANS[i]} ${i === ORDER.length - 1 && ORDER.length % 2 === 1 ? "md:col-span-2" : ""}`}>
                 <Reveal delay={(i % 2) * 0.08} className="h-full">
                   <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-line bg-ink-2 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-line-strong">
                     <div className={`relative ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`}>
@@ -119,15 +119,15 @@ export function Projects() {
                             <GithubIcon size={15} />
                             {t.projects.repo}
                           </a>
-                        ) : p.links.site ? (
+                        ) : p.links.site || p.links.demo ? (
                           <a
-                            href={p.links.site}
+                            href={p.links.site ?? p.links.demo}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="relative z-10 inline-flex items-center gap-1.5 text-sm text-mute transition-colors hover:text-paper"
                           >
                             <Globe size={15} />
-                            {t.projects.site}
+                            {p.links.site ? t.projects.site : t.projects.demo}
                           </a>
                         ) : p.links.devpost ? (
                           <a
