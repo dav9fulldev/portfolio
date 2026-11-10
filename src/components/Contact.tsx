@@ -37,7 +37,7 @@ export function Contact() {
       <div className="container-page">
         <Reveal>
           <p className="eyebrow flex items-center gap-3">
-            <span className="text-gold">05</span>
+            <span className="text-gold">06</span>
             <span className="h-px w-8 bg-line-strong" aria-hidden="true" />
             {c.label}
           </p>

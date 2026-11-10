@@ -9,7 +9,7 @@ export function Journey() {
   return (
     <section id="journey" className="border-t border-line py-24 md:py-32">
       <div className="container-page">
-        <SectionHeading index="04" label={j.label} title={j.title} />
+        <SectionHeading index="05" label={j.label} title={j.title} />
 
         <ol className="relative mt-16 md:ml-[25%] md:pl-2">
           <span aria-hidden="true" className="absolute bottom-2 left-[5px] top-2 w-px bg-gradient-to-b from-gold/70 via-line-strong to-transparent" />

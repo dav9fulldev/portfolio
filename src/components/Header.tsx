@@ -6,7 +6,7 @@ import { useActiveSection } from "../hooks/useActiveSection";
 import { useTheme } from "../hooks/useTheme";
 import { Logo } from "./Logo";
 
-export const SECTIONS = ["home", "about", "projects", "expertise", "journey", "contact"] as const;
+export const SECTIONS = ["home", "about", "projects", "expertise", "technologies", "journey", "contact"] as const;
 
 export function Header() {
   const { t, lang, toggle } = useI18n();
@@ -80,8 +80,8 @@ export function Header() {
       <div className="container-page flex h-16 items-center justify-between md:h-[4.5rem]">
         <a href="#home" aria-label="Brou David Yao" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
           <Logo className="h-8 w-auto text-paper transition-transform duration-500 group-hover:-translate-y-0.5 md:h-9" />
-          <span aria-hidden="true" className="hidden h-5 w-px bg-line-strong min-[460px]:block" />
-          <span className="hidden font-mono text-[0.74rem] tracking-[0.22em] text-paper min-[460px]:inline">BROU DAVID YAO</span>
+          <span aria-hidden="true" className="hidden h-5 w-px bg-line-strong min-[460px]:block lg:hidden xl:block" />
+          <span className="hidden font-mono text-[0.74rem] tracking-[0.22em] text-paper min-[460px]:inline lg:hidden xl:inline">BROU DAVID YAO</span>
         </a>
 
         <nav aria-label="Navigation principale" className="hidden items-center gap-1 lg:flex">
