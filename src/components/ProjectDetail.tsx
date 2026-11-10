@@ -92,6 +92,11 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
           <p className="mt-4 text-[1.08rem] leading-relaxed text-paper/85">{p.tagline[lang]}</p>
 
           <div className="mt-7 flex flex-wrap gap-2.5">
+            {p.links.site && (
+              <a href={p.links.site} target="_blank" rel="noopener noreferrer" className="btn btn-primary !h-11">
+                {t.projects.site} <ArrowUpRight size={15} className="arrow" />
+              </a>
+            )}
             {p.links.demo && (
               <a href={p.links.demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary !h-11">
                 {t.projects.demo} <ArrowUpRight size={15} className="arrow" />
@@ -110,6 +115,11 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
             {p.links.devpost && (
               <a href={p.links.devpost} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
                 <DevpostIcon size={15} /> DevPost
+              </a>
+            )}
+            {p.links.origin && (
+              <a href={p.links.origin} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
+                <GithubIcon size={15} /> {t.projects.origin}
               </a>
             )}
             {!p.links.repo && !p.links.devpost && (

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence } from "motion/react";
-import { ArrowUpRight, Lock, Plus } from "lucide-react";
+import { ArrowUpRight, Globe, Lock, Plus } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { otherProjects, projects, type Project } from "../data/projects";
 import { SectionHeading } from "./SectionHeading";
@@ -13,7 +13,7 @@ import { RestoSpotlight } from "./RestoSpotlight";
 // Composition éditoriale : alternance de largeurs sur une grille de 12 colonnes.
 // RestoGestion dispose de sa propre présentation éditoriale (RestoSpotlight), au-dessus de la grille.
 const SPANS = ["lg:col-span-6", "lg:col-span-6", "lg:col-span-4", "lg:col-span-4", "lg:col-span-4"];
-const ORDER = ["gertonargent", "sika-pay", "storygriot-ai", "sankofart-residence", "alerto"];
+const ORDER = ["paymechap", "sika-pay", "storygriot-ai", "sankofart-residence", "alerto"];
 const HASH_PREFIX = "#projects/";
 
 export function Projects() {
@@ -118,6 +118,16 @@ export function Projects() {
                           >
                             <GithubIcon size={15} />
                             {t.projects.repo}
+                          </a>
+                        ) : p.links.site ? (
+                          <a
+                            href={p.links.site}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative z-10 inline-flex items-center gap-1.5 text-sm text-mute transition-colors hover:text-paper"
+                          >
+                            <Globe size={15} />
+                            {t.projects.site}
                           </a>
                         ) : p.links.devpost ? (
                           <a

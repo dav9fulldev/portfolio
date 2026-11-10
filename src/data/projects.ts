@@ -29,54 +29,64 @@ export type Project = {
   status: L;
   /** D'où viennent les informations affichées — transparence vis-à-vis du jury */
   source: L;
-  links: { repo?: string; demo?: string; release?: string; devpost?: string };
+  links: { repo?: string; demo?: string; site?: string; release?: string; devpost?: string; origin?: string };
 };
 
 export const projects: Project[] = [
   {
-    slug: "gertonargent",
-    name: "GèrTonArgent",
-    category: { fr: "Fintech · Mobile · IA", en: "Fintech · Mobile · AI" },
+    slug: "paymechap",
+    name: "PaymeChap",
+    category: { fr: "Fintech · Mobile · Paiement", en: "Fintech · Mobile · Payments" },
     year: "2026",
     featured: true,
-    cover: { kind: "logo", src: asset("/projects/gertonargent-logo.png") },
+    cover: { kind: "image", src: asset("/projects/paymechap.jpg"), position: "center" },
     tagline: {
-      fr: "Un « garde du corps financier » qui intervient juste avant la dépense impulsive.",
-      en: "A “financial bodyguard” that steps in right before an impulse purchase.",
+      fr: "Un portefeuille mobile pour gérer ses wallets, transférer et payer par QR code — entre particuliers comme en boutique.",
+      en: "A mobile wallet to manage wallets, transfer money and pay by QR code — between people and in shops.",
     },
     problem: {
-      fr: "Les dépenses impulsives, notamment via le Mobile Money, sont difficiles à suivre : la plupart des applications de budget constatent après coup au lieu de prévenir.",
-      en: "Impulse spending, especially through Mobile Money, is hard to track: most budgeting apps report after the fact instead of preventing it.",
+      fr: "Gérer plusieurs portefeuilles, envoyer de l'argent et payer un commerçant passent encore par des outils dispersés et peu accessibles.",
+      en: "Managing several wallets, sending money and paying a merchant still involve scattered, hard-to-use tools.",
     },
     solution: {
-      fr: "Une application mobile qui détecte les flux Mobile Money, analyse le budget en temps réel et s'appuie sur Sika, un assistant vocal hors ligne, pour enregistrer les dépenses sans effort.",
-      en: "A mobile app that detects Mobile Money flows, analyses the budget in real time and relies on Sika, an offline voice assistant, to log expenses effortlessly.",
+      fr: "Une application Flutter reliée à une API Spring Boot qui réunit portefeuilles, transferts, coffres d'épargne et paiements par QR code, avec une sécurité renforcée (PIN, OTP, biométrie).",
+      en: "A Flutter app connected to a Spring Boot API that brings together wallets, transfers, savings vaults and QR payments, with strong security (PIN, OTP, biometrics).",
     },
     role: {
-      fr: "Projet personnel : conception, application Flutter, services natifs Android et API FastAPI.",
-      en: "Personal project: design, Flutter app, native Android services and FastAPI backend.",
+      fr: "Projet personnel, conçu et développé seul de bout en bout : application mobile, API, base de données et site vitrine. Il prolonge mon premier projet fintech, GèrTonArgent.",
+      en: "Personal project, designed and built solo end to end: mobile app, API, database and showcase website. It extends my first fintech project, GèrTonArgent.",
     },
     features: {
       fr: [
-        "Assistant vocal Sika, utilisable hors ligne",
-        "Détection des flux Wave, Orange, MTN et Moov Money",
-        "Conseils personnalisés à partir de l'historique de dépenses",
-        "Données financières et vocales conservées sur l'appareil",
+        "✅ Inscription par téléphone avec OTP, code PIN et biométrie",
+        "✅ Plusieurs portefeuilles, wallet principal par défaut, statuts ACTIF / BLOQUÉ",
+        "✅ Transferts entre utilisateurs, dépôts et retraits",
+        "✅ Génération et scan de QR codes pour payer et recevoir",
+        "✅ Coffres d'épargne, historique des transactions, appareils connectés",
+        "🚧 Paiement en boutique et publication sur les stores (tests fermés en cours)",
       ],
       en: [
-        "Sika voice assistant, works offline",
-        "Detection of Wave, Orange, MTN and Moov Money flows",
-        "Personalised advice based on spending history",
-        "Financial and voice data kept on the device",
+        "✅ Phone sign-up with OTP, PIN code and biometrics",
+        "✅ Multiple wallets, default main wallet, ACTIVE / BLOCKED statuses",
+        "✅ Transfers between users, deposits and withdrawals",
+        "✅ QR code generation and scanning to pay and receive",
+        "✅ Savings vaults, transaction history, connected devices",
+        "🚧 In-store payments and store release (closed testing in progress)",
       ],
     },
-    stack: ["Flutter", "Dart", "Riverpod", "Kotlin", "Python", "FastAPI", "Docker"],
+    stack: ["Flutter", "Dart", "Java", "Spring Boot", "MySQL / MariaDB", "API REST", "Postman"],
     status: {
-      fr: "En développement — v2.0 documentée (février 2026)",
-      en: "In development — v2.0 documented (February 2026)",
+      fr: "En tests fermés — pas encore disponible sur les stores",
+      en: "In closed testing — not yet available on app stores",
     },
-    source: { fr: "README et code du dépôt public", en: "Public repository README and code" },
-    links: { repo: "https://github.com/dav9fulldev/FintechProject" },
+    source: {
+      fr: "Code de l'application mobile, documentation de l'auteur et site officiel paymechap.com (dépôt non public)",
+      en: "Mobile app code, author's documentation and official website paymechap.com (repository not public)",
+    },
+    links: {
+      site: "https://paymechap.com",
+      origin: "https://github.com/dav9fulldev/FintechProject",
+    },
   },
   {
     slug: "restogestion",

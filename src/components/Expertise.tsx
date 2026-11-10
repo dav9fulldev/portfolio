@@ -7,19 +7,18 @@ type Level = "mastered" | "practiced" | "discovered";
 type Skill = { name: string; level: Level };
 const m = (name: string): Skill => ({ name, level: "mastered" });
 const p = (name: string): Skill => ({ name, level: "practiced" });
-const d = (name: string): Skill => ({ name, level: "discovered" });
 
 /**
  * Niveaux établis à partir des dépôts publics, de DevPost et du parcours :
  * mastered = utilisé sur plusieurs projets ; practiced = au moins un projet vérifiable ;
- * discovered = notions acquises, sans projet public à montrer.
+ * discovered = notions acquises sans projet à montrer (niveau disponible, inutilisé pour l'instant).
  */
 const AREAS: { Icon: typeof Server; skills: Skill[]; span: string }[] = [
-  { Icon: Server, span: "lg:col-span-2", skills: [m("Python"), m("FastAPI"), m("Node.js"), m("Express.js"), m("API REST"), d("Java"), d("Spring Boot")] },
+  { Icon: Server, span: "lg:col-span-2", skills: [m("Python"), m("FastAPI"), m("Node.js"), m("Express.js"), m("API REST"), p("Java"), p("Spring Boot")] },
   { Icon: Smartphone, span: "lg:col-span-2", skills: [m("Flutter"), m("Dart"), p("Riverpod"), p("Kotlin · Android")] },
   { Icon: Monitor, span: "lg:col-span-2", skills: [m("JavaScript"), m("React"), p("TypeScript"), p("Vue.js"), p("Tailwind CSS")] },
   { Icon: BrainCircuit, span: "lg:col-span-3", skills: [m("Gemini API"), p("Agents & function calling"), p("Speech-to-Text"), p("PayPal API"), p("Mobile Money")] },
-  { Icon: Database, span: "lg:col-span-3", skills: [m("Git"), m("GitHub"), p("PostgreSQL"), p("MySQL"), p("MongoDB"), p("Docker"), p("GitLab"), p("GitHub Actions"), p("Google Cloud Run")] },
+  { Icon: Database, span: "lg:col-span-3", skills: [m("Git"), m("GitHub"), p("PostgreSQL"), p("MySQL / MariaDB"), p("MongoDB"), p("Docker"), p("Postman"), p("GitLab"), p("GitHub Actions"), p("Google Cloud Run")] },
 ];
 
 const DOT: Record<Level, string> = {
@@ -48,9 +47,6 @@ export function Expertise() {
           </span>
           <span className="inline-flex items-center gap-2">
             <span className="h-2 w-2 rounded-full border border-paper/60" aria-hidden="true" /> {e.practiced}
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full border border-dashed border-mute" aria-hidden="true" /> {e.discovered}
           </span>
         </Reveal>
 
