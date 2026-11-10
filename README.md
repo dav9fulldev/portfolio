@@ -37,6 +37,8 @@ Node 20 ou plus récent recommandé.
 | Métadonnées SEO, Open Graph, JSON-LD | `index.html`, `public/og-image.png` |
 | Sitemap / robots | `public/sitemap.xml`, `public/robots.txt` |
 
+**Thèmes clair et sombre** : le site suit le réglage du système, puis mémorise le choix fait avec le bouton soleil / lune de l'en-tête. Les couleurs de chaque thème sont des variables CSS définies dans `src/index.css` (`:root` pour le sombre, `:root[data-theme="light"]` pour le clair) ; le script en tête de `index.html` applique le thème avant l'affichage pour éviter tout flash.
+
 La langue par défaut est le français. On peut forcer la langue via `?lang=en`. Chaque projet a un lien direct : `/#projects/<slug>` (ex. `/#projects/restogestion`).
 
 ## Structure

@@ -61,7 +61,7 @@ export function RestoSpotlight({ onOpen }: { onOpen: () => void }) {
         <Reveal delay={0.12} className="lg:col-span-6 lg:self-center">
           {cover && (
             <figure>
-              <div className="overflow-hidden rounded-2xl border border-line-strong bg-ink shadow-2xl shadow-black/50">
+              <div className="overflow-hidden rounded-2xl border border-line-strong bg-ink shadow-2xl shadow-(color:--shadow)">
                 <div aria-hidden="true" className="flex items-center gap-1.5 border-b border-line px-4 py-2.5">
                   <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
                   <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
@@ -77,9 +77,9 @@ export function RestoSpotlight({ onOpen }: { onOpen: () => void }) {
           <div className="mt-6 rounded-2xl border border-line-strong bg-ink/70 p-5">
             <div className="flex items-center justify-between gap-3">
               <p className="flex items-center gap-2 text-[0.95rem] font-medium text-paper">
-                <BotMessageSquare size={18} className="text-[#9cc3ff]" aria-hidden="true" /> RestoPilot
+                <BotMessageSquare size={18} className="text-electric-soft" aria-hidden="true" /> RestoPilot
               </p>
-              <span className="chip border-electric/40 !text-[#9cc3ff]">{s.soon}</span>
+              <span className="chip border-electric/40 !text-electric-soft">{s.soon}</span>
             </div>
             <p className="mt-3 text-[0.92rem] leading-relaxed text-paper/80">{s.pilot}</p>
             <p className="mt-4 flex items-start gap-2 border-t border-line pt-4 text-[0.88rem] leading-relaxed text-paper">

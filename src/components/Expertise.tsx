@@ -52,7 +52,7 @@ export function Expertise() {
 
         <ul className="mt-10 grid gap-px overflow-hidden rounded-[1.4rem] border border-line bg-line md:grid-cols-2 lg:grid-cols-6">
           {AREAS.map(({ Icon, skills, span }, i) => (
-            <li key={i} className={`${span} ${i === AREAS.length - 1 ? "md:col-span-2" : ""} group bg-ink p-7 transition-colors duration-500 hover:bg-[#0d1628] md:p-9`}>
+            <li key={i} className={`${span} ${i === AREAS.length - 1 ? "md:col-span-2" : ""} group bg-ink p-7 transition-colors duration-500 hover:bg-ink-2 md:p-9`}>
               <Reveal delay={(i % 2) * 0.06}>
                 <div className="flex items-center justify-between">
                   <Icon size={22} strokeWidth={1.5} className="text-gold" aria-hidden="true" />

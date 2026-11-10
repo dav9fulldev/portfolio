@@ -5,6 +5,9 @@ import { site } from "../config/site";
 import { Reveal } from "./Reveal";
 import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
 
+/** Dernier segment d'une URL de profil : « https://github.com/dav9fulldev » → « @dav9fulldev ». */
+const handle = (url: string) => "@" + url.replace(/\/+$/, "").split("/").pop();
+
 export function Contact() {
   const { t } = useI18n();
   const c = t.contact;
@@ -21,10 +24,10 @@ export function Contact() {
   };
 
   const links = [
-    { label: "GitHub", value: site.github.replace("https://", ""), href: site.github, Icon: GithubIcon },
-    { label: "GitLab", value: site.gitlab.replace("https://", ""), href: site.gitlab, Icon: GitlabIcon },
-    { label: "LinkedIn", value: site.linkedin.replace("https://www.", "").replace(/\/$/, ""), href: site.linkedin, Icon: LinkedinIcon },
-    { label: "DevPost", value: site.devpost.replace("https://", ""), href: site.devpost, Icon: DevpostIcon },
+    { label: "GitHub", value: handle(site.github), href: site.github, Icon: GithubIcon },
+    { label: "GitLab", value: handle(site.gitlab), href: site.gitlab, Icon: GitlabIcon },
+    { label: "LinkedIn", value: handle(site.linkedin), href: site.linkedin, Icon: LinkedinIcon },
+    { label: "DevPost", value: handle(site.devpost), href: site.devpost, Icon: DevpostIcon },
   ].filter((l) => l.href);
 
   return (
@@ -58,8 +61,8 @@ export function Contact() {
           )}
         </Reveal>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-[1.4rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
-          <div className="flex flex-col justify-between gap-6 bg-ink p-6">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-[1.4rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(4,minmax(0,1fr))]">
+          <div className="flex flex-col justify-between gap-6 bg-ink p-6 sm:col-span-2 lg:col-span-1">
             <p className="eyebrow !text-[0.64rem]">E-mail</p>
             <div className="flex items-center justify-between gap-3">
               <a href={`mailto:${site.email}`} className="link-underline truncate text-[0.95rem] text-paper">

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { useActiveSection } from "../hooks/useActiveSection";
+import { useTheme } from "../hooks/useTheme";
 
 export const SECTIONS = ["home", "about", "projects", "expertise", "journey", "contact"] as const;
 
@@ -11,6 +12,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const active = useActiveSection(SECTIONS);
+  const { theme, toggle: toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -47,6 +49,21 @@ export function Header() {
     </button>
   );
 
+  const ThemeButton = ({ className = "" }: { className?: string }) => {
+    const label = theme === "dark" ? t.nav.toLight : t.nav.toDark;
+    return (
+      <button
+        type="button"
+        onClick={toggleTheme}
+        aria-label={label}
+        title={label}
+        className={`grid h-9 w-9 place-items-center rounded-full border border-line-strong text-paper transition-colors hover:border-gold hover:text-gold ${className}`}
+      >
+        {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+      </button>
+    );
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
@@ -60,11 +77,11 @@ export function Header() {
         {t.nav.skip}
       </a>
       <div className="container-page flex h-16 items-center justify-between md:h-[4.5rem]">
-        <a href="#home" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="grid h-8 w-8 place-items-center rounded-full border border-gold/60 font-display text-[0.95rem] text-gold transition-colors group-hover:bg-gold group-hover:text-ink">
+        <a href="#home" aria-label="Brou David Yao" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+          <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-full border border-gold/60 font-display text-[0.95rem] text-gold transition-colors group-hover:bg-gold group-hover:text-ink">
             B
           </span>
-          <span className="font-mono text-[0.74rem] tracking-[0.22em] text-paper">BROU DAVID YAO</span>
+          <span className="hidden font-mono text-[0.74rem] tracking-[0.22em] text-paper min-[460px]:inline">BROU DAVID YAO</span>
         </a>
 
         <nav aria-label="Navigation principale" className="hidden items-center gap-1 lg:flex">
@@ -88,10 +105,12 @@ export function Header() {
             </a>
           ))}
           <LangButton className="ml-3" />
+          <ThemeButton className="ml-2" />
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
           <LangButton />
+          <ThemeButton />
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}

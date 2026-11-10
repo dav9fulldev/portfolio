@@ -64,7 +64,7 @@ export function Projects() {
                           <span className="chip border-gold/50 bg-ink/70 !text-gold-soft backdrop-blur">{t.projects.featured}</span>
                         )}
                         {p.highlight && (
-                          <span className="chip border-electric/40 bg-ink/70 !text-[#9cc3ff] backdrop-blur">
+                          <span className="chip border-electric/40 bg-ink/70 !text-electric-soft backdrop-blur">
                             {p.highlight[lang]}
                           </span>
                         )}

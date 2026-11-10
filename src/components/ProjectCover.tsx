@@ -38,7 +38,7 @@ export function ProjectCover({ cover, name, large = false }: { cover: Cover; nam
           alt={`${name} — capture de l'application`}
           loading="lazy"
           decoding="async"
-          className={`absolute left-1/2 -translate-x-1/2 rounded-[1.6rem] border border-line-strong shadow-2xl shadow-black/50 transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-2 ${
+          className={`absolute left-1/2 -translate-x-1/2 rounded-[1.6rem] border border-line-strong shadow-2xl shadow-(color:--shadow) transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-2 ${
             large ? "top-[10%] w-[34%]" : "top-[12%] w-[32%]"
           }`}
         />
@@ -55,7 +55,7 @@ export function ProjectCover({ cover, name, large = false }: { cover: Cover; nam
           alt={`Logo ${name}`}
           loading="lazy"
           decoding="async"
-          className={`relative rounded-[22%] shadow-2xl shadow-black/40 transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-1 group-hover:scale-[1.03] ${
+          className={`relative rounded-[22%] shadow-2xl shadow-(color:--shadow) transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-1 group-hover:scale-[1.03] ${
             large ? "w-32 md:w-40" : "w-24 md:w-28"
           }`}
         />

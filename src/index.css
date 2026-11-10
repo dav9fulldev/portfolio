@@ -1,22 +1,70 @@
 @import "tailwindcss";
 
-@theme {
-  --color-ink: #0b1220;
-  --color-ink-2: #0f1a2d;
-  --color-deep: #142238;
-  --color-gold: #c6a66b;
-  --color-gold-soft: #d9c39a;
-  --color-electric: #3b82f6;
-  --color-paper: #f5f3ee;
-  --color-mute: #9ba5b4;
-  --color-line: rgb(245 243 238 / 0.09);
-  --color-line-strong: rgb(245 243 238 / 0.16);
+/*
+ * Thèmes : les utilitaires Tailwind (bg-ink, text-paper, border-line…) pointent vers des variables
+ * redéfinies par thème. « ink » = fond, « paper » = texte principal : ils s'inversent en mode clair.
+ * Le thème est porté par l'attribut data-theme de <html> (posé avant le rendu, voir index.html).
+ */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-deep: var(--deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-electric: var(--electric);
+  --color-electric-soft: var(--electric-soft);
+  --color-paper: var(--paper);
+  --color-mute: var(--mute);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+}
 
+@theme {
   --font-display: "Instrument Serif", ui-serif, Georgia, serif;
   --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Mode sombre (par défaut) — bleu nuit et doré champagne */
+:root {
+  color-scheme: dark;
+  --ink: #0b1220;
+  --ink-2: #0f1a2d;
+  --deep: #142238;
+  --gold: #c6a66b;
+  --gold-soft: #d9c39a;
+  --on-gold: #0b1220;
+  --electric: #3b82f6;
+  --electric-soft: #9cc3ff;
+  --paper: #f5f3ee;
+  --mute: #9ba5b4;
+  --line: rgb(245 243 238 / 0.09);
+  --line-strong: rgb(245 243 238 / 0.16);
+  --grid: rgb(245 243 238 / 0.045);
+  --chip-text: rgb(245 243 238 / 0.82);
+  --shadow: rgb(0 0 0 / 0.45);
+}
+
+/* Mode clair — papier ivoire, encre bleu nuit, doré assombri pour rester lisible (AA) */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ink: #f7f5f0;
+  --ink-2: #efece4;
+  --deep: #e6e9f0;
+  --gold: #8a6a2f;
+  --gold-soft: #7a5c24;
+  --on-gold: #fbfaf7;
+  --electric: #2563eb;
+  --electric-soft: #1d4ed8;
+  --paper: #0b1220;
+  --mute: #566173;
+  --line: rgb(11 18 32 / 0.1);
+  --line-strong: rgb(11 18 32 / 0.18);
+  --grid: rgb(11 18 32 / 0.05);
+  --chip-text: rgb(11 18 32 / 0.78);
+  --shadow: rgb(11 18 32 / 0.16);
 }
 
 @layer base {
@@ -27,6 +75,9 @@
   }
   body {
     background: var(--color-ink);
+    transition:
+      background-color 0.4s var(--ease-out-soft),
+      color 0.4s var(--ease-out-soft);
     color: var(--color-paper);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -81,8 +132,8 @@
   /* Fine grille de fond, utilisée avec parcimonie */
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgb(245 243 238 / 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(245 243 238 / 0.045) 1px, transparent 1px);
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
@@ -105,7 +156,7 @@
   }
   .btn-primary {
     background: var(--color-gold);
-    color: var(--color-ink);
+    color: var(--on-gold);
   }
   .btn-primary:hover {
     background: var(--color-gold-soft);
@@ -136,7 +187,7 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.02em;
-    color: rgb(245 243 238 / 0.82);
+    color: var(--chip-text);
     white-space: nowrap;
   }
 

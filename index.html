@@ -7,7 +7,17 @@
     <meta name="description" content="Portfolio de Brou David Yao, ingénieur développeur junior à Abidjan : développement Full-Stack et Mobile, fintech et intelligence artificielle." />
     <meta name="author" content="Brou David Yao" />
     <meta name="theme-color" content="#0b1220" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      // Thème posé avant le rendu pour éviter tout flash : choix mémorisé, sinon réglage du système.
+      (function () {
+        var t;
+        try { t = localStorage.getItem("bdy-theme"); } catch (e) {}
+        if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.dataset.theme = t;
+        if (t === "light") document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f7f5f0");
+      })();
+    </script>
     <link rel="canonical" href="https://dav9fulldev.github.io/portfolio/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

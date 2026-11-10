@@ -16,6 +16,8 @@ const fr = {
     menu: "Ouvrir le menu",
     close: "Fermer le menu",
     switchTo: "Switch to English",
+    toLight: "Passer en mode clair",
+    toDark: "Passer en mode sombre",
     skip: "Aller au contenu",
   },
   hero: {
@@ -181,6 +183,8 @@ const en: Dict = {
     menu: "Open menu",
     close: "Close menu",
     switchTo: "Passer en français",
+    toLight: "Switch to light mode",
+    toDark: "Switch to dark mode",
     skip: "Skip to content",
   },
   hero: {
