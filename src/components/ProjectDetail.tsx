@@ -6,6 +6,12 @@ import type { Project } from "../data/projects";
 import { ProjectCover } from "./ProjectCover";
 import { DevpostIcon, GithubIcon } from "./Icons";
 
+/** Identifiant d'une vidéo YouTube (youtu.be/ID ou youtube.com/watch?v=ID), sinon null. */
+function youtubeId(url?: string) {
+  const m = url?.match(/(?:youtu\.be\/|[?&]v=|\/embed\/)([\w-]{11})/);
+  return m ? m[1] : null;
+}
+
 export function ProjectDetail({ project: p, onClose }: { project: Project; onClose: () => void }) {
   const { t, lang } = useI18n();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -40,6 +46,8 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
       previouslyFocused?.focus?.();
     };
   }, [onClose]);
+
+  const videoId = youtubeId(p.links.video);
 
   const blocks = [
     { k: t.projects.problem, v: p.problem[lang] },
@@ -107,11 +115,6 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
                 <Download size={15} /> {t.projects.release}
               </a>
             )}
-            {p.links.video && (
-              <a href={p.links.video} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
-                <PlayCircle size={15} /> {t.projects.video}
-              </a>
-            )}
             {p.links.repo && (
               <a href={p.links.repo} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
                 <GithubIcon size={15} /> {t.projects.repo}
@@ -133,6 +136,25 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
               </span>
             )}
           </div>
+
+          {videoId && (
+            <figure className="mt-8">
+              <div className="relative aspect-video overflow-hidden rounded-2xl border border-line-strong bg-black">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0`}
+                  title={`${p.name} — ${t.projects.video}`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full"
+                />
+              </div>
+              <figcaption className="mt-3 flex items-center gap-2 font-mono text-[0.64rem] tracking-wide text-mute">
+                <PlayCircle size={13} aria-hidden="true" /> {t.projects.video}
+              </figcaption>
+            </figure>
+          )}
 
           <dl className="mt-10 divide-y divide-line border-y border-line">
             {blocks.map((b) => (
