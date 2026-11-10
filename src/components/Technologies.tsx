@@ -4,9 +4,6 @@ import {
   siAlpinedotjs,
   siAndroid,
   siAndroidstudio,
-  siCss,
-  siDart,
-  siDjango,
   siDocker,
   siExpress,
   siFastapi,
@@ -19,19 +16,18 @@ import {
   siGitlab,
   siGooglecloud,
   siGooglegemini,
-  siHtml5,
   siJavascript,
   siJira,
   siKeycloak,
   siKotlin,
   siKubernetes,
+  siApachekafka,
   siLaravel,
   siMariadb,
   siMongodb,
   siMysql,
   siNodedotjs,
   siOpenjdk,
-  siPaypal,
   siPhp,
   siPostgresql,
   siPostman,
@@ -48,11 +44,12 @@ import {
   type SimpleIcon,
 } from "simple-icons";
 import { useI18n } from "../i18n/LanguageContext";
+import { siKrakend } from "../data/customIcons";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
 type Category = "backend" | "frontend" | "mobile" | "data" | "ai" | "cloud" | "tools";
-type Tech = { icon: SimpleIcon; name?: string; category: Category };
+type Tech = { icon: SimpleIcon & { transform?: string }; name?: string; category: Category };
 
 /** Technologies réellement utilisées dans les projets et le parcours (voir projets et CV). */
 const TECHS: Tech[] = [
@@ -64,7 +61,6 @@ const TECHS: Tech[] = [
   { icon: siExpress, category: "backend" },
   { icon: siPhp, category: "backend" },
   { icon: siLaravel, category: "backend" },
-  { icon: siDjango, category: "backend" },
   { icon: siJavascript, category: "frontend" },
   { icon: siTypescript, category: "frontend" },
   { icon: siReact, category: "frontend" },
@@ -72,10 +68,7 @@ const TECHS: Tech[] = [
   { icon: siTailwindcss, category: "frontend" },
   { icon: siAlpinedotjs, category: "frontend" },
   { icon: siVite, category: "frontend" },
-  { icon: siHtml5, name: "HTML", category: "frontend" },
-  { icon: siCss, category: "frontend" },
   { icon: siFlutter, category: "mobile" },
-  { icon: siDart, category: "mobile" },
   { icon: siKotlin, category: "mobile" },
   { icon: siAndroid, category: "mobile" },
   { icon: siPostgresql, category: "data" },
@@ -84,10 +77,11 @@ const TECHS: Tech[] = [
   { icon: siMongodb, category: "data" },
   { icon: siSqlite, category: "data" },
   { icon: siGooglegemini, name: "Gemini", category: "ai" },
-  { icon: siPaypal, name: "PayPal API", category: "ai" },
   { icon: siFirebase, category: "ai" },
   { icon: siDocker, category: "cloud" },
   { icon: siKubernetes, category: "cloud" },
+  { icon: siApachekafka, name: "Kafka", category: "cloud" },
+  { icon: siKrakend, category: "cloud" },
   { icon: siGooglecloud, category: "cloud" },
   { icon: siGithubactions, category: "cloud" },
   { icon: siVercel, category: "cloud" },
@@ -159,7 +153,7 @@ export function Technologies() {
               >
                 <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-[#111c30] transition-transform duration-300 group-hover:scale-105">
                   <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-                    <path d={icon.path} fill={iconColor(icon)} />
+                    <path d={icon.path} fill={iconColor(icon)} transform={icon.transform} />
                   </svg>
                 </span>
                 <span className="min-w-0">
