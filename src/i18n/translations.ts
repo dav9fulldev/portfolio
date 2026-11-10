@@ -119,7 +119,7 @@ const fr = {
     title: "Les étapes clés.",
     items: [
       {
-        date: "2025 — 2026",
+        date: "Depuis janvier 2025",
         t: "Ingénieur développeur junior",
         org: "GIM-UEMOA · Abidjan",
         d: "Développement au sein du Groupement Interbancaire Monétique de l'UEMOA, au cœur des paiements électroniques de la sous-région.",
@@ -289,7 +289,7 @@ const en: Dict = {
     title: "Key milestones.",
     items: [
       {
-        date: "2025 — 2026",
+        date: "Since January 2025",
         t: "Junior software engineer",
         org: "GIM-UEMOA · Abidjan",
         d: "Software development at the interbank card-payment group of the WAEMU region, at the heart of electronic payments in West Africa.",
