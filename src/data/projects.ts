@@ -156,8 +156,8 @@ export const projects: Project[] = [
     category: { fr: "Fintech · Paiement conversationnel · Agent IA", en: "Fintech · Conversational payments · AI agent" },
     year: "2026",
     featured: true,
-    cover: { kind: "image", src: asset("/projects/sikapay-rules.jpg"), position: "center" },
-    gallery: [asset("/projects/sikapay-paid.jpg"), asset("/projects/sika-architecture.jpg")],
+    cover: { kind: "image", src: asset("/projects/sikapay-cover.jpg"), position: "center" },
+    gallery: [asset("/projects/sikapay-rules.jpg"), asset("/projects/sikapay-paid.jpg"), asset("/projects/sika-architecture.jpg")],
     tagline: {
       fr: "Un agent de paiement intelligent qui recherche, compare et prépare les achats avec PayPal — en laissant l'utilisateur maître de son argent.",
       en: "An intelligent payment agent that searches, compares and prepares purchases with PayPal — while keeping users in control of their money.",
