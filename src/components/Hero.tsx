@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
-import { ArrowRight, ArrowUpRight, Download, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Download, Mail, MapPin } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
-import { GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
+import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const fade = (delay: number) => ({
@@ -18,6 +18,7 @@ export function Hero() {
     { href: site.github, label: "GitHub", Icon: GithubIcon },
     { href: site.gitlab, label: "GitLab", Icon: GitlabIcon },
     { href: site.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
+    { href: site.devpost, label: "DevPost", Icon: DevpostIcon },
   ].filter((s) => s.href);
 
   return (
@@ -59,16 +60,16 @@ export function Hero() {
               {t.hero.ctaProjects}
               <ArrowRight size={16} className="arrow" />
             </a>
-            {site.cv ? (
+            {site.cv && (
               <a href={site.cv} download className="btn btn-ghost">
                 <Download size={16} />
                 {t.hero.ctaCv}
               </a>
-            ) : (
-              <a href="#contact" className="btn btn-ghost">
-                {t.hero.ctaContact}
-              </a>
             )}
+            <a href="#contact" className="btn btn-ghost">
+              <Mail size={16} />
+              {t.hero.ctaContact}
+            </a>
           </motion.div>
 
           <motion.ul {...fade(0.52)} className="mt-10 flex items-center gap-2" aria-label="Réseaux">

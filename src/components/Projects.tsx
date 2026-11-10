@@ -7,11 +7,13 @@ import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { ProjectCover } from "./ProjectCover";
 import { ProjectDetail } from "./ProjectDetail";
-import { GithubIcon } from "./Icons";
+import { DevpostIcon, GithubIcon } from "./Icons";
+import { RestoSpotlight } from "./RestoSpotlight";
 
 // Composition éditoriale : alternance de largeurs sur une grille de 12 colonnes.
-const SPANS = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7", "lg:col-span-6", "lg:col-span-6"];
-const ORDER = ["gertonargent", "restogestion", "sika-pay", "sankofart-residence", "alerto", "storygriot-ai"];
+// RestoGestion dispose de sa propre présentation éditoriale (RestoSpotlight), au-dessus de la grille.
+const SPANS = ["lg:col-span-6", "lg:col-span-6", "lg:col-span-4", "lg:col-span-4", "lg:col-span-4"];
+const ORDER = ["gertonargent", "sika-pay", "storygriot-ai", "sankofart-residence", "alerto"];
 const HASH_PREFIX = "#projects/";
 
 export function Projects() {
@@ -46,11 +48,13 @@ export function Projects() {
       <div className="container-page">
         <SectionHeading index="02" label={t.projects.label} title={t.projects.title} intro={t.projects.intro} />
 
-        <ul className="mt-16 grid gap-5 lg:grid-cols-12">
+        <RestoSpotlight onOpen={() => open("restogestion")} />
+
+        <ul className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-12">
           {ordered.map((p, i) => {
             const large = i < 2;
             return (
-              <li key={p.slug} className={SPANS[i]}>
+              <li key={p.slug} className={`${SPANS[i]} ${i === ORDER.length - 1 ? "md:col-span-2" : ""}`}>
                 <Reveal delay={(i % 2) * 0.08} className="h-full">
                   <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-line bg-ink-2 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-line-strong">
                     <div className={`relative ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`}>
@@ -114,6 +118,16 @@ export function Projects() {
                           >
                             <GithubIcon size={15} />
                             {t.projects.repo}
+                          </a>
+                        ) : p.links.devpost ? (
+                          <a
+                            href={p.links.devpost}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative z-10 inline-flex items-center gap-1.5 text-sm text-mute transition-colors hover:text-paper"
+                          >
+                            <DevpostIcon size={15} />
+                            DevPost
                           </a>
                         ) : (
                           <span className="relative inline-flex items-center gap-1.5 text-xs text-mute/80">

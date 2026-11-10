@@ -1,0 +1,43 @@
+name: Build & deploy
+
+# PR vers master : build de vérification uniquement.
+# Push / merge sur master : build puis publication sur la branche gh-pages
+# (source GitHub Pages du dépôt) → https://dav9fulldev.github.io/portfolio/
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build (typecheck + Vite)
+        run: npm run build
+
+      - name: Deploy to gh-pages
+        if: github.event_name != 'pull_request'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          commit_message: "Deploy ${{ github.sha }}"

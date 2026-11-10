@@ -3,7 +3,7 @@ import { ArrowUpRight, Check, Copy, Download, Mail } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
 import { Reveal } from "./Reveal";
-import { GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
+import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
 
 export function Contact() {
   const { t } = useI18n();
@@ -23,7 +23,8 @@ export function Contact() {
   const links = [
     { label: "GitHub", value: site.github.replace("https://", ""), href: site.github, Icon: GithubIcon },
     { label: "GitLab", value: site.gitlab.replace("https://", ""), href: site.gitlab, Icon: GitlabIcon },
-    { label: "LinkedIn", value: site.linkedin.replace("https://www.", ""), href: site.linkedin, Icon: LinkedinIcon },
+    { label: "LinkedIn", value: site.linkedin.replace("https://www.", "").replace(/\/$/, ""), href: site.linkedin, Icon: LinkedinIcon },
+    { label: "DevPost", value: site.devpost.replace("https://", ""), href: site.devpost, Icon: DevpostIcon },
   ].filter((l) => l.href);
 
   return (
@@ -57,7 +58,7 @@ export function Contact() {
           )}
         </Reveal>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-[1.4rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-[1.4rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
           <div className="flex flex-col justify-between gap-6 bg-ink p-6">
             <p className="eyebrow !text-[0.64rem]">E-mail</p>
             <div className="flex items-center justify-between gap-3">

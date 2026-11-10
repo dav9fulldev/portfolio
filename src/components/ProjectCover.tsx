@@ -28,6 +28,24 @@ export function ProjectCover({ cover, name, large = false }: { cover: Cover; nam
     );
   }
 
+  if (cover.kind === "phone") {
+    return (
+      <div className="relative h-full w-full overflow-hidden bg-deep">
+        <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-70 [mask-image:radial-gradient(circle_at_center,black,transparent_80%)]" />
+        <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-electric/20 blur-3xl" />
+        <img
+          src={cover.src}
+          alt={`${name} — capture de l'application`}
+          loading="lazy"
+          decoding="async"
+          className={`absolute left-1/2 -translate-x-1/2 rounded-[1.6rem] border border-line-strong shadow-2xl shadow-black/50 transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-2 ${
+            large ? "top-[10%] w-[34%]" : "top-[12%] w-[32%]"
+          }`}
+        />
+      </div>
+    );
+  }
+
   if (cover.kind === "logo") {
     return (
       <div className="relative grid h-full w-full place-items-center overflow-hidden bg-deep">

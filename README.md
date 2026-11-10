@@ -2,7 +2,7 @@
 
 Portfolio professionnel bilingue (FR / EN) de **Brou David Yao**, ingénieur développeur junior (Full-Stack & Mobile · Fintech · IA) à Abidjan.
 
-**En ligne :** https://dav9fulldev.github.io/
+**En ligne :** https://dav9fulldev.github.io/portfolio/
 
 ## Stack
 
@@ -53,22 +53,30 @@ src/
 
 ## Déploiement
 
-### GitHub Pages (configuration actuelle)
+### GitHub Pages — automatique via `master`
 
-Le site est publié depuis la branche `gh-pages` du dépôt `dav9fulldev/dav9fulldev.github.io` :
+Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) :
 
-```bash
-npm run deploy     # build + publication de dist/ sur la branche gh-pages
-```
+- sur chaque **Pull Request vers `master`** : installe, vérifie le typage et construit le site (contrôle, sans publication) ;
+- sur chaque **merge / push sur `master`** : construit puis publie `dist/` sur la branche `gh-pages`, servie par GitHub Pages sur https://dav9fulldev.github.io/portfolio/.
+
+Processus : créer une branche → ouvrir une PR vers `master` → vérifier que le check « Build & deploy » est vert → merger. Le site est en ligne 1 à 2 minutes plus tard.
+
+Prérequis (déjà en place) : *Settings → Pages → Source : Deploy from a branch → `gh-pages` / root*.
+
+Déploiement manuel de secours : `npm run deploy`.
 
 Le build copie `index.html` en `404.html` pour que les URL inconnues affichent la page 404 du site.
-Pour publier dans un dépôt « projet » (ex. `github.com/dav9fulldev/portfolio`), mettre `base: "/portfolio/"` dans `vite.config.ts` et adapter les URL absolues de `index.html`, `robots.txt` et `sitemap.xml`.
+
+### Changer d'URL
+
+La base `/portfolio/` est définie dans `vite.config.ts`. Pour un domaine racine (Vercel, Netlify, domaine personnalisé), construire avec `BASE_PATH=/ npm run build`, puis mettre à jour `site.url` (`src/config/site.ts`), les URL absolues de `index.html` (canonical, Open Graph, JSON-LD), `public/robots.txt` et `public/sitemap.xml`.
 
 ### Vercel (alternative)
 
 1. Importer le dépôt sur https://vercel.com/new
-2. Framework : **Vite** — Build : `npm run build` — Output : `dist`
-3. Déployer, puis mettre à jour `site.url`, la balise `canonical`, l'Open Graph, `robots.txt` et `sitemap.xml` avec le nouveau domaine.
+2. Framework : **Vite** — Build : `BASE_PATH=/ npm run build` — Output : `dist`
+3. Mettre à jour les URL absolues comme indiqué ci-dessus.
 
 ## Contact
 
@@ -76,4 +84,11 @@ Aucun service d'envoi n'est configuré : le contact passe par e-mail (`mailto:`)
 
 ## Principes de contenu
 
-Toutes les informations proviennent des dépôts publics (README, code, releases) ou du parcours fourni par l'auteur. Les projets dont le code n'est pas public (RestoGestion, StoryGriot AI, U-Report Cocody) sont signalés comme tels, et aucune statistique n'est inventée.
+Toutes les informations proviennent des dépôts publics (README, code, releases) ou du parcours fourni par l'auteur. StoryGriot AI est documenté à partir de sa page DevPost. Les projets dont le code n'est pas public (RestoGestion, U-Report Cocody) sont signalés comme tels. L'illustration de RestoGestion est une représentation du concept, explicitement indiquée comme n'étant pas une capture d'écran. Aucune statistique n'est inventée.
+
+## Reste à personnaliser
+
+- **RestoGestion** : préciser dans `src/data/projects.ts` les fonctionnalités déjà développées et celles encore prévues, ajouter la stack et, dès que possible, une vraie capture d'écran (remplacer `cover` par `{ kind: "image", src: asset("/projects/restogestion.jpg") }`).
+- **U-Report Cocody** : ajouter un lien (dépôt ou démo) et la stack si le projet devient public.
+- **GIM-UEMOA** : ajuster la description du poste dans `src/i18n/translations.ts` (section `journey`) si vous souhaitez détailler vos missions.
+- **CV** : remplacer `public/cv/Brou-David-Yao-CV.pdf` à chaque mise à jour.

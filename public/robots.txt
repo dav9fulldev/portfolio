@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dav9fulldev.github.io/sitemap.xml
+Sitemap: https://dav9fulldev.github.io/portfolio/sitemap.xml

@@ -1,7 +1,7 @@
 import { ArrowUp } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
-import { GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
+import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
 
 export function Footer() {
   const { t } = useI18n();
@@ -10,6 +10,7 @@ export function Footer() {
     { href: site.github, label: "GitHub", Icon: GithubIcon },
     { href: site.gitlab, label: "GitLab", Icon: GitlabIcon },
     { href: site.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
+    { href: site.devpost, label: "DevPost", Icon: DevpostIcon },
   ].filter((s) => s.href);
 
   return (

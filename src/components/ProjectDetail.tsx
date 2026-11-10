@@ -4,7 +4,7 @@ import { ArrowUpRight, Download, Info, Lock, X } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import type { Project } from "../data/projects";
 import { ProjectCover } from "./ProjectCover";
-import { GithubIcon } from "./Icons";
+import { DevpostIcon, GithubIcon } from "./Icons";
 
 export function ProjectDetail({ project: p, onClose }: { project: Project; onClose: () => void }) {
   const { t, lang } = useI18n();
@@ -107,7 +107,12 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
                 <GithubIcon size={15} /> {t.projects.repo}
               </a>
             )}
-            {!p.links.repo && (
+            {p.links.devpost && (
+              <a href={p.links.devpost} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
+                <DevpostIcon size={15} /> DevPost
+              </a>
+            )}
+            {!p.links.repo && !p.links.devpost && (
               <span className="inline-flex h-11 items-center gap-2 rounded-full border border-dashed border-line-strong px-4 text-sm text-mute">
                 <Lock size={14} /> {t.projects.privateRepo}
               </span>
@@ -151,6 +156,16 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
               <dd className="text-[0.98rem] text-paper/85">{p.status[lang]}</dd>
             </div>
           </dl>
+
+          {p.gallery?.map((src) => (
+            <img
+              key={src}
+              src={src}
+              alt={`${p.name} — ${t.projects.visual}`}
+              loading="lazy"
+              className="mt-8 w-full rounded-2xl border border-line"
+            />
+          ))}
 
           <p className="mt-6 flex items-start gap-2 text-xs leading-relaxed text-mute">
             <Info size={13} className="mt-0.5 shrink-0" />

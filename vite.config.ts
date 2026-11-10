@@ -2,9 +2,10 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
-// Site déployé à la racine de https://dav9fulldev.github.io/
-// Pour un dépôt « projet » GitHub Pages, remplacer base par "/<nom-du-depot>/".
+// Site servi par GitHub Pages sur https://dav9fulldev.github.io/portfolio/
+// (dépôt « projet » dav9fulldev/portfolio). Pour un domaine racine (Vercel, Netlify…),
+// lancer le build avec BASE_PATH=/ .
 export default defineConfig({
-  base: "/",
+  base: process.env.BASE_PATH || "/portfolio/",
   plugins: [react(), tailwindcss()],
 });

@@ -1,29 +1,37 @@
-import { BrainCircuit, Server, Smartphone, WalletCards } from "lucide-react";
+import { BrainCircuit, Database, Monitor, Server, Smartphone } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
-type Skill = { name: string; level: "mastered" | "practiced" };
+type Level = "mastered" | "practiced" | "discovered";
+type Skill = { name: string; level: Level };
 const m = (name: string): Skill => ({ name, level: "mastered" });
 const p = (name: string): Skill => ({ name, level: "practiced" });
+const d = (name: string): Skill => ({ name, level: "discovered" });
 
 /**
- * Niveaux établis à partir des dépôts publics et du parcours :
- * « mastered » = utilisé sur plusieurs projets ; « practiced » = utilisé sur au moins un projet.
+ * Niveaux établis à partir des dépôts publics, de DevPost et du parcours :
+ * mastered = utilisé sur plusieurs projets ; practiced = au moins un projet vérifiable ;
+ * discovered = notions acquises, sans projet public à montrer.
  */
-const AREAS: { Icon: typeof Server; skills: Skill[] }[] = [
-  {
-    Icon: Server,
-    skills: [
-      m("Python"), m("FastAPI"), m("Node.js"), m("Express"), m("JavaScript"), m("React"), m("API REST"),
-      m("Git / GitHub"), p("TypeScript"), p("Vue.js"), p("PostgreSQL"), p("MongoDB"), p("MySQL"), p("Docker"),
-      p("GitLab"), p("GitHub Actions"),
-    ],
-  },
-  { Icon: Smartphone, skills: [m("Flutter"), m("Dart"), p("Riverpod"), p("Kotlin · Android natif")] },
-  { Icon: BrainCircuit, skills: [m("Gemini API"), p("Function calling"), p("Gemini Live"), p("Vertex AI")] },
-  { Icon: WalletCards, skills: [p("PayPal Orders API"), p("Mobile Money"), p("Google Cloud Run")] },
+const AREAS: { Icon: typeof Server; skills: Skill[]; span: string }[] = [
+  { Icon: Server, span: "lg:col-span-2", skills: [m("Python"), m("FastAPI"), m("Node.js"), m("Express.js"), m("API REST"), d("Java"), d("Spring Boot")] },
+  { Icon: Smartphone, span: "lg:col-span-2", skills: [m("Flutter"), m("Dart"), p("Riverpod"), p("Kotlin · Android")] },
+  { Icon: Monitor, span: "lg:col-span-2", skills: [m("JavaScript"), m("React"), p("TypeScript"), p("Vue.js"), p("Tailwind CSS")] },
+  { Icon: BrainCircuit, span: "lg:col-span-3", skills: [m("Gemini API"), p("Agents & function calling"), p("Speech-to-Text"), p("PayPal API"), p("Mobile Money")] },
+  { Icon: Database, span: "lg:col-span-3", skills: [m("Git"), m("GitHub"), p("PostgreSQL"), p("MySQL"), p("MongoDB"), p("Docker"), p("GitLab"), p("GitHub Actions"), p("Google Cloud Run")] },
 ];
+
+const DOT: Record<Level, string> = {
+  mastered: "bg-gold",
+  practiced: "border border-paper/60",
+  discovered: "border border-dashed border-mute",
+};
+const CHIP: Record<Level, string> = {
+  mastered: "border-gold/45 !text-paper",
+  practiced: "",
+  discovered: "border-dashed !text-mute",
+};
 
 export function Expertise() {
   const { t } = useI18n();
@@ -39,13 +47,16 @@ export function Expertise() {
             <span className="h-2 w-2 rounded-full bg-gold" aria-hidden="true" /> {e.mastered}
           </span>
           <span className="inline-flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full border border-mute" aria-hidden="true" /> {e.practiced}
+            <span className="h-2 w-2 rounded-full border border-paper/60" aria-hidden="true" /> {e.practiced}
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full border border-dashed border-mute" aria-hidden="true" /> {e.discovered}
           </span>
         </Reveal>
 
-        <ul className="mt-10 grid gap-px overflow-hidden rounded-[1.4rem] border border-line bg-line md:grid-cols-2">
-          {AREAS.map(({ Icon, skills }, i) => (
-            <li key={i} className="group bg-ink p-7 transition-colors duration-500 hover:bg-[#0d1628] md:p-9">
+        <ul className="mt-10 grid gap-px overflow-hidden rounded-[1.4rem] border border-line bg-line md:grid-cols-2 lg:grid-cols-6">
+          {AREAS.map(({ Icon, skills, span }, i) => (
+            <li key={i} className={`${span} ${i === AREAS.length - 1 ? "md:col-span-2" : ""} group bg-ink p-7 transition-colors duration-500 hover:bg-[#0d1628] md:p-9`}>
               <Reveal delay={(i % 2) * 0.06}>
                 <div className="flex items-center justify-between">
                   <Icon size={22} strokeWidth={1.5} className="text-gold" aria-hidden="true" />
@@ -57,14 +68,14 @@ export function Expertise() {
                   {skills.map((s) => (
                     <li
                       key={s.name}
-                      className={`chip ${s.level === "mastered" ? "border-gold/45 !text-paper" : "!text-mute"}`}
+                      className={`chip ${CHIP[s.level]}`}
                     >
                       <span
                         aria-hidden="true"
-                        className={`h-1.5 w-1.5 rounded-full ${s.level === "mastered" ? "bg-gold" : "border border-mute"}`}
+                        className={`h-1.5 w-1.5 rounded-full ${DOT[s.level]}`}
                       />
                       {s.name}
-                      <span className="sr-only"> ({s.level === "mastered" ? e.mastered : e.practiced})</span>
+                      <span className="sr-only"> ({e[s.level]})</span>
                     </li>
                   ))}
                 </ul>

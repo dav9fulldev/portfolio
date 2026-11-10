@@ -1,3 +1,4 @@
+import { asset } from "../lib/asset";
 import type { Lang } from "../i18n/translations";
 
 type L<T = string> = Record<Lang, T>;
@@ -5,6 +6,7 @@ type L<T = string> = Record<Lang, T>;
 export type Cover =
   | { kind: "image"; src: string; position?: string }
   | { kind: "logo"; src: string }
+  | { kind: "phone"; src: string }
   | { kind: "type"; glyph: "resto" | "griot" | "civic" };
 
 export type Project = {
@@ -16,6 +18,8 @@ export type Project = {
   /** Mise en avant « restauration / hôtellerie » */
   highlight?: L;
   cover: Cover;
+  /** Visuels supplémentaires affichés dans la fiche détaillée */
+  gallery?: string[];
   tagline: L;
   problem: L;
   solution: L;
@@ -25,7 +29,7 @@ export type Project = {
   status: L;
   /** D'où viennent les informations affichées — transparence vis-à-vis du jury */
   source: L;
-  links: { repo?: string; demo?: string; release?: string };
+  links: { repo?: string; demo?: string; release?: string; devpost?: string };
 };
 
 export const projects: Project[] = [
@@ -35,7 +39,7 @@ export const projects: Project[] = [
     category: { fr: "Fintech · Mobile · IA", en: "Fintech · Mobile · AI" },
     year: "2026",
     featured: true,
-    cover: { kind: "logo", src: "/projects/gertonargent-logo.png" },
+    cover: { kind: "logo", src: asset("/projects/gertonargent-logo.png") },
     tagline: {
       fr: "Un « garde du corps financier » qui intervient juste avant la dépense impulsive.",
       en: "A “financial bodyguard” that steps in right before an impulse purchase.",
@@ -77,35 +81,47 @@ export const projects: Project[] = [
   {
     slug: "restogestion",
     name: "RestoGestion",
-    category: { fr: "SaaS · Restauration", en: "SaaS · Food service" },
-    year: "—",
+    category: { fr: "SaaS · Restauration · IA", en: "SaaS · Food service · AI" },
+    year: "2026",
     featured: true,
     highlight: { fr: "Restauration", en: "Food service" },
     cover: { kind: "type", glyph: "resto" },
     tagline: {
-      fr: "Une solution SaaS pour aider les restaurants à mieux gérer, mieux servir et fidéliser.",
-      en: "A SaaS solution helping restaurants run better, serve better and build loyalty.",
+      fr: "Le SaaS qui aide restaurants, maquis et fast-foods à mieux gérer, mieux écouter leurs clients et les faire revenir.",
+      en: "The SaaS that helps restaurants, maquis and fast-food outlets run better, listen to their customers and bring them back.",
     },
     problem: {
-      fr: "Beaucoup de restaurants gèrent encore leur activité et leur relation client de manière manuelle et dispersée, ce qui limite le suivi et la fidélisation.",
-      en: "Many restaurants still run operations and customer relations manually and in scattered tools, which limits follow-up and loyalty.",
+      fr: "Dans beaucoup d'établissements, la gestion repose sur des outils manuels et dispersés, les avis clients ne sont pas collectés, et la fidélisation dépend de la seule mémoire du gérant.",
+      en: "In many outlets, management relies on manual, scattered tools, customer feedback is never collected, and loyalty depends solely on the manager's memory.",
     },
     solution: {
-      fr: "Une plateforme de gestion intelligente regroupant la gestion du restaurant, l'interaction avec les clients et des mécanismes de fidélisation, dans une logique de transformation numérique du secteur.",
-      en: "A smart management platform bringing together restaurant operations, customer interaction and loyalty mechanisms, as part of the sector's digital transformation.",
+      fr: "Une plateforme SaaS qui relie le client à l'établissement par QR code (avis, fidélité, récompenses) et donne au gérant des outils de gestion et un copilote intelligent. Principe clé : toute action proposée par le copilote doit être validée par le gérant avant d'être exécutée.",
+      en: "A SaaS platform that connects customers to the outlet through QR codes (feedback, loyalty, rewards) and gives the manager management tools and a smart copilot. Key principle: every action the copilot proposes must be approved by the manager before it runs.",
     },
     role: {
-      fr: "Porteur du projet : conception produit et développement.",
-      en: "Project lead: product design and development.",
+      fr: "Porteur du projet : identification du besoin, conception produit et développement.",
+      en: "Project lead: problem discovery, product design and development.",
     },
     features: {
-      fr: ["Gestion de l'activité du restaurant", "Interaction avec la clientèle", "Fidélisation des clients"],
-      en: ["Restaurant operations management", "Customer interaction", "Customer loyalty"],
+      fr: [
+        "Interaction client par QR code, sans application à installer",
+        "Collecte simplifiée des avis clients",
+        "Programme de fidélité et gestion des récompenses",
+        "Outils de gestion pour le restaurateur",
+        "Copilote intelligent : propose, le gérant valide, puis l'action s'exécute",
+      ],
+      en: [
+        "Customer interaction via QR code, no app to install",
+        "Simplified customer feedback collection",
+        "Loyalty programme and rewards management",
+        "Management tools for the restaurant owner",
+        "Smart copilot: it proposes, the manager approves, then the action runs",
+      ],
     },
     stack: [],
     status: {
-      fr: "Projet en cours — code non public",
-      en: "Ongoing project — code not public",
+      fr: "En cours de développement — code non public. Les fonctionnalités ci-dessus décrivent le concept du produit.",
+      en: "In development — code not public. The features above describe the product concept.",
     },
     source: {
       fr: "Présentation de l'auteur (dépôt privé, non consultable publiquement)",
@@ -119,7 +135,8 @@ export const projects: Project[] = [
     category: { fr: "Fintech · Agent IA · Mobile", en: "Fintech · AI agent · Mobile" },
     year: "2026",
     featured: true,
-    cover: { kind: "image", src: "/projects/sika-architecture.jpg", position: "center 30%" },
+    cover: { kind: "phone", src: asset("/projects/sika-app.jpg") },
+    gallery: [asset("/projects/sika-architecture.jpg")],
     tagline: {
       fr: "Un agent de paiement IA qui explique, vérifie et demande avant de payer.",
       en: "An AI payment agent that explains, checks and asks before it pays.",
@@ -160,46 +177,65 @@ export const projects: Project[] = [
     source: { fr: "README, architecture et releases du dépôt public", en: "Public repository README, architecture and releases" },
     links: {
       repo: "https://github.com/dav9fulldev/sika-agent",
+      devpost: "https://devpost.com/software/sika-fzlh9s",
       release: "https://github.com/dav9fulldev/sika-agent/releases/latest",
     },
   },
   {
     slug: "storygriot-ai",
     name: "StoryGriot AI",
-    category: { fr: "IA · Culture · Hackathon", en: "AI · Culture · Hackathon" },
+    category: { fr: "IA · Patrimoine culturel · Hackathon", en: "AI · Cultural heritage · Hackathon" },
     year: "2025",
-    cover: { kind: "type", glyph: "griot" },
+    cover: { kind: "image", src: asset("/projects/storygriot.jpg") },
     tagline: {
-      fr: "L'IA au service des histoires et des cultures africaines — 2ᵉ prix AbiHack avec Google.",
-      en: "AI in service of African stories and cultures — 2nd prize, AbiHack with Google.",
+      fr: "Préserver les traditions orales grâce à l'IA — 2ᵉ prix AbiHack, AI Hackathon powered by Google.",
+      en: "Preserving oral traditions with AI — 2nd place at AbiHack, AI Hackathon powered by Google.",
     },
     problem: {
-      fr: "La transmission des récits et des cultures africaines, portée historiquement par les griots, trouve encore peu de place dans les outils numériques.",
-      en: "Passing on African stories and cultures, historically carried by griots, still has little room in digital tools.",
+      fr: "Contes, récits et savoirs transmis oralement disparaissent avec les anciennes générations, faute d'être enregistrés et rendus accessibles.",
+      en: "Folktales, narratives and knowledge passed on orally disappear with older generations because they are never recorded or made accessible.",
     },
     solution: {
-      fr: "Un projet d'intelligence artificielle conçu en équipe pour valoriser ces histoires, récompensé par le deuxième prix d'AbiHack avec Google.",
-      en: "A team-built artificial intelligence project to showcase these stories, awarded second prize at AbiHack with Google.",
+      fr: "Inspirée de la tradition des griots d'Afrique de l'Ouest, une plateforme qui transforme l'enregistrement audio d'une histoire en expérience multimédia : transcription, traduction, illustrations et lecture synchronisée.",
+      en: "Inspired by the West African griot tradition, a platform that turns the audio recording of a story into a multimedia experience: transcription, translation, illustrations and synchronised playback.",
     },
-    role: { fr: "Membre de l'équipe projet.", en: "Member of the project team." },
+    role: {
+      fr: "Membre d'une équipe de trois développeurs (avec Gosse Yannick Gbaka et Georges Kennel Kassi).",
+      en: "Member of a three-developer team (with Gosse Yannick Gbaka and Georges Kennel Kassi).",
+    },
     features: {
-      fr: ["Projet réalisé en équipe en contexte de hackathon", "Deuxième prix — AbiHack avec Google"],
-      en: ["Team project built during a hackathon", "Second prize — AbiHack with Google"],
+      fr: [
+        "Transcription horodatée via Google Cloud Speech-to-Text",
+        "Enrichissement du contexte culturel avec Gemini",
+        "Traduction en swahili, anglais, français, espagnol et arabe",
+        "Illustrations générées par paragraphe et lecture audio synchronisée",
+        "Pipeline de traitement en 7 étapes, de l'envoi à la publication",
+      ],
+      en: [
+        "Timestamped transcription with Google Cloud Speech-to-Text",
+        "Cultural context enrichment with Gemini",
+        "Translation into Swahili, English, French, Spanish and Arabic",
+        "Per-paragraph generated illustrations and synchronised audio playback",
+        "7-step processing pipeline, from upload to publication",
+      ],
     },
-    stack: [],
-    status: { fr: "Projet de hackathon — code non public", en: "Hackathon project — code not public" },
+    stack: ["React", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Gemini", "Speech-to-Text"],
+    status: { fr: "Prototype primé — 2ᵉ place", en: "Award-winning prototype — 2nd place" },
     source: {
-      fr: "Présentation de l'auteur (aucun dépôt public)",
-      en: "Author's description (no public repository)",
+      fr: "Page DevPost du projet (dépôts hébergés par les coéquipiers)",
+      en: "Project DevPost page (repositories hosted by teammates)",
     },
-    links: {},
+    links: {
+      devpost: "https://devpost.com/software/storygriot-ai",
+      repo: "https://github.com/YannickGbaka/ai-griot-frontend",
+    },
   },
   {
     slug: "alerto",
     name: "ALERTO",
     category: { fr: "Civic tech · PWA · IA", en: "Civic tech · PWA · AI" },
     year: "2026",
-    cover: { kind: "logo", src: "/projects/alerto-logo.png" },
+    cover: { kind: "logo", src: asset("/projects/alerto-logo.png") },
     tagline: {
       fr: "Signaler les dégâts en temps de crise, même sans connexion, pendant les 48 premières heures.",
       en: "Report damage during a crisis, even offline, within the critical first 48 hours.",
@@ -241,7 +277,7 @@ export const projects: Project[] = [
     category: { fr: "Hôtellerie · Web full-stack", en: "Hospitality · Full-stack web" },
     year: "2026",
     highlight: { fr: "Hôtellerie", en: "Hospitality" },
-    cover: { kind: "image", src: "/projects/residence.jpg" },
+    cover: { kind: "image", src: asset("/projects/residence.jpg") },
     tagline: {
       fr: "Réservation en ligne de résidences meublées en Côte d'Ivoire, de la vitrine à l'administration.",
       en: "Online booking for furnished residences in Côte d'Ivoire, from storefront to back office.",
