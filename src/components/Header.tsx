@@ -4,6 +4,7 @@ import { Menu, Moon, Sun, X } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { useActiveSection } from "../hooks/useActiveSection";
 import { useTheme } from "../hooks/useTheme";
+import { Logo } from "./Logo";
 
 export const SECTIONS = ["home", "about", "projects", "expertise", "journey", "contact"] as const;
 
@@ -78,9 +79,8 @@ export function Header() {
       </a>
       <div className="container-page flex h-16 items-center justify-between md:h-[4.5rem]">
         <a href="#home" aria-label="Brou David Yao" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-full border border-gold/60 font-display text-[0.95rem] text-gold transition-colors group-hover:bg-gold group-hover:text-ink">
-            B
-          </span>
+          <Logo className="h-8 w-auto text-paper transition-transform duration-500 group-hover:-translate-y-0.5 md:h-9" />
+          <span aria-hidden="true" className="hidden h-5 w-px bg-line-strong min-[460px]:block" />
           <span className="hidden font-mono text-[0.74rem] tracking-[0.22em] text-paper min-[460px]:inline">BROU DAVID YAO</span>
         </a>
 

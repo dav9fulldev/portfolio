@@ -2,6 +2,7 @@ import { ArrowUp } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
 import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
+import { Logo } from "./Logo";
 
 export function Footer() {
   const { t } = useI18n();
@@ -17,7 +18,11 @@ export function Footer() {
     <footer className="border-t border-line">
       <div className="container-page flex flex-col gap-8 py-10 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="font-mono text-[0.78rem] tracking-[0.22em] text-paper">BROU DAVID YAO</p>
+          <div className="flex items-center gap-3">
+            <Logo className="h-9 w-auto text-paper" />
+            <span aria-hidden="true" className="h-5 w-px bg-line-strong" />
+            <p className="font-mono text-[0.78rem] tracking-[0.22em] text-paper">BROU DAVID YAO</p>
+          </div>
           <p className="mt-2 text-sm text-mute">{t.footer.tagline}</p>
           <p className="mt-6 text-xs text-mute/70">
             © {year} Brou David Yao. {t.footer.rights}
