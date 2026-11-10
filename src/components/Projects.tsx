@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence } from "motion/react";
-import { ArrowUpRight, Globe, Lock, Plus } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Globe, Lock, Plus } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { otherProjects, projects, type Project } from "../data/projects";
 import { SectionHeading } from "./SectionHeading";
@@ -19,6 +19,8 @@ const HASH_PREFIX = "#projects/";
 export function Projects() {
   const { t, lang } = useI18n();
   const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const trackRef = useRef<HTMLUListElement>(null);
+  const [active, setActive] = useState(0);
 
   const ordered = ORDER.map((s) => projects.find((p) => p.slug === s)).filter((p): p is Project => !!p);
   const current = projects.find((p) => p.slug === openSlug) ?? null;
@@ -38,6 +40,22 @@ export function Projects() {
     history.replaceState(null, "", `${HASH_PREFIX}${slug}`);
     setOpenSlug(slug);
   }, []);
+  // Carrousel mobile : suit la carte visible pour les points de navigation.
+  const step = () => {
+    const el = trackRef.current;
+    const first = el?.firstElementChild as HTMLElement | null;
+    return el && first ? first.offsetWidth + parseFloat(getComputedStyle(el).columnGap || "0") : 0;
+  };
+  const onScroll = useCallback(() => {
+    const el = trackRef.current;
+    const s = step();
+    if (!el || !s) return;
+    setActive(Math.max(0, Math.min(Math.round(el.scrollLeft / s), el.children.length - 1)));
+  }, []);
+  const goTo = useCallback((i: number) => {
+    trackRef.current?.scrollTo({ left: i * step(), behavior: "smooth" });
+  }, []);
+
   const close = useCallback(() => {
     history.replaceState(null, "", "#projects");
     setOpenSlug(null);
@@ -50,11 +68,20 @@ export function Projects() {
 
         <RestoSpotlight onOpen={() => open("restogestion")} />
 
-        <ul className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-12">
+        <ul
+          ref={trackRef}
+          onScroll={onScroll}
+          aria-roledescription={t.projects.carousel}
+          className="-mx-5 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-5 px-5 pb-1 pt-1 [scrollbar-width:none] md:mx-0 md:grid md:snap-none md:grid-cols-2 md:gap-5 md:overflow-visible md:p-0 lg:grid-cols-12 [&::-webkit-scrollbar]:hidden"
+        >
           {ordered.map((p, i) => {
             const large = i < 2;
             return (
-              <li key={p.slug} className={`${SPANS[i]} ${i === ORDER.length - 1 && ORDER.length % 2 === 1 ? "md:col-span-2" : ""}`}>
+              <li
+                key={p.slug}
+                aria-roledescription={t.projects.slide}
+                aria-label={`${i + 1} / ${ordered.length} : ${p.name}`}
+                className={`w-[86%] shrink-0 snap-start md:w-auto ${SPANS[i]} ${i === ORDER.length - 1 && ORDER.length % 2 === 1 ? "md:col-span-2" : ""}`}>
                 <Reveal delay={(i % 2) * 0.08} className="h-full">
                   <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-line bg-ink-2 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-line-strong">
                     <div className={`relative ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`}>
@@ -153,6 +180,47 @@ export function Projects() {
             );
           })}
         </ul>
+
+        {/* Navigation du carrousel (téléphone uniquement) */}
+        <div className="mt-5 flex items-center justify-between md:hidden">
+          <div className="flex items-center gap-1.5">
+            {ordered.map((p, i) => (
+              <button
+                key={p.slug}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`${t.projects.goTo} ${p.name}`}
+                aria-current={active === i}
+                className="grid h-6 place-items-center"
+              >
+                <span className={`block h-1.5 rounded-full transition-all duration-300 ${active === i ? "w-6 bg-gold" : "w-1.5 bg-line-strong"}`} />
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="mr-1 font-mono text-[0.74rem] text-mute">
+              {String(active + 1).padStart(2, "0")} / {String(ordered.length).padStart(2, "0")}
+            </span>
+            <button
+              type="button"
+              onClick={() => goTo(active - 1)}
+              disabled={active === 0}
+              aria-label={t.projects.prev}
+              className="grid h-10 w-10 place-items-center rounded-full border border-line-strong text-paper transition-colors disabled:opacity-35"
+            >
+              <ArrowLeft size={16} />
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo(active + 1)}
+              disabled={active === ordered.length - 1}
+              aria-label={t.projects.next}
+              className="grid h-10 w-10 place-items-center rounded-full border border-line-strong text-paper transition-colors disabled:opacity-35"
+            >
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        </div>
 
         <div className="mt-20 md:grid md:grid-cols-12 md:gap-8">
           <Reveal className="md:col-span-3">

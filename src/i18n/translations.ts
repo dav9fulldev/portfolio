@@ -87,6 +87,11 @@ const fr = {
     visual: "visuel",
     others: "Autres réalisations",
     filterAll: "Tous",
+    carousel: "carrousel",
+    slide: "projet",
+    goTo: "Aller au projet",
+    prev: "Projet précédent",
+    next: "Projet suivant",
   },
   spotlight: {
     eyebrow: "Projet phare · Restauration",
@@ -275,6 +280,11 @@ const en: Dict = {
     visual: "visual",
     others: "Other work",
     filterAll: "All",
+    carousel: "carousel",
+    slide: "project",
+    goTo: "Go to project",
+    prev: "Previous project",
+    next: "Next project",
   },
   spotlight: {
     eyebrow: "Flagship project · Food service",
