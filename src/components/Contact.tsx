@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ArrowUpRight, Check, Copy, Download, Mail } from "lucide-react";
+import { ArrowUpRight, Check, Copy, Download } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
 import { Reveal } from "./Reveal";
+import { EmailMenu } from "./EmailMenu";
 import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
 
 /** Dernier segment d'une URL de profil : « https://github.com/dav9fulldev » → « @dav9fulldev ». */
@@ -19,7 +20,7 @@ export function Contact() {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      window.location.href = `mailto:${site.email}`;
+      window.prompt(c.copy, site.email);
     }
   };
 
@@ -48,11 +49,8 @@ export function Contact() {
           <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-mute">{c.body}</p>
         </Reveal>
 
-        <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center gap-3">
-          <a href={`mailto:${site.email}`} className="btn btn-primary">
-            <Mail size={16} />
-            {c.email}
-          </a>
+        <Reveal delay={0.15} className="relative z-20 mt-10 flex flex-wrap items-center gap-3">
+          <EmailMenu />
           {site.cv && (
             <a href={site.cv} download className="btn btn-ghost">
               <Download size={16} />
@@ -65,9 +63,7 @@ export function Contact() {
           <div className="flex flex-col justify-between gap-6 bg-ink p-6 sm:col-span-2 lg:col-span-1">
             <p className="eyebrow !text-[0.64rem]">E-mail</p>
             <div className="flex items-center justify-between gap-3">
-              <a href={`mailto:${site.email}`} className="link-underline truncate text-[0.95rem] text-paper">
-                {site.email}
-              </a>
+              <span className="select-all truncate text-[0.95rem] text-paper">{site.email}</span>
               <button
                 type="button"
                 onClick={copy}

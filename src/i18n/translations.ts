@@ -152,6 +152,9 @@ const fr = {
     cv: "Télécharger mon CV",
     copy: "Copier l'adresse",
     copied: "Adresse copiée",
+    openWith: "Écrire avec",
+    mailApp: "Application de messagerie",
+    subject: "Contact depuis votre portfolio",
   },
   footer: {
     tagline: "Software Engineer · Fintech · AI · Digital Innovation",
@@ -319,6 +322,9 @@ const en: Dict = {
     cv: "Download my CV",
     copy: "Copy address",
     copied: "Address copied",
+    openWith: "Write with",
+    mailApp: "Mail app",
+    subject: "Contact from your portfolio",
   },
   footer: {
     tagline: "Software Engineer · Fintech · AI · Digital Innovation",
