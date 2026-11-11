@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 export type Theme = "dark" | "light";
 const STORAGE_KEY = "bdy-theme";
-const THEME_COLOR: Record<Theme, string> = { dark: "#0b1220", light: "#f7f5f0" };
+const THEME_COLOR: Record<Theme, string> = { dark: "#0b1120", light: "#f8fafc" };
 
 function current(): Theme {
   return document.documentElement.dataset.theme === "light" ? "light" : "dark";

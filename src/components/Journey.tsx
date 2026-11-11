@@ -18,7 +18,7 @@ export function Journey() {
               <span
                 aria-hidden="true"
                 className={`absolute left-0 top-[0.45rem] h-[11px] w-[11px] rounded-full border ${
-                  i === 0 ? "border-gold bg-gold shadow-[0_0_0_5px_rgb(198_166_107/0.15)]" : "border-gold/70 bg-ink"
+                  i === 0 ? "border-gold bg-gold shadow-[0_0_0_5px_color-mix(in_srgb,var(--gold)_18%,transparent)]" : "border-gold/70 bg-ink"
                 }`}
               />
               <Reveal delay={i * 0.05}>

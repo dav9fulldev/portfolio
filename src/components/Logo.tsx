@@ -3,7 +3,7 @@ type Props = { className?: string; title?: string };
 /**
  * Logo « BDY » : lettres en Bodoni Moda italique (converties en tracés, aucune police à charger)
  * soulignées d'un paraphe doré. Les lettres suivent la couleur du texte (currentColor),
- * le paraphe suit le doré du thème.
+ * le paraphe suit la couleur d'accent du thème (bleu électrique).
  */
 export function Logo({ className = "", title }: Props) {
   return (

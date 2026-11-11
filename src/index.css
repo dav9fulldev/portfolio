@@ -15,6 +15,8 @@
   --color-electric-soft: var(--electric-soft);
   --color-paper: var(--paper);
   --color-mute: var(--mute);
+  --color-lime: var(--lime);
+  --color-on-gold: var(--on-gold);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
 }
@@ -27,44 +29,52 @@
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Mode sombre (par défaut) — bleu nuit et doré champagne */
+/*
+ * Palette : bleu électrique (accent principal, porté par la variable historique « gold »),
+ * violet (« electric »), vert citron (« lime »), blanc cassé et bleu nuit.
+ */
+/* Mode sombre */
 :root {
   color-scheme: dark;
-  --ink: #0b1220;
-  --ink-2: #0f1a2d;
-  --deep: #142238;
-  --gold: #c6a66b;
-  --gold-soft: #d9c39a;
-  --on-gold: #0b1220;
-  --electric: #3b82f6;
-  --electric-soft: #9cc3ff;
-  --paper: #f5f3ee;
-  --mute: #9ba5b4;
-  --line: rgb(245 243 238 / 0.09);
-  --line-strong: rgb(245 243 238 / 0.16);
-  --grid: rgb(245 243 238 / 0.045);
-  --chip-text: rgb(245 243 238 / 0.82);
-  --shadow: rgb(0 0 0 / 0.45);
+  --ink: #0b1120;
+  --ink-2: #111a2e;
+  --deep: #172340;
+  --gold: #7aa2ff;
+  --gold-soft: #a9c2ff;
+  --on-gold: #0b1120;
+  --electric: #a78bfa;
+  --electric-soft: #c4b5fd;
+  --lime: #c5f36b;
+  --paper: #f1f5f9;
+  --mute: #94a3b8;
+  --line: rgb(241 245 249 / 0.09);
+  --line-strong: rgb(241 245 249 / 0.17);
+  --grid: rgb(241 245 249 / 0.045);
+  --chip-text: rgb(241 245 249 / 0.85);
+  --shadow: rgb(0 0 0 / 0.5);
+  --card-shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset;
 }
 
-/* Mode clair — papier ivoire, encre bleu nuit, doré assombri pour rester lisible (AA) */
+/* Mode clair — blanc cassé, encre bleu nuit, bleu électrique */
 :root[data-theme="light"] {
   color-scheme: light;
-  --ink: #f7f5f0;
-  --ink-2: #efece4;
-  --deep: #e6e9f0;
-  --gold: #8a6a2f;
-  --gold-soft: #7a5c24;
-  --on-gold: #fbfaf7;
-  --electric: #2563eb;
-  --electric-soft: #1d4ed8;
-  --paper: #0b1220;
-  --mute: #566173;
-  --line: rgb(11 18 32 / 0.1);
-  --line-strong: rgb(11 18 32 / 0.18);
-  --grid: rgb(11 18 32 / 0.05);
-  --chip-text: rgb(11 18 32 / 0.78);
-  --shadow: rgb(11 18 32 / 0.16);
+  --ink: #f8fafc;
+  --ink-2: #ffffff;
+  --deep: #eef2ff;
+  --gold: #2563eb;
+  --gold-soft: #1d4ed8;
+  --on-gold: #ffffff;
+  --electric: #7c3aed;
+  --electric-soft: #6d28d9;
+  --lime: #c5f36b;
+  --paper: #0f172a;
+  --mute: #475569;
+  --line: rgb(15 23 42 / 0.08);
+  --line-strong: rgb(15 23 42 / 0.16);
+  --grid: rgb(15 23 42 / 0.05);
+  --chip-text: rgb(15 23 42 / 0.78);
+  --shadow: rgb(15 23 42 / 0.14);
+  --card-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 12px 32px -16px rgb(15 23 42 / 0.12);
 }
 
 @layer base {
@@ -86,7 +96,7 @@
     overflow-x: hidden;
   }
   ::selection {
-    background: rgb(198 166 107 / 0.35);
+    background: rgb(37 99 235 / 0.25);
     color: var(--color-paper);
   }
   :focus-visible {
@@ -127,6 +137,27 @@
     font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.02;
+  }
+
+  /* Titre du haut de page : Space Grotesk (police du nouveau design), le reste du site garde Instrument Serif */
+  .display-hero {
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+  }
+
+  /* Dégradé bleu électrique → violet pour les mots-clés */
+  .text-gradient {
+    background: linear-gradient(100deg, var(--color-gold) 10%, var(--color-electric) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Ombre douce des cartes (forte en clair, quasi nulle en sombre) */
+  .card-shadow {
+    box-shadow: var(--card-shadow);
   }
 
   /* Fine grille de fond, utilisée avec parcimonie */

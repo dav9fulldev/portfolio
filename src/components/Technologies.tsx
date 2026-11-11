@@ -155,7 +155,7 @@ export function Technologies() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex flex-col items-center gap-2.5 rounded-2xl border border-line bg-ink-2/60 px-2 py-3.5 text-center sm:flex-row sm:gap-4 sm:p-3.5 sm:text-left transition-colors duration-300 hover:border-line-strong hover:bg-ink-2"
+                className="group flex flex-col items-center gap-2.5 card-shadow rounded-2xl border border-line bg-ink-2 px-2 py-3.5 text-center sm:flex-row sm:gap-4 sm:p-3.5 sm:text-left transition-colors duration-300 hover:border-line-strong hover:bg-ink-2"
               >
                 <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl sm:h-14 sm:w-14 bg-[#111c30] transition-transform duration-300 group-hover:scale-105">
                   <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true">

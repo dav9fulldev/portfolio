@@ -39,7 +39,7 @@ export function Expertise() {
   const carousel = useCarousel<HTMLUListElement>();
 
   return (
-    <section id="expertise" className="border-t border-line bg-ink-2/60 py-24 md:py-32">
+    <section id="expertise" className="border-t border-line bg-deep/40 py-24 md:py-32">
       <div className="container-page">
         <SectionHeading index="03" label={e.label} title={e.title} intro={e.intro} />
 
@@ -63,7 +63,7 @@ export function Expertise() {
               key={i}
               aria-roledescription={e.slide}
               aria-label={`${i + 1} / ${AREAS.length} : ${e.areas[i].t}`}
-              className={`${SLIDE} ${span} ${i === AREAS.length - 1 ? "md:col-span-2" : ""} group relative rounded-[1.4rem] border border-line bg-ink p-7 transition-colors duration-500 hover:bg-ink-2 md:rounded-none md:border-0 md:p-9`}
+              className={`${SLIDE} ${span} ${i === AREAS.length - 1 ? "md:col-span-2" : ""} card-shadow group relative rounded-[1.4rem] border border-line bg-ink-2 p-7 transition-colors duration-500 hover:bg-ink-2 md:rounded-none md:border-0 md:p-9`}
             >
               <Reveal delay={(i % 2) * 0.06}>
                 <div className="flex items-center justify-between">

@@ -41,7 +41,7 @@ export function Header() {
         <span
           key={l}
           className={`rounded-full px-2.5 py-1 uppercase transition-colors ${
-            lang === l ? "bg-paper text-ink" : "text-mute"
+            lang === l ? "bg-gold text-on-gold" : "text-mute"
           }`}
         >
           {l}
@@ -90,22 +90,26 @@ export function Header() {
               key={id}
               href={`#${id}`}
               aria-current={active === id ? "true" : undefined}
-              className={`relative rounded-full px-3.5 py-2 text-[0.88rem] transition-colors ${
-                active === id ? "text-paper" : "text-mute hover:text-paper"
+              className={`relative rounded-full px-3 py-2 text-[0.88rem] font-medium transition-colors ${
+                active === id ? "text-gold" : "text-mute hover:text-paper"
               }`}
             >
-              {t.nav[id]}
               {active === id && (
                 <motion.span
-                  layoutId="nav-dot"
-                  className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-gold"
-                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  layoutId="nav-pill"
+                  aria-hidden="true"
+                  className="absolute inset-0 rounded-full bg-gold/10"
+                  transition={{ type: "spring", stiffness: 420, damping: 36 }}
                 />
               )}
+              <span className="relative">{t.nav[id]}</span>
             </a>
           ))}
           <LangButton className="ml-3" />
           <ThemeButton className="ml-2" />
+          <a href="#contact" className="btn btn-primary ml-3 hidden !h-10 !px-5 !text-[0.86rem] xl:inline-flex">
+            {t.nav.cta}
+          </a>
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">

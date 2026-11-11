@@ -67,7 +67,7 @@ export function Projects() {
                 aria-label={`${i + 1} / ${ordered.length} : ${p.name}`}
                 className={`${SLIDE} ${SPANS[i]} ${i === ORDER.length - 1 && ORDER.length % 2 === 1 ? "md:col-span-2" : ""}`}>
                 <Reveal delay={(i % 2) * 0.08} className="h-full">
-                  <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-line bg-ink-2 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-line-strong">
+                  <article className="card-shadow group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-line bg-ink-2 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-line-strong">
                     <div className={`relative ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`}>
                       <ProjectCover cover={p.cover} name={p.name} large={large} />
                       <div className="absolute left-4 top-4 flex flex-wrap gap-2">

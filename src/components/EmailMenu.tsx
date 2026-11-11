@@ -9,7 +9,7 @@ import { site } from "../config/site";
  * de messagerie n'est configurée (cas fréquent avec un webmail). On propose donc
  * Gmail, Outlook, l'application par défaut, ou la copie de l'adresse.
  */
-export function EmailMenu() {
+export function EmailMenu({ buttonClassName = "btn btn-primary" }: { buttonClassName?: string }) {
   const { t } = useI18n();
   const c = t.contact;
   const [open, setOpen] = useState(false);
@@ -58,7 +58,7 @@ export function EmailMenu() {
         aria-expanded={open}
         aria-controls={menuId}
         aria-haspopup="true"
-        className="btn btn-primary"
+        className={buttonClassName}
       >
         <Mail size={16} />
         {c.email}
