@@ -69,7 +69,7 @@ export function Contact() {
                 onClick={copy}
                 aria-label={copied ? c.copied : c.copy}
                 title={copied ? c.copied : c.copy}
-                className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong text-mute transition-colors hover:border-gold hover:text-gold"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line-strong text-mute transition-colors hover:border-gold hover:text-gold"
               >
                 {copied ? <Check size={14} className="text-gold" /> : <Copy size={14} />}
               </button>

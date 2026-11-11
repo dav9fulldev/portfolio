@@ -44,7 +44,7 @@ export function CarouselNav({ names, active, goTo, labels }: NavProps) {
     "grid h-10 w-10 place-items-center rounded-full border border-line-strong text-paper transition-colors disabled:opacity-35";
   return (
     <div className="mt-5 flex items-center justify-between md:hidden">
-      <div className="flex items-center gap-1.5">
+      <div className="-ml-2 flex items-center">
         {names.map((name, i) => (
           <button
             key={name}
@@ -52,7 +52,7 @@ export function CarouselNav({ names, active, goTo, labels }: NavProps) {
             onClick={() => goTo(i)}
             aria-label={`${labels.goTo} : ${name}`}
             aria-current={active === i}
-            className="grid h-6 place-items-center"
+            className="grid h-6 min-w-6 place-items-center"
           >
             <span
               className={`block h-1.5 rounded-full transition-all duration-300 ${active === i ? "w-6 bg-gold" : "w-1.5 bg-line-strong"}`}

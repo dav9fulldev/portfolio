@@ -35,9 +35,9 @@ export function Hero() {
 
       <div className="container-page grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
-          <motion.p {...fade(0.05)} className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
-            {t.hero.eyebrow}
+          <motion.p {...fade(0.05)} className="eyebrow flex items-baseline gap-3">
+            <span className="inline-block h-1.5 w-1.5 shrink-0 -translate-y-px rounded-full bg-gold" aria-hidden="true" />
+            <span>{t.hero.eyebrow}</span>
           </motion.p>
 
           <motion.h1
@@ -55,7 +55,7 @@ export function Hero() {
             {t.hero.body}
           </motion.p>
 
-          <motion.div {...fade(0.44)} className="mt-10 flex flex-wrap items-center gap-3">
+          <motion.div {...fade(0.44)} className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <a href="#projects" className="btn btn-primary">
               {t.hero.ctaProjects}
               <ArrowRight size={16} className="arrow" />

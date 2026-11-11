@@ -122,14 +122,18 @@ export function Technologies() {
         <SectionHeading index="04" label={s.label} title={s.title} intro={s.intro} />
 
         <Reveal className="mt-10 md:ml-[25%] md:pl-2">
-          <div role="group" aria-label={s.filterLabel} className="flex flex-wrap gap-2">
+          <div
+            role="group"
+            aria-label={s.filterLabel}
+            className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
+          >
             {FILTERS.map((f) => (
               <button
                 key={f}
                 type="button"
                 onClick={() => setFilter(f)}
                 aria-pressed={filter === f}
-                className={`h-9 rounded-full border px-4 text-[0.85rem] transition-colors ${
+                className={`h-10 shrink-0 rounded-full border px-4 text-[0.85rem] transition-colors ${
                   filter === f
                     ? "border-paper bg-paper text-ink"
                     : "border-line-strong text-mute hover:border-gold hover:text-paper"
@@ -141,7 +145,7 @@ export function Technologies() {
           </div>
         </Reveal>
 
-        <motion.ul layout className="mt-10 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <motion.ul layout className="mt-8 grid grid-cols-3 gap-2 sm:mt-10 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 lg:grid-cols-4">
           <AnimatePresence mode="popLayout" initial={false}>
             {shown.map(({ icon, name, category }) => (
               <motion.li
@@ -151,16 +155,16 @@ export function Technologies() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex items-center gap-4 rounded-2xl border border-line bg-ink-2/60 p-3.5 transition-colors duration-300 hover:border-line-strong hover:bg-ink-2"
+                className="group flex flex-col items-center gap-2.5 rounded-2xl border border-line bg-ink-2/60 px-2 py-3.5 text-center sm:flex-row sm:gap-4 sm:p-3.5 sm:text-left transition-colors duration-300 hover:border-line-strong hover:bg-ink-2"
               >
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-[#111c30] transition-transform duration-300 group-hover:scale-105">
-                  <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl sm:h-14 sm:w-14 bg-[#111c30] transition-transform duration-300 group-hover:scale-105">
+                  <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true">
                     <path d={icon.path} fill={iconColor(icon)} transform={icon.transform} />
                   </svg>
                 </span>
-                <span className="min-w-0">
-                  <span className="block truncate text-[1rem] font-medium text-paper">{name ?? icon.title}</span>
-                  <span className="block truncate text-[0.82rem] text-mute">{s.categories[category]}</span>
+                <span className="min-w-0 max-w-full">
+                  <span className="block text-[0.8rem] font-medium leading-tight text-paper sm:truncate sm:text-[1rem] sm:leading-normal">{name ?? icon.title}</span>
+                  <span className="hidden truncate text-[0.82rem] text-mute sm:block">{s.categories[category]}</span>
                 </span>
               </motion.li>
             ))}
