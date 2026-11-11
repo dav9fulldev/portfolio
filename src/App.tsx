@@ -9,6 +9,7 @@ import { Technologies } from "./components/Technologies";
 import { Journey } from "./components/Journey";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { useTilt } from "./hooks/useTilt";
 
 function NotFound() {
   const { t } = useI18n();
@@ -31,6 +32,7 @@ function isHome() {
 }
 
 export default function App() {
+  useTilt();
   return (
     <LanguageProvider>
       <MotionConfig reducedMotion="user">

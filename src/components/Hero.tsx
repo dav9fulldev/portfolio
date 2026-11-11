@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform, type MotionValue } from "motion/react";
 import { ArrowRight, Award, Download, Mail, MapPin } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
@@ -14,28 +15,81 @@ const fade = (delay: number) => ({
 /** Forme organique du portrait (coins asymétriques). */
 const BLOB = "58% 42% 46% 54% / 46% 50% 50% 54%";
 
-/** Petite forme décorative qui flotte doucement (figée si l'utilisateur réduit les animations). */
-function Float({ className, delay = 0, children }: { className: string; delay?: number; children: React.ReactNode }) {
+type Pointer = { x: MotionValue<number>; y: MotionValue<number> };
+
+/**
+ * Forme décorative en 3D : elle flotte, pivote doucement et se décale selon la souris
+ * (parallaxe : plus « depth » est grand, plus elle semble proche). Figée si animations réduites.
+ */
+function Float({
+  className,
+  delay = 0,
+  depth = 1,
+  spin = "z",
+  pointer,
+  children,
+}: {
+  className: string;
+  delay?: number;
+  depth?: number;
+  spin?: "x" | "y" | "z";
+  pointer: Pointer;
+  children: React.ReactNode;
+}) {
+  const x = useTransform(pointer.x, (v) => v * 46 * depth);
+  const y = useTransform(pointer.y, (v) => v * 46 * depth);
+  const rotate = spin === "z" ? { rotate: [0, 14, 0] } : spin === "x" ? { rotateX: [0, 360] } : { rotateY: [0, 360] };
   return (
-    <motion.div
-      aria-hidden="true"
-      className={`absolute z-10 ${className}`}
-      initial={{ opacity: 0, scale: 0.6 }}
-      animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
-      transition={{
-        opacity: { duration: 0.6, delay: 0.6 + delay },
-        scale: { duration: 0.6, delay: 0.6 + delay, ease },
-        y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay },
-      }}
-    >
-      {children}
+    <motion.div aria-hidden="true" className={`absolute z-10 ${className}`} style={{ x, y, transformPerspective: 600 }}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: 1, scale: 1, y: [0, -10, 0], ...rotate }}
+        transition={{
+          opacity: { duration: 0.6, delay: 0.6 + delay },
+          scale: { duration: 0.6, delay: 0.6 + delay, ease },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay },
+          rotate: { duration: 7, repeat: Infinity, ease: "easeInOut", delay },
+          rotateX: { duration: 9, repeat: Infinity, ease: "linear", delay },
+          rotateY: { duration: 10, repeat: Infinity, ease: "linear", delay },
+        }}
+      >
+        {children}
+      </motion.div>
     </motion.div>
   );
+}
+
+/** Position de la souris dans le hero, normalisée entre -0,5 et 0,5 et amortie par un ressort. */
+function usePointer() {
+  const reduce = useReducedMotion();
+  const [fine, setFine] = useState(false);
+  useEffect(() => setFine(window.matchMedia("(hover: hover) and (pointer: fine)").matches), []);
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+  const spring = { stiffness: 120, damping: 18, mass: 0.6 };
+  const x = useSpring(rawX, spring);
+  const y = useSpring(rawY, spring);
+  const enabled = fine && !reduce;
+  const onPointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    if (!enabled) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    rawX.set((e.clientX - r.left) / r.width - 0.5);
+    rawY.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const onPointerLeave = () => {
+    rawX.set(0);
+    rawY.set(0);
+  };
+  return { pointer: { x, y }, handlers: { onPointerMove, onPointerLeave } };
 }
 
 export function Hero() {
   const { t } = useI18n();
   const h = t.hero;
+  const { pointer, handlers } = usePointer();
+  // Inclinaison 3D du portrait et des badges qui l'accompagnent
+  const rotateY = useTransform(pointer.x, (v) => v * 16);
+  const rotateX = useTransform(pointer.y, (v) => v * -12);
 
   const socials = [
     { href: site.github, label: "GitHub", Icon: GithubIcon },
@@ -45,7 +99,7 @@ export function Hero() {
   ].filter((s) => s.href);
 
   return (
-    <section id="home" className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <section id="home" {...handlers} className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
       {/* Arrière-plan : vague claire + halos bleu / violet */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="absolute -left-[20%] top-[42%] h-[120%] w-[140%] -rotate-6 rounded-[50%] bg-ink-2 opacity-80" />
@@ -129,25 +183,26 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, delay: 0.2, ease }}
           className="relative mx-auto w-full max-w-[21rem] sm:max-w-[24rem] lg:col-span-5 lg:max-w-none"
+          style={{ rotateX, rotateY, transformPerspective: 1100, transformStyle: "preserve-3d" }}
         >
-          <Float className="-left-3 top-6 sm:-left-8" delay={0}>
+          <Float pointer={pointer} depth={1.4} spin="z" className="-left-3 top-6 sm:-left-8" delay={0}>
             <svg width="38" height="38" viewBox="0 0 38 38" className="text-gold">
               <path d="M19 5 L34 31 H4 Z" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinejoin="round" />
             </svg>
           </Float>
-          <Float className="-right-1 -top-3 sm:-right-4" delay={1.2}>
+          <Float pointer={pointer} depth={0.8} spin="x" className="-right-1 -top-3 sm:-right-4" delay={1.2}>
             <span className="block h-9 w-9 rounded-full border-[5px] border-electric/70" />
           </Float>
-          <Float className="-left-5 bottom-36 sm:-left-12" delay={0.6}>
+          <Float pointer={pointer} depth={1.8} spin="z" className="-left-5 bottom-36 sm:-left-12" delay={0.6}>
             <svg width="54" height="22" viewBox="0 0 54 22" className="text-electric">
               <path d="M2 18 L12 4 L22 18 L32 4 L42 18 L52 4" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Float>
-          <Float className="-right-3 bottom-24 sm:-right-8" delay={1.8}>
+          <Float pointer={pointer} depth={1.1} spin="y" className="-right-3 bottom-24 sm:-right-8" delay={1.8}>
             <span className="block h-8 w-8 rotate-12 rounded-md border-[4px] border-gold" />
           </Float>
 
-          <div className="relative p-3">
+          <div className="relative p-3 [transform:translateZ(0)]">
             <div
               aria-hidden="true"
               className="absolute inset-0 rotate-6 bg-gradient-to-br from-gold via-electric to-gold opacity-90"
@@ -167,7 +222,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Distinction réelle */}
+          {/* Distinction réelle — posée en avant du portrait (profondeur 3D) */}
+          <div className="pointer-events-none absolute inset-0 z-20 [transform:translateZ(60px)]">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -177,8 +233,10 @@ export function Hero() {
             <Award size={16} aria-hidden="true" className="shrink-0" />
             <span className="text-[0.78rem] font-semibold leading-tight">{h.award}</span>
           </motion.div>
+          </div>
 
-          {/* Poste actuel */}
+          {/* Poste actuel — également en avant-plan */}
+          <div className="pointer-events-none absolute inset-0 z-20 [transform:translateZ(40px)]">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -189,6 +247,7 @@ export function Hero() {
             <p className="mt-0.5 text-[0.9rem] font-medium text-paper">{h.currentlyRole}</p>
             <p className="text-[0.82rem] font-semibold text-gold">GIM-UEMOA</p>
           </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
