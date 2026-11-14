@@ -48,7 +48,7 @@ export function Projects() {
   return (
     <section id="projects" className="border-t border-line py-24 md:py-32">
       <div className="container-page">
-        <SectionHeading index="02" label={t.projects.label} title={t.projects.title} intro={t.projects.intro} />
+        <SectionHeading index="01" label={t.projects.label} title={t.projects.title} intro={t.projects.intro} />
 
         <RestoSpotlight onOpen={() => open("restogestion")} />
 

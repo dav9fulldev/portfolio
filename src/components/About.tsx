@@ -9,7 +9,7 @@ export function About() {
   return (
     <section id="about" className="border-t border-line py-24 md:py-32">
       <div className="container-page">
-        <SectionHeading index="01" label={a.label} title={a.title} />
+        <SectionHeading index="05" label={a.label} title={a.title} />
 
         <div className="mt-14 grid gap-12 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-6 md:col-start-4">

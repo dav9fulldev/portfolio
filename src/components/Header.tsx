@@ -6,7 +6,7 @@ import { useActiveSection } from "../hooks/useActiveSection";
 import { useTheme } from "../hooks/useTheme";
 import { Logo } from "./Logo";
 
-export const SECTIONS = ["home", "about", "projects", "expertise", "technologies", "journey", "contact"] as const;
+export const SECTIONS = ["home", "projects", "expertise", "technologies", "journey", "about", "contact"] as const;
 
 export function Header() {
   const { t, lang, toggle } = useI18n();

@@ -228,7 +228,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9, ease }}
-            className="absolute -right-2 top-[22%] z-20 flex max-w-[12rem] items-center gap-2 rounded-2xl bg-lime px-3 py-2 text-[#0f172a] shadow-[0_14px_30px_-12px_rgb(15_23_42/0.35)] sm:-right-8"
+            className="absolute -right-2 top-[50%] z-20 sm:top-[22%] flex max-w-[12rem] items-center gap-2 rounded-2xl bg-lime px-3 py-2 text-[#0f172a] shadow-[0_14px_30px_-12px_rgb(15_23_42/0.35)] sm:-right-8"
           >
             <Award size={16} aria-hidden="true" className="shrink-0" />
             <span className="text-[0.78rem] font-semibold leading-tight">{h.award}</span>

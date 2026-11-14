@@ -41,11 +41,11 @@ export default function App() {
             <Header />
             <main id="main">
               <Hero />
-              <About />
               <Projects />
               <Expertise />
               <Technologies />
               <Journey />
+              <About />
               <Contact />
             </main>
             <Footer />

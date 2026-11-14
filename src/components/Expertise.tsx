@@ -41,7 +41,7 @@ export function Expertise() {
   return (
     <section id="expertise" className="border-t border-line bg-deep/40 py-24 md:py-32">
       <div className="container-page">
-        <SectionHeading index="03" label={e.label} title={e.title} intro={e.intro} />
+        <SectionHeading index="02" label={e.label} title={e.title} intro={e.intro} />
 
         <Reveal className="mt-10 flex flex-wrap gap-5 text-sm text-mute md:ml-[25%] md:pl-2">
           <span className="inline-flex items-center gap-2">

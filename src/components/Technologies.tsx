@@ -119,7 +119,7 @@ export function Technologies() {
   return (
     <section id="technologies" className="border-t border-line py-24 md:py-32">
       <div className="container-page">
-        <SectionHeading index="04" label={s.label} title={s.title} intro={s.intro} />
+        <SectionHeading index="03" label={s.label} title={s.title} intro={s.intro} />
 
         <Reveal className="mt-10 md:ml-[25%] md:pl-2">
           <div
