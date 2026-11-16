@@ -20,12 +20,12 @@ function contentSecurityPolicy(): Plugin {
           .map((m) => `'sha256-${createHash("sha256").update(m[1]).digest("base64")}'`);
         const policy = [
           "default-src 'self'",
-          `script-src 'self' ${hashes.join(" ")}`,
+          `script-src 'self' https://cloud.umami.is ${hashes.join(" ")}`,
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "font-src 'self' https://fonts.gstatic.com",
           "img-src 'self' data:",
           "frame-src https://www.youtube-nocookie.com",
-          "connect-src 'self'",
+          "connect-src 'self' https://gateway.umami.is",
           "object-src 'none'",
           "base-uri 'self'",
           "form-action 'none'",
