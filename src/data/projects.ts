@@ -234,6 +234,7 @@ export const projects: Project[] = [
   {
     slug: "storygriot-ai",
     name: "StoryGriot AI",
+    featured: true,
     category: { fr: "IA · Patrimoine culturel · Hackathon", en: "AI · Cultural heritage · Hackathon" },
     year: "2025",
     cover: { kind: "image", src: asset("/projects/storygriot.jpg") },

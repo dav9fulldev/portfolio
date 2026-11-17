@@ -8,13 +8,12 @@ import { Reveal } from "./Reveal";
 import { ProjectCover } from "./ProjectCover";
 import { ProjectDetail } from "./ProjectDetail";
 import { DevpostIcon, GithubIcon } from "./Icons";
-import { RestoSpotlight } from "./RestoSpotlight";
 import { CarouselNav, SLIDE, TRACK, useCarousel } from "./Carousel";
 
 // Composition éditoriale : alternance de largeurs sur une grille de 12 colonnes.
-// RestoGestion dispose de sa propre présentation éditoriale (RestoSpotlight), au-dessus de la grille.
-const SPANS = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7", "lg:col-span-6", "lg:col-span-6"];
-const ORDER = ["paymechap", "sika-pay", "ureport-cocody", "storygriot-ai", "sankofart-residence", "alerto"];
+// Ordre : du projet le plus parlant (primé, fintech) aux réalisations plus modestes.
+const SPANS = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7", "lg:col-span-4", "lg:col-span-4", "lg:col-span-4"];
+const ORDER = ["storygriot-ai", "paymechap", "sika-pay", "restogestion", "ureport-cocody", "sankofart-residence", "alerto"];
 const HASH_PREFIX = "#projects/";
 
 export function Projects() {
@@ -50,13 +49,11 @@ export function Projects() {
       <div className="container-page">
         <SectionHeading index="01" label={t.projects.label} title={t.projects.title} intro={t.projects.intro} />
 
-        <RestoSpotlight onOpen={() => open("restogestion")} />
-
         <ul
           ref={carousel.ref}
           onScroll={carousel.onScroll}
           aria-roledescription={t.projects.carousel}
-          className={`${TRACK} mt-5 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible lg:grid-cols-12`}
+          className={`${TRACK} mt-14 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible lg:grid-cols-12`}
         >
           {ordered.map((p, i) => {
             const large = i < 2;
