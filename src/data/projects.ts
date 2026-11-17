@@ -18,8 +18,12 @@ export type Project = {
   /** Mise en avant « restauration / hôtellerie » */
   highlight?: L;
   cover: Cover;
+  /** Description de la couverture pour les lecteurs d'écran et les moteurs (ce que montre l'image) */
+  coverAlt: L;
   /** Visuels supplémentaires affichés dans la fiche détaillée */
   gallery?: string[];
+  /** Description de chaque visuel de la galerie, dans le même ordre */
+  galleryAlt?: L[];
   tagline: L;
   problem: L;
   solution: L;
@@ -42,6 +46,7 @@ export const projects: Project[] = [
     year: "2026",
     featured: true,
     cover: { kind: "image", src: asset("/projects/paymechap.jpg"), position: "center" },
+    coverAlt: { fr: "Site de PaymeChap : « Votre argent, à portée de main », avec l'écran d'accueil de l'application (solde, transferts, paiement par QR code)", en: "PaymeChap website: “Your money, at hand”, showing the app home screen (balance, transfers, QR code payment)" },
     tagline: {
       fr: "Un portefeuille mobile pour gérer ses wallets, transférer et payer par QR code — entre particuliers comme en boutique.",
       en: "A mobile wallet to manage wallets, transfer money and pay by QR code — between people and in shops.",
@@ -108,6 +113,10 @@ export const projects: Project[] = [
     highlight: { fr: "Restauration", en: "Food service" },
     cover: { kind: "image", src: asset("/projects/restogestion-vitrine.jpg"), position: "center top" },
     gallery: [asset("/projects/restogestion-fonctionnalites.jpg")],
+    coverAlt: { fr: "Page d'accueil de RestoGestion : « Faites revenir vos clients », avec un avis client 5 étoiles reçu pendant le service", en: "RestoGestion home page: “Bring your customers back”, with a 5-star customer review received during service" },
+    galleryAlt: [
+      { fr: "Page Fonctionnalités de RestoGestion : QR code et affiche, fiches clients, avis, points de fidélité, récompenses, tableau de bord", en: "RestoGestion features page: QR code and poster, customer records, reviews, loyalty points, rewards, dashboard" },
+    ],
     tagline: {
       fr: "Le SaaS qui aide restaurants, maquis et fast-foods à connaître leurs clients, recueillir leurs avis et les faire revenir.",
       en: "The SaaS that helps restaurants, maquis and fast-food outlets know their customers, collect their feedback and bring them back.",
@@ -169,6 +178,12 @@ export const projects: Project[] = [
     featured: true,
     cover: { kind: "image", src: asset("/projects/sikapay-cover.jpg"), position: "center" },
     gallery: [asset("/projects/sikapay-rules.jpg"), asset("/projects/sikapay-paid.jpg"), asset("/projects/sika-architecture.jpg")],
+    coverAlt: { fr: "Logo SIKA Pay et slogan « Your AI. Your money. Your control. », avec les services utilisés : Gemini, PayPal et Channel3", en: "SIKA Pay logo and tagline “Your AI. Your money. Your control.”, with the services used: Gemini, PayPal and Channel3" },
+    galleryAlt: [
+      { fr: "Écran d'autorisation SIKA Pay : l'utilisateur fixe un plafond par achat et par jour, révocable à tout moment", en: "SIKA Pay authorization screen: the user sets per-purchase and daily limits, revocable at any time" },
+      { fr: "Écran de confirmation SIKA Pay : paiement validé seulement quand PayPal confirme la capture", en: "SIKA Pay confirmation screen: payment shown as paid only once PayPal confirms the capture" },
+      { fr: "Schéma d'architecture SIKA Pay : application Flutter, agent Gemini sur Google Cloud Run, PayPal, Google Cloud AI et Channel3", en: "SIKA Pay architecture diagram: Flutter app, Gemini agent on Google Cloud Run, PayPal, Google Cloud AI and Channel3" },
+    ],
     tagline: {
       fr: "Un agent de paiement intelligent qui recherche, compare et prépare les achats avec PayPal — en laissant l'utilisateur maître de son argent.",
       en: "An intelligent payment agent that searches, compares and prepares purchases with PayPal — while keeping users in control of their money.",
@@ -249,6 +264,7 @@ export const projects: Project[] = [
     category: { fr: "IA · Patrimoine culturel · Hackathon", en: "AI · Cultural heritage · Hackathon" },
     year: "2025",
     cover: { kind: "image", src: asset("/projects/storygriot.jpg") },
+    coverAlt: { fr: "Page d'accueil de StoryGriot AI : « Preserving Oral Traditions for Future Generations » et les trois étapes enregistrement, traitement IA, partage", en: "StoryGriot AI home page: “Preserving Oral Traditions for Future Generations” and its three steps: recording, AI processing, sharing" },
     tagline: {
       fr: "Préserver les traditions orales grâce à l'IA — 2ᵉ prix AbiHack, AI Hackathon powered by Google.",
       en: "Preserving oral traditions with AI — 2nd place at AbiHack, AI Hackathon powered by Google.",
@@ -307,6 +323,7 @@ export const projects: Project[] = [
     year: "2026",
     highlight: { fr: "En ligne", en: "Live" },
     cover: { kind: "image", src: asset("/projects/ureport-cocody.jpg"), position: "center top" },
+    coverAlt: { fr: "Page d'accueil de U-Report Cocody : « Engagez-vous pour Cocody », plateforme de la jeunesse ivoirienne", en: "U-Report Cocody home page: “Get involved for Cocody”, a platform for Ivorian youth" },
     tagline: {
       fr: "La plateforme de la communauté U-Report de Cocody : événements, présence par QR Code, espace membre, cotisations et back-office.",
       en: "The platform of Cocody's U-Report community: events, QR-code attendance, member area, membership fees and back office.",
@@ -359,6 +376,7 @@ export const projects: Project[] = [
     category: { fr: "Civic tech · PWA · IA", en: "Civic tech · PWA · AI" },
     year: "2026",
     cover: { kind: "logo", src: asset("/projects/alerto-logo.png") },
+    coverAlt: { fr: "Logo de l'application ALERTO : un bouclier d'alerte orange", en: "ALERTO app logo: an orange alert shield" },
     tagline: {
       fr: "Signaler les dégâts en temps de crise, même sans connexion, pendant les 48 premières heures.",
       en: "Report damage during a crisis, even offline, within the critical first 48 hours.",
@@ -401,6 +419,7 @@ export const projects: Project[] = [
     year: "2026",
     highlight: { fr: "Hôtellerie", en: "Hospitality" },
     cover: { kind: "image", src: asset("/projects/residence.jpg") },
+    coverAlt: { fr: "Page d'accueil de Sankofart Résidence : « Découvrez le Luxe et le Confort », réservation de résidences meublées en Côte d'Ivoire", en: "Sankofart Résidence home page: “Discover luxury and comfort”, booking furnished residences in Côte d'Ivoire" },
     tagline: {
       fr: "Réservation en ligne de résidences meublées en Côte d'Ivoire, de la vitrine à l'administration.",
       en: "Online booking for furnished residences in Côte d'Ivoire, from storefront to back office.",

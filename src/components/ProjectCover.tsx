@@ -11,13 +11,13 @@ const glyphs = {
  * Visuel d'un projet. Les images sont de vraies captures ou de vrais logos tirés des dépôts ;
  * pour les projets sans visuel public, une composition typographique (jamais une fausse capture).
  */
-export function ProjectCover({ cover, name, large = false }: { cover: Cover; name: string; large?: boolean }) {
+export function ProjectCover({ cover, alt, large = false }: { cover: Cover; alt: string; large?: boolean }) {
   if (cover.kind === "image") {
     return (
       <div className="relative h-full w-full overflow-hidden bg-deep">
         <img
           src={cover.src}
-          alt={`${name} — aperçu`}
+          alt={alt}
           loading="lazy"
           decoding="async"
           className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.04]"
@@ -35,7 +35,7 @@ export function ProjectCover({ cover, name, large = false }: { cover: Cover; nam
         <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-electric/20 blur-3xl" />
         <img
           src={cover.src}
-          alt={`${name} — capture de l'application`}
+          alt={alt}
           loading="lazy"
           decoding="async"
           className={`absolute left-1/2 -translate-x-1/2 rounded-[1.6rem] border border-line-strong shadow-2xl shadow-(color:--shadow) transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-2 ${
@@ -52,7 +52,7 @@ export function ProjectCover({ cover, name, large = false }: { cover: Cover; nam
         <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-70 [mask-image:radial-gradient(circle_at_center,black,transparent_75%)]" />
         <img
           src={cover.src}
-          alt={`Logo ${name}`}
+          alt={alt}
           loading="lazy"
           decoding="async"
           className={`relative rounded-[22%] shadow-2xl shadow-(color:--shadow) transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-1 group-hover:scale-[1.03] ${

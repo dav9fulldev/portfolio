@@ -1,0 +1,29 @@
+# Brou David Yao
+
+> Brou David Yao est ingénieur développeur Full-Stack et Mobile, basé à Abidjan (Côte d'Ivoire). Il conçoit des applications web et mobiles à la croisée de la fintech, de l'intelligence artificielle et de l'innovation numérique. Il est disponible pour des missions freelance et des collaborations.
+
+Brou David Yao est ingénieur développeur junior au GIM-UEMOA (Groupement Interbancaire Monétique de l'UEMOA) depuis janvier 2026, au cœur des paiements électroniques de l'Afrique de l'Ouest. Il est titulaire d'une Licence MIAGE (Méthodes Informatiques Appliquées à la Gestion des Entreprises), mention Très Bien, de l'Université Polytechnique de Bingerville, soutenue en octobre 2025.
+
+En juillet 2025, avec son équipe de trois, il a remporté le 2ᵉ prix d'AbiHack, un hackathon IA organisé en partenariat avec Google, pour StoryGriot AI. En novembre et décembre 2025, il a été retenu pour le Bootcamp IA UniPod en Guinée (PNUD, METI, timbuktoo) : une sélection individuelle ouverte à 9 pays, où 5 candidats de Côte d'Ivoire ont été retenus sur plus de 200. Il y a reçu un certificat d'excellence pour son projet GèrTonArgent, devenu PaymeChap. Il a aussi suivi l'Académie des Jeunes Développeurs Full Stack (GRowing Consulting et ProActive Swiss, avril à juin 2025).
+
+Compétences principales : Python, FastAPI, Java, Spring Boot, Node.js, Express, API REST ; Flutter, Dart, Kotlin ; JavaScript, TypeScript, React, Vue.js, Tailwind CSS ; Gemini API, agents et appels de fonctions, reconnaissance vocale ; PostgreSQL, MySQL, MongoDB ; Git, GitHub, GitLab, Docker, GitHub Actions, Google Cloud Run.
+
+## Projets
+
+- [StoryGriot AI](https://devpost.com/software/storygriot-ai) : préserver les traditions orales africaines grâce à l'IA (enregistrement, transcription, traduction, illustration). 2ᵉ prix AbiHack 2025.
+- [PaymeChap](https://paymechap.com) : portefeuille mobile pour gérer ses wallets, transférer de l'argent et payer par QR code (Flutter, Spring Boot). Projet personnel, en tests fermés.
+- [SIKA Pay](https://github.com/dav9fulldev/sika-agent) : agent de paiement intelligent qui recherche, compare et prépare des achats avec PayPal, sous des limites fixées par l'utilisateur (Flutter, FastAPI, Gemini, Google Cloud Run).
+- RestoGestion : SaaS qui aide les restaurants, maquis et fast-foods à recueillir les avis de leurs clients et à les fidéliser (Laravel). Code non public.
+- [U-Report Cocody](https://ureport-cocody.vercel.app/) : plateforme de la communauté U-Report de Cocody (événements, présence par QR code, espace membre, cotisations). Brou David Yao y a conçu l'architecture, le backend et la sécurité.
+- [Sankofart Résidence](https://residencemeublee.vercel.app) : réservation en ligne de résidences meublées en Côte d'Ivoire.
+- [ALERTO](https://github.com/dav9fulldev/Alerto) : signaler les dégâts en temps de crise, même sans connexion.
+
+## Contact
+
+- Portfolio : https://dav9fulldev.github.io/portfolio/
+- E-mail : broudavid505@gmail.com
+- WhatsApp : +225 07 99 05 39 77
+- LinkedIn : https://www.linkedin.com/in/brou-david-yao/
+- GitHub : https://github.com/dav9fulldev
+- GitLab : https://gitlab.com/engineerDavid
+- DevPost : https://devpost.com/dav9fulldev

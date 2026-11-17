@@ -6,7 +6,7 @@ import { useActiveSection } from "../hooks/useActiveSection";
 import { useTheme } from "../hooks/useTheme";
 import { Logo } from "./Logo";
 
-export const SECTIONS = ["home", "projects", "journey", "expertise", "about", "contact"] as const;
+export const SECTIONS = ["home", "projects", "journey", "expertise", "services", "about", "contact"] as const;
 
 export function Header() {
   const { t, lang, toggle } = useI18n();
@@ -90,7 +90,7 @@ export function Header() {
               key={id}
               href={`#${id}`}
               aria-current={active === id ? "true" : undefined}
-              className={`relative rounded-full px-3 py-2 text-[0.88rem] font-medium transition-colors ${
+              className={`relative rounded-full px-2.5 py-2 text-[0.88rem] font-medium transition-colors xl:px-3 ${
                 active === id ? "text-gold" : "text-mute hover:text-paper"
               }`}
             >
@@ -105,9 +105,9 @@ export function Header() {
               <span className="relative">{t.nav[id]}</span>
             </a>
           ))}
-          <LangButton className="ml-3" />
+          <LangButton className="ml-2 xl:ml-3" />
           <ThemeButton className="ml-2" />
-          <a href="#contact" className="btn btn-primary ml-3 hidden !h-10 !px-5 !text-[0.86rem] xl:inline-flex">
+          <a href="#contact" className="btn btn-primary ml-3 !h-10 !px-5 !text-[0.86rem]">
             {t.nav.cta}
           </a>
         </nav>

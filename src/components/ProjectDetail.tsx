@@ -90,7 +90,7 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
         </div>
 
         <div className="group aspect-[16/9] w-full shrink-0">
-          <ProjectCover cover={p.cover} name={p.name} large />
+          <ProjectCover cover={p.cover} alt={p.coverAlt[lang]} large />
         </div>
 
         <div className="px-5 pb-14 pt-8 md:px-8">
@@ -221,7 +221,7 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
             <img
               key={src}
               src={src}
-              alt={`${p.name} — ${t.projects.visual} ${i + 1}`}
+              alt={p.galleryAlt?.[i]?.[lang] ?? `${p.name} — ${t.projects.visual} ${i + 1}`}
               loading="lazy"
               className="mt-8 w-full rounded-2xl border border-line"
             />

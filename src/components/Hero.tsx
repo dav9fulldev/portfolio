@@ -5,6 +5,8 @@ import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
 import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon, WhatsappIcon } from "./Icons";
 
+const whatsappHref = (msg: string) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(msg)}`;
+
 const ease = [0.22, 1, 0.36, 1] as const;
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 22 },
@@ -96,7 +98,7 @@ export function Hero() {
     { href: site.gitlab, label: "GitLab", Icon: GitlabIcon },
     { href: site.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
     { href: site.devpost, label: "DevPost", Icon: DevpostIcon },
-    { href: site.whatsapp && `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t.contact.whatsappMsg)}`, label: "WhatsApp", Icon: WhatsappIcon },
+    { href: site.whatsapp && whatsappHref(t.contact.whatsappMsg), label: "WhatsApp", Icon: WhatsappIcon },
   ].filter((s) => s.href);
 
   return (
@@ -137,10 +139,23 @@ export function Hero() {
               {h.ctaProjects}
               <ArrowRight size={16} className="arrow" />
             </a>
-            <a href="#contact" className="btn btn-ghost">
-              <Mail size={16} />
-              {h.ctaContact}
-            </a>
+            <div className="grid grid-cols-2 gap-3 sm:flex">
+              {site.whatsapp && (
+                <a
+                  href={whatsappHref(t.contact.whatsappMsg)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn border border-[#25d366]/60 !px-4 text-paper hover:border-[#25d366] hover:bg-[#25d366]/10"
+                >
+                  <WhatsappIcon size={16} className="text-[#25d366]" />
+                  WhatsApp
+                </a>
+              )}
+              <a href="#contact" className={`btn btn-ghost !px-4 ${site.whatsapp ? "" : "col-span-2"}`}>
+                <Mail size={16} />
+                {h.ctaContact}
+              </a>
+            </div>
           </motion.div>
 
           <motion.ul {...fade(0.46)} aria-label={h.domainsLabel} className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2">

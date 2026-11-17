@@ -66,7 +66,7 @@ export function Projects() {
                 <Reveal delay={(i % 2) * 0.08} className="h-full">
                   <article className="tilt card-shadow group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-line bg-ink-2 hover:border-line-strong">
                     <div className={`relative ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`}>
-                      <ProjectCover cover={p.cover} name={p.name} large={large} />
+                      <ProjectCover cover={p.cover} alt={p.coverAlt[lang]} large={large} />
                       <div className="absolute left-4 top-4 flex flex-wrap gap-2">
                         {p.featured && (
                           <span className="chip border-gold/50 bg-ink/70 !text-gold-soft backdrop-blur">{t.projects.featured}</span>
@@ -113,8 +113,7 @@ export function Projects() {
                           <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong transition-colors duration-500 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
                             <Plus size={15} />
                           </span>
-                          {t.projects.details}
-                          <span className="sr-only">: {p.name}</span>
+                          {t.projects.see} {p.name}
                         </button>
 
                         {p.links.repo ? (

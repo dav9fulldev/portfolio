@@ -13,6 +13,7 @@ const fr = {
     about: "À propos",
     projects: "Projets",
     expertise: "Compétences",
+    services: "Services",
     journey: "Parcours",
     contact: "Contact",
     menu: "Ouvrir le menu",
@@ -76,6 +77,7 @@ const fr = {
       "Une sélection de réalisations vérifiables. Les dépôts publics sont liés ; les projets dont le code n'est pas public sont indiqués comme tels.",
     featured: "À la une",
     details: "Voir le projet",
+    see: "Voir",
     repo: "Code source",
     demo: "Démo en ligne",
     site: "Site officiel",
@@ -137,6 +139,48 @@ const fr = {
       tools: "Outils",
     },
     note: "Logos fournis par Simple Icons. Les marques citées appartiennent à leurs propriétaires respectifs.",
+  },
+  services: {
+    label: "Services",
+    title: "Ce que je peux faire pour vous.",
+    intro: "Pour une mission freelance ou une collaboration, voici ce que je réalise, avec un exemple concret à chaque fois.",
+    example: "Exemple",
+    items: [
+      {
+        t: "Site ou application web",
+        d: "Site vitrine, plateforme de réservation, espace membre ou back-office : de la maquette à la mise en ligne.",
+        ex: "Sankofart Résidence, U-Report Cocody",
+      },
+      {
+        t: "Application mobile",
+        d: "Une application Android et iOS en Flutter, reliée à une API sécurisée : comptes, paiements, notifications.",
+        ex: "PaymeChap, SIKA Pay",
+      },
+      {
+        t: "IA & automatisation",
+        d: "Assistants et agents IA (Gemini), traitement de la voix et du texte, intégrés dans votre produit.",
+        ex: "StoryGriot AI, SIKA Pay",
+      },
+    ],
+    faqTitle: "Questions fréquentes",
+    faq: [
+      {
+        q: "Quels types de projets acceptez-vous ?",
+        a: "Sites et applications web, applications mobiles, API et intégrations d'IA, en mission freelance ou en collaboration. Si votre besoin sort de ce cadre, écrivez-moi quand même : je vous dirai franchement si je suis la bonne personne.",
+      },
+      {
+        q: "Combien coûte un projet ?",
+        a: "Chaque projet est différent. Décrivez votre besoin par WhatsApp ou par e-mail : je vous réponds avec une estimation du périmètre, du délai et du prix.",
+      },
+      {
+        q: "Quelles technologies utilisez-vous pour une application mobile ?",
+        a: "Flutter, qui permet de livrer Android et iOS à partir d'un seul code, avec une API en Spring Boot ou FastAPI et une base de données PostgreSQL ou MySQL.",
+      },
+      {
+        q: "Comment se déroule une mission ?",
+        a: "Un premier échange pour comprendre votre besoin, une proposition claire (périmètre, délai, prix), puis le développement avec des points réguliers jusqu'à la mise en ligne.",
+      },
+    ],
   },
   journey: {
     label: "Parcours",
@@ -224,6 +268,7 @@ const en: Dict = {
     about: "About",
     projects: "Projects",
     expertise: "Skills",
+    services: "Services",
     journey: "Journey",
     contact: "Contact",
     menu: "Open menu",
@@ -287,6 +332,7 @@ const en: Dict = {
       "A selection of verifiable work. Public repositories are linked; projects whose code is not public are marked as such.",
     featured: "Featured",
     details: "View project",
+    see: "View",
     repo: "Source code",
     demo: "Live demo",
     site: "Official website",
@@ -348,6 +394,48 @@ const en: Dict = {
       tools: "Tools",
     },
     note: "Logos by Simple Icons. All trademarks belong to their respective owners.",
+  },
+  services: {
+    label: "Services",
+    title: "What I can do for you.",
+    intro: "For freelance work or a collaboration, here is what I build, each time with a concrete example.",
+    example: "Example",
+    items: [
+      {
+        t: "Website or web app",
+        d: "Showcase site, booking platform, member area or back office: from mock-up to launch.",
+        ex: "Sankofart Résidence, U-Report Cocody",
+      },
+      {
+        t: "Mobile app",
+        d: "An Android and iOS app built with Flutter, connected to a secure API: accounts, payments, notifications.",
+        ex: "PaymeChap, SIKA Pay",
+      },
+      {
+        t: "AI & automation",
+        d: "AI assistants and agents (Gemini), voice and text processing, built into your product.",
+        ex: "StoryGriot AI, SIKA Pay",
+      },
+    ],
+    faqTitle: "Frequently asked questions",
+    faq: [
+      {
+        q: "What kind of projects do you take on?",
+        a: "Websites and web apps, mobile apps, APIs and AI integrations, as freelance work or a collaboration. If your need is outside this scope, write to me anyway: I will tell you honestly whether I am the right person.",
+      },
+      {
+        q: "How much does a project cost?",
+        a: "Every project is different. Describe your need on WhatsApp or by email and I will reply with an estimate of scope, timeline and price.",
+      },
+      {
+        q: "Which technologies do you use for a mobile app?",
+        a: "Flutter, which ships Android and iOS from a single codebase, with a Spring Boot or FastAPI API and a PostgreSQL or MySQL database.",
+      },
+      {
+        q: "How does a project work?",
+        a: "A first call to understand your need, a clear proposal (scope, timeline, price), then development with regular check-ins until launch.",
+      },
+    ],
   },
   journey: {
     label: "Journey",
