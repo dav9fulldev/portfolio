@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import {
   siAlpinedotjs,
   siAndroid,
@@ -46,11 +44,10 @@ import {
 } from "simple-icons";
 import { useI18n } from "../i18n/LanguageContext";
 import { siKrakend } from "../data/customIcons";
-import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
 
 type Category = "backend" | "frontend" | "mobile" | "data" | "ai" | "cloud" | "tools";
 type Tech = { icon: SimpleIcon & { transform?: string }; name?: string; category: Category };
+// La catégorie reste renseignée pour un futur regroupement, même si les bandes ne l'affichent plus.
 
 /** Technologies réellement utilisées dans les projets et le parcours (voir projets et CV). */
 const TECHS: Tech[] = [
@@ -108,71 +105,49 @@ function iconColor(icon: SimpleIcon) {
   return lum < 0.2 || FORCE_LIGHT.has(icon.slug) ? "#f5f3ee" : `#${icon.hex}`;
 }
 
-const FILTERS: ("all" | Category)[] = ["all", "backend", "frontend", "mobile", "data", "ai", "cloud", "tools"];
+const ROWS = [TECHS.slice(0, 21), TECHS.slice(21)];
 
-export function Technologies() {
+/** Logo + nom d'une technologie, en pastille compacte. */
+function Pill({ icon, name }: Tech) {
+  return (
+    <li className="mr-3 flex shrink-0 items-center gap-2.5 rounded-full border border-line bg-ink-2 py-1.5 pl-1.5 pr-4">
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-[#111c30]">
+        <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+          <path d={icon.path} fill={iconColor(icon)} transform={icon.transform} />
+        </svg>
+      </span>
+      <span className="whitespace-nowrap text-[0.88rem] font-medium text-paper">{name ?? icon.title}</span>
+    </li>
+  );
+}
+
+/**
+ * Deux bandes défilantes en sens opposés (pause au survol, figées si animations réduites).
+ * La liste est dupliquée pour une boucle continue ; la copie est masquée aux lecteurs d'écran.
+ */
+export function TechMarquee() {
   const { t } = useI18n();
   const s = t.technologies;
-  const [filter, setFilter] = useState<"all" | Category>("all");
-  const shown = filter === "all" ? TECHS : TECHS.filter((x) => x.category === filter);
-
   return (
-    <section id="technologies" className="border-t border-line py-24 md:py-32">
-      <div className="container-page">
-        <SectionHeading index="03" label={s.label} title={s.title} intro={s.intro} />
-
-        <Reveal className="mt-10 md:ml-[25%] md:pl-2">
-          <div
-            role="group"
-            aria-label={s.filterLabel}
-            className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
-          >
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                type="button"
-                onClick={() => setFilter(f)}
-                aria-pressed={filter === f}
-                className={`h-10 shrink-0 rounded-full border px-4 text-[0.85rem] transition-colors ${
-                  filter === f
-                    ? "border-paper bg-paper text-ink"
-                    : "border-line-strong text-mute hover:border-gold hover:text-paper"
-                }`}
-              >
-                {f === "all" ? s.all : s.categories[f]}
-              </button>
-            ))}
+    <div className="mt-14">
+      <p className="eyebrow md:ml-[25%] md:pl-2">{s.title}</p>
+      <ul className="sr-only">
+        {TECHS.map((x) => (
+          <li key={x.icon.slug}>{x.name ?? x.icon.title}</li>
+        ))}
+      </ul>
+      <div aria-hidden="true" className="mt-6 space-y-3">
+        {ROWS.map((row, r) => (
+          <div key={r} className="marquee">
+            <ul className={`marquee-track ${r === 1 ? "reverse" : ""}`} style={{ ["--marquee-duration" as string]: `${row.length * 3}s` }}>
+              {[...row, ...row].map((x, i) => (
+                <Pill key={`${x.icon.slug}-${i}`} {...x} />
+              ))}
+            </ul>
           </div>
-        </Reveal>
-
-        <motion.ul layout className="mt-8 grid grid-cols-3 gap-2 sm:mt-10 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 lg:grid-cols-4">
-          <AnimatePresence mode="popLayout" initial={false}>
-            {shown.map(({ icon, name, category }) => (
-              <motion.li
-                layout
-                key={icon.slug}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex flex-col items-center gap-2.5 card-shadow rounded-2xl border border-line bg-ink-2 px-2 py-3.5 text-center sm:flex-row sm:gap-4 sm:p-3.5 sm:text-left transition-colors duration-300 hover:border-line-strong hover:bg-ink-2"
-              >
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl sm:h-14 sm:w-14 bg-[#111c30] transition-transform duration-300 group-hover:scale-105">
-                  <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true">
-                    <path d={icon.path} fill={iconColor(icon)} transform={icon.transform} />
-                  </svg>
-                </span>
-                <span className="min-w-0 max-w-full">
-                  <span className="block text-[0.8rem] font-medium leading-tight text-paper sm:truncate sm:text-[1rem] sm:leading-normal">{name ?? icon.title}</span>
-                  <span className="hidden truncate text-[0.82rem] text-mute sm:block">{s.categories[category]}</span>
-                </span>
-              </motion.li>
-            ))}
-          </AnimatePresence>
-        </motion.ul>
-
-        <p className="mt-6 text-xs text-mute/80 md:ml-[25%] md:pl-2">{s.note}</p>
+        ))}
       </div>
-    </section>
+      <p className="mt-5 text-xs text-mute/80 md:ml-[25%] md:pl-2">{s.note}</p>
+    </div>
   );
 }

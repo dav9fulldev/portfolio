@@ -3,7 +3,7 @@ import { motion, useMotionValue, useReducedMotion, useSpring, useTransform, type
 import { ArrowRight, Award, Download, Mail, MapPin } from "lucide-react";
 import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
-import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
+import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon, WhatsappIcon } from "./Icons";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const fade = (delay: number) => ({
@@ -96,6 +96,7 @@ export function Hero() {
     { href: site.gitlab, label: "GitLab", Icon: GitlabIcon },
     { href: site.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
     { href: site.devpost, label: "DevPost", Icon: DevpostIcon },
+    { href: site.whatsapp && `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t.contact.whatsappMsg)}`, label: "WhatsApp", Icon: WhatsappIcon },
   ].filter((s) => s.href);
 
   return (

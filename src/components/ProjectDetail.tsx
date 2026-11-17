@@ -156,6 +156,29 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
             </figure>
           )}
 
+          {p.pitch && (
+            <figure className="mt-8">
+              <div className={`overflow-hidden rounded-2xl border border-line-strong bg-black ${p.pitch.portrait ? "mx-auto max-w-[20rem]" : ""}`}>
+                <video
+                  src={p.pitch.src}
+                  poster={p.pitch.poster}
+                  controls
+                  playsInline
+                  preload="none"
+                  className={`block w-full ${p.pitch.portrait ? "aspect-[9/16]" : "aspect-video"} bg-black`}
+                >
+                  {p.pitch.caption[lang]}
+                </video>
+              </div>
+              <figcaption className="mt-3 flex items-start gap-2 font-mono text-[0.64rem] leading-relaxed tracking-wide text-mute">
+                <PlayCircle size={13} aria-hidden="true" className="mt-px shrink-0" />
+                <span>
+                  {t.projects.pitch} · {p.pitch.caption[lang]}
+                </span>
+              </figcaption>
+            </figure>
+          )}
+
           <dl className="mt-10 divide-y divide-line border-y border-line">
             {blocks.map((b) => (
               <div key={b.k} className="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">

@@ -14,6 +14,8 @@ export const site = {
   gitlab: "https://gitlab.com/engineerDavid",
   linkedin: "https://www.linkedin.com/in/brou-david-yao/",
   devpost: "https://devpost.com/dav9fulldev",
+  /** Numéro WhatsApp au format international, chiffres seulement (sans « + »). Laisser "" pour masquer. */
+  whatsapp: "2250799053977",
   /** Fichier dans /public. Laisser "" pour masquer le bouton CV. */
   cv: asset("/cv/Brou-David-Yao-CV.pdf"),
   /** Fichier dans /public. Laisser "" pour afficher le monogramme à la place. */

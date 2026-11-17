@@ -4,7 +4,7 @@ import { useI18n } from "../i18n/LanguageContext";
 import { site } from "../config/site";
 import { Reveal } from "./Reveal";
 import { EmailMenu } from "./EmailMenu";
-import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon } from "./Icons";
+import { DevpostIcon, GithubIcon, GitlabIcon, LinkedinIcon, WhatsappIcon } from "./Icons";
 
 /** Dernier segment d'une URL de profil : « https://github.com/dav9fulldev » → « @dav9fulldev ». */
 const handle = (url: string) => "@" + url.replace(/\/+$/, "").split("/").pop();
@@ -32,11 +32,11 @@ export function Contact() {
   ].filter((l) => l.href);
 
   return (
-    <section id="contact" className="border-t border-line py-24 md:py-32">
+    <section id="contact" className="pt-12 pb-24 md:pt-16 md:pb-32">
       <div className="container-page">
         <Reveal>
           <p className="eyebrow flex items-center gap-3">
-            <span className="text-gold">06</span>
+            <span className="text-gold">05</span>
             <span className="h-px w-8 bg-line-strong" aria-hidden="true" />
             {c.label}
           </p>
@@ -58,6 +58,17 @@ export function Contact() {
             <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-white/80">{c.body}</p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <EmailMenu buttonClassName="btn bg-white text-[#0f172a] hover:bg-[#c5f36b]" />
+              {site.whatsapp && (
+                <a
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(c.whatsappMsg)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn bg-[#25d366] text-[#0f172a] hover:bg-[#c5f36b]"
+                >
+                  <WhatsappIcon size={16} />
+                  {c.whatsapp}
+                </a>
+              )}
               {site.cv && (
                 <a href={site.cv} download className="btn border border-white/40 text-white hover:border-white hover:bg-white/10">
                   <Download size={16} />

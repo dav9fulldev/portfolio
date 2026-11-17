@@ -8,3 +8,6 @@ dist
 *.docx
 *.xlsx
 *.tsbuildinfo
+
+# Diplôme (données personnelles) — ne jamais publier
+public/certificats/

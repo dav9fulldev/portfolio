@@ -29,6 +29,8 @@ export type Project = {
   status: L;
   /** D'où viennent les informations affichées — transparence vis-à-vis du jury */
   source: L;
+  /** Vidéo de présentation hébergée sur le site (public/videos) */
+  pitch?: { src: string; poster: string; portrait?: boolean; caption: L };
   links: { repo?: string; demo?: string; site?: string; release?: string; video?: string; devpost?: string; origin?: string };
 };
 
@@ -82,6 +84,15 @@ export const projects: Project[] = [
     source: {
       fr: "Code de l'application mobile, documentation de l'auteur et site officiel paymechap.com (dépôt non public)",
       en: "Mobile app code, author's documentation and official website paymechap.com (repository not public)",
+    },
+    pitch: {
+      src: asset("/videos/gertonargent-pitch.mp4"),
+      poster: asset("/videos/gertonargent-pitch.jpg"),
+      portrait: true,
+      caption: {
+        fr: "Pitch de GèrTonArgent, l'ancêtre de PaymeChap — Bootcamp UniPod IA, Conakry (2025)",
+        en: "Pitch of GèrTonArgent, PaymeChap's predecessor — UniPod AI Bootcamp, Conakry (2025)",
+      },
     },
     links: {
       site: "https://paymechap.com",
@@ -251,8 +262,8 @@ export const projects: Project[] = [
       en: "Inspired by the West African griot tradition, a platform that turns the audio recording of a story into a multimedia experience: transcription, translation, illustrations and synchronised playback.",
     },
     role: {
-      fr: "Porteur de l'idée et développeur frontend ; projet réalisé en binôme en 48 h pendant le hackathon.",
-      en: "Idea owner and frontend developer; built as a team of two in 48 hours during the hackathon.",
+      fr: "Porteur de l'idée et développeur frontend ; projet réalisé en équipe de trois en 48 h pendant le hackathon.",
+      en: "Idea owner and frontend developer; built as a team of three in 48 hours during the hackathon.",
     },
     features: {
       fr: [
@@ -275,6 +286,14 @@ export const projects: Project[] = [
     source: {
       fr: "Page DevPost du projet (dépôts hébergés par les coéquipiers)",
       en: "Project DevPost page (repositories hosted by teammates)",
+    },
+    pitch: {
+      src: asset("/videos/storygriot-pitch.mp4"),
+      poster: asset("/videos/storygriot-pitch.jpg"),
+      caption: {
+        fr: "Présentation de StoryGriot AI devant le jury d'AbiHack 2025, à l'ENSEA",
+        en: "StoryGriot AI pitched to the AbiHack 2025 jury at ENSEA",
+      },
     },
     links: {
       devpost: "https://devpost.com/software/storygriot-ai",
