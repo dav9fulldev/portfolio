@@ -35,7 +35,7 @@ export function Header() {
       onClick={toggle}
       aria-label={t.nav.switchTo}
       title={t.nav.switchTo}
-      className={`inline-flex h-9 items-center rounded-full border border-line-strong px-1 font-mono text-[0.7rem] tracking-wider transition-colors hover:border-gold ${className}`}
+      className={`inline-flex h-10 items-center rounded-full border border-line-strong px-1 font-mono text-[0.7rem] tracking-wider transition-colors hover:border-gold ${className}`}
     >
       {(["fr", "en"] as const).map((l) => (
         <span
@@ -58,7 +58,7 @@ export function Header() {
         onClick={toggleTheme}
         aria-label={label}
         title={label}
-        className={`grid h-9 w-9 place-items-center rounded-full border border-line-strong text-paper transition-colors hover:border-gold hover:text-gold ${className}`}
+        className={`grid h-10 w-10 place-items-center rounded-full border border-line-strong text-paper transition-colors hover:border-gold hover:text-gold ${className}`}
       >
         {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
       </button>
@@ -121,7 +121,7 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? t.nav.close : t.nav.menu}
-            className="grid h-9 w-9 place-items-center rounded-full border border-line-strong text-paper"
+            className="grid h-10 w-10 place-items-center rounded-full border border-line-strong text-paper"
           >
             {open ? <X size={17} /> : <Menu size={17} />}
           </button>
@@ -156,7 +156,7 @@ export function Header() {
                     <span className={`display text-[2rem] ${active === id ? "text-gold" : "text-paper"}`}>
                       {t.nav[id]}
                     </span>
-                    <span className="font-mono text-xs text-mute">0{i + 1}</span>
+                    <span className="font-mono text-xs text-mute">{i > 0 ? `0${i}` : ""}</span>
                   </a>
                 </motion.li>
               ))}
@@ -164,6 +164,7 @@ export function Header() {
           </motion.nav>
         )}
       </AnimatePresence>
+
     </header>
   );
 }

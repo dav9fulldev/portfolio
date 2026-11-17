@@ -77,13 +77,13 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
         className="absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-y-auto overscroll-contain border-l border-line bg-ink"
       >
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-ink/85 px-5 py-3.5 backdrop-blur md:px-8">
-          <p className="eyebrow !text-[0.64rem]">{p.category[lang]}</p>
+          <p className="eyebrow !text-[0.68rem]">{p.category[lang]}</p>
           <button
             ref={closeRef}
             type="button"
             onClick={onClose}
             aria-label={t.projects.close}
-            className="grid h-9 w-9 place-items-center rounded-full border border-line-strong text-paper transition-colors hover:border-gold hover:text-gold"
+            className="grid h-10 w-10 place-items-center rounded-full border border-line-strong text-paper transition-colors hover:border-gold hover:text-gold"
           >
             <X size={16} />
           </button>
@@ -150,7 +150,7 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
                   className="absolute inset-0 h-full w-full"
                 />
               </div>
-              <figcaption className="mt-3 flex items-center gap-2 font-mono text-[0.64rem] tracking-wide text-mute">
+              <figcaption className="mt-3 flex items-center gap-2 font-mono text-[0.68rem] tracking-wide text-mute">
                 <PlayCircle size={13} aria-hidden="true" /> {t.projects.video}
               </figcaption>
             </figure>
@@ -170,7 +170,7 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
                   {p.pitch.caption[lang]}
                 </video>
               </div>
-              <figcaption className="mt-3 flex items-start gap-2 font-mono text-[0.64rem] leading-relaxed tracking-wide text-mute">
+              <figcaption className="mt-3 flex items-start gap-2 font-mono text-[0.68rem] leading-relaxed tracking-wide text-mute">
                 <PlayCircle size={13} aria-hidden="true" className="mt-px shrink-0" />
                 <span>
                   {t.projects.pitch} · {p.pitch.caption[lang]}
@@ -182,12 +182,12 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
           <dl className="mt-10 divide-y divide-line border-y border-line">
             {blocks.map((b) => (
               <div key={b.k} className="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
-                <dt className="eyebrow !text-[0.64rem] pt-1">{b.k}</dt>
+                <dt className="eyebrow !text-[0.68rem] pt-1">{b.k}</dt>
                 <dd className="text-[0.98rem] leading-relaxed text-paper/85">{b.v}</dd>
               </div>
             ))}
             <div className="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
-              <dt className="eyebrow !text-[0.64rem] pt-1">{t.projects.features}</dt>
+              <dt className="eyebrow !text-[0.68rem] pt-1">{t.projects.features}</dt>
               <dd>
                 <ul className="space-y-2.5">
                   {p.features[lang].map((f) => (
@@ -201,7 +201,7 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
             </div>
             {p.stack.length > 0 && (
               <div className="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
-                <dt className="eyebrow !text-[0.64rem] pt-1">{t.projects.stack}</dt>
+                <dt className="eyebrow !text-[0.68rem] pt-1">{t.projects.stack}</dt>
                 <dd className="flex flex-wrap gap-1.5">
                   {p.stack.map((s) => (
                     <span key={s} className="chip">
@@ -212,7 +212,7 @@ export function ProjectDetail({ project: p, onClose }: { project: Project; onClo
               </div>
             )}
             <div className="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
-              <dt className="eyebrow !text-[0.64rem] pt-1">{t.projects.status}</dt>
+              <dt className="eyebrow !text-[0.68rem] pt-1">{t.projects.status}</dt>
               <dd className="text-[0.98rem] text-paper/85">{p.status[lang]}</dd>
             </div>
           </dl>

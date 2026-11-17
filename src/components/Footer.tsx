@@ -36,7 +36,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="grid h-10 w-10 place-items-center rounded-full border border-line text-mute transition-colors hover:border-line-strong hover:text-paper"
+              className="grid h-11 w-11 place-items-center rounded-full border border-line text-mute transition-colors hover:border-line-strong hover:text-paper"
             >
               <Icon size={16} />
             </a>
@@ -45,7 +45,7 @@ export function Footer() {
             href="#home"
             aria-label={t.footer.top}
             title={t.footer.top}
-            className="ml-2 grid h-10 w-10 place-items-center rounded-full bg-paper text-ink transition-colors hover:bg-gold"
+            className="ml-2 grid h-11 w-11 place-items-center rounded-full bg-paper text-ink transition-colors hover:bg-gold"
           >
             <ArrowUp size={16} />
           </a>

@@ -8,6 +8,7 @@ import { Expertise } from "./components/Expertise";
 import { Journey } from "./components/Journey";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { FloatingContact } from "./components/FloatingContact";
 import { useTilt } from "./hooks/useTilt";
 
 function NotFound() {
@@ -47,6 +48,7 @@ export default function App() {
               <Contact />
             </main>
             <Footer />
+            <FloatingContact />
           </>
         ) : (
           <NotFound />

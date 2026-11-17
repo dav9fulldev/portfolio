@@ -161,7 +161,7 @@ export function Hero() {
                 rel="noopener noreferrer"
                 aria-label={label}
                 title={label}
-                className="grid h-10 w-10 place-items-center rounded-full border border-line-strong bg-ink-2 text-mute transition-colors hover:border-gold hover:text-gold"
+                className="grid h-11 w-11 place-items-center rounded-full border border-line-strong bg-ink-2 text-mute transition-colors hover:border-gold hover:text-gold"
               >
                 <Icon size={16} />
               </a>
@@ -170,7 +170,7 @@ export function Hero() {
               <a
                 href={site.cv}
                 download
-                className="ml-1 inline-flex h-10 items-center gap-2 rounded-full px-3 text-[0.88rem] font-medium text-paper transition-colors hover:text-gold"
+                className="ml-1 inline-flex h-11 items-center gap-2 rounded-full px-3 text-[0.88rem] font-medium text-paper transition-colors hover:text-gold"
               >
                 <Download size={15} />
                 {h.ctaCv}
@@ -244,7 +244,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 1.05, ease }}
             className="absolute -left-2 bottom-6 z-20 rounded-2xl border border-line bg-ink-2/95 px-4 py-3 shadow-[0_18px_40px_-16px_var(--shadow)] backdrop-blur sm:-left-8"
           >
-            <p className="eyebrow !text-[0.6rem]">{h.currently}</p>
+            <p className="eyebrow !text-[0.68rem]">{h.currently}</p>
             <p className="mt-0.5 text-[0.9rem] font-medium text-paper">{h.currentlyRole}</p>
             <p className="text-[0.82rem] font-semibold text-gold">GIM-UEMOA</p>
           </motion.div>

@@ -80,7 +80,7 @@ export function ProjectCover({ cover, name, large = false }: { cover: Cover; nam
           {g.word}
           <span className="text-gold">.</span>
         </p>
-        <p className="eyebrow mt-2 !text-[0.62rem]">{g.sub}</p>
+        <p className="eyebrow mt-2 !text-[0.68rem]">{g.sub}</p>
       </div>
     </div>
   );

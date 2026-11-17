@@ -41,7 +41,7 @@ type NavProps = {
 export function CarouselNav({ names, active, goTo, labels }: NavProps) {
   const n = names.length;
   const btn =
-    "grid h-10 w-10 place-items-center rounded-full border border-line-strong text-paper transition-colors disabled:opacity-35";
+    "grid h-11 w-11 place-items-center rounded-full border border-line-strong text-paper transition-colors disabled:opacity-35";
   return (
     <div className="mt-5 flex items-center justify-between md:hidden">
       <div className="-ml-2 flex items-center">

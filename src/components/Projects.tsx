@@ -80,7 +80,7 @@ export function Projects() {
                     </div>
 
                     <div className="flex flex-1 flex-col p-6 md:p-7">
-                      <p className="eyebrow !text-[0.64rem]">
+                      <p className="eyebrow !text-[0.68rem]">
                         {p.category[lang]}
                         {p.year !== "—" && <span className="text-mute/60"> · {p.year}</span>}
                       </p>

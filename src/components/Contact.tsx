@@ -79,9 +79,9 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <div className="card-shadow mt-6 grid gap-px overflow-hidden rounded-[1.6rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(4,minmax(0,1fr))]">
-          <div className="flex flex-col justify-between gap-6 bg-ink-2 p-6 sm:col-span-2 lg:col-span-1">
-            <p className="eyebrow !text-[0.64rem]">E-mail</p>
+        <div className="card-shadow mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-[1.6rem] border border-line bg-line lg:grid-cols-[1.4fr_repeat(4,minmax(0,1fr))]">
+          <div className="col-span-2 flex flex-col justify-between gap-6 bg-ink-2 p-5 sm:p-6 lg:col-span-1">
+            <p className="eyebrow !text-[0.68rem]">E-mail</p>
             <div className="flex items-center justify-between gap-3">
               <span className="select-all truncate text-[0.95rem] text-paper">{site.email}</span>
               <button
@@ -89,7 +89,7 @@ export function Contact() {
                 onClick={copy}
                 aria-label={copied ? c.copied : c.copy}
                 title={copied ? c.copied : c.copy}
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line-strong text-mute transition-colors hover:border-gold hover:text-gold"
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line-strong text-mute transition-colors hover:border-gold hover:text-gold"
               >
                 {copied ? <Check size={14} className="text-gold" /> : <Copy size={14} />}
               </button>
@@ -104,10 +104,10 @@ export function Contact() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col justify-between gap-6 bg-ink-2 p-6 transition-colors duration-500 hover:bg-deep"
+              className="group flex min-w-0 flex-col justify-between gap-5 bg-ink-2 p-5 transition-colors duration-500 hover:bg-deep sm:gap-6 sm:p-6"
             >
               <span className="flex items-center justify-between">
-                <span className="eyebrow !text-[0.64rem]">{label}</span>
+                <span className="eyebrow !text-[0.68rem]">{label}</span>
                 <ArrowUpRight size={16} className="text-mute transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold" />
               </span>
               <span className="flex items-center gap-2.5 text-[0.95rem] text-paper">
