@@ -15,7 +15,7 @@ Compétences principales : Python, FastAPI, Java, Spring Boot, Node.js, Express,
 - [SIKA Pay](https://github.com/dav9fulldev/sika-agent) : agent de paiement intelligent qui recherche, compare et prépare des achats avec PayPal, sous des limites fixées par l'utilisateur (Flutter, FastAPI, Gemini, Google Cloud Run).
 - RestoGestion : SaaS qui aide les restaurants, maquis et fast-foods à recueillir les avis de leurs clients et à les fidéliser (Laravel). Code non public.
 - [U-Report Cocody](https://ureport-cocody.vercel.app/) : plateforme de la communauté U-Report de Cocody (événements, présence par QR code, espace membre, cotisations). Brou David Yao y a conçu l'architecture, le backend et la sécurité.
-- [Sankofart Résidence](https://residencemeublee.vercel.app) : réservation en ligne de résidences meublées en Côte d'Ivoire.
+- [Babi Residence](https://residencemeublee.vercel.app) : réservation en ligne de résidences meublées à Abidjan (appartements et villas).
 - [ALERTO](https://github.com/dav9fulldev/Alerto) : signaler les dégâts en temps de crise, même sans connexion.
 
 ## Contact

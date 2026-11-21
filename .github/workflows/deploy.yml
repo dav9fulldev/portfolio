@@ -3,12 +3,15 @@ name: Build & deploy
 # PR vers master : build de vérification uniquement.
 # Merge / push sur master : build puis publication directe sur GitHub Pages
 # (aucune branche gh-pages) → https://dav9fulldev.github.io/portfolio/
+# Chaque jour : republication pour que les captures des sites en ligne suivent leur design actuel.
 on:
   pull_request:
     branches: [master]
   push:
     branches: [master]
   workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *" # 6 h, heure d'Abidjan
 
 permissions:
   contents: read
@@ -33,6 +36,17 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # Refait les captures des projets en ligne (résidences, U-Report, PaymeChap).
+      # En cas d'échec, les images du dépôt sont gardées : la publication continue.
+      - name: Captures à jour des sites en ligne
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          npm install --no-save playwright@1.65.1
+          npx playwright install --with-deps chromium
+          node scripts/capture-covers.mjs
 
       - name: Build (typecheck + Vite)
         run: npm run build

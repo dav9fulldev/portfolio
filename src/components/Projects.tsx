@@ -13,7 +13,7 @@ import { CarouselNav, SLIDE, TRACK, useCarousel } from "./Carousel";
 // Composition éditoriale : alternance de largeurs sur une grille de 12 colonnes.
 // Ordre : du projet le plus parlant (primé, fintech) aux réalisations plus modestes.
 const SPANS = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7", "lg:col-span-4", "lg:col-span-4", "lg:col-span-4"];
-const ORDER = ["storygriot-ai", "paymechap", "sika-pay", "restogestion", "ureport-cocody", "sankofart-residence", "alerto"];
+const ORDER = ["storygriot-ai", "paymechap", "sika-pay", "restogestion", "ureport-cocody", "babi-residence", "alerto"];
 const HASH_PREFIX = "#projects/";
 
 export function Projects() {

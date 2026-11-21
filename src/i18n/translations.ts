@@ -149,7 +149,7 @@ const fr = {
       {
         t: "Site ou application web",
         d: "Site vitrine, plateforme de réservation, espace membre ou back-office : de la maquette à la mise en ligne.",
-        ex: "Sankofart Résidence, U-Report Cocody",
+        ex: "Babi Residence, U-Report Cocody",
       },
       {
         t: "Application mobile",
@@ -404,7 +404,7 @@ const en: Dict = {
       {
         t: "Website or web app",
         d: "Showcase site, booking platform, member area or back office: from mock-up to launch.",
-        ex: "Sankofart Résidence, U-Report Cocody",
+        ex: "Babi Residence, U-Report Cocody",
       },
       {
         t: "Mobile app",

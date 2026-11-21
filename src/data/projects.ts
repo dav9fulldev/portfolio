@@ -46,7 +46,7 @@ export const projects: Project[] = [
     year: "2026",
     featured: true,
     cover: { kind: "image", src: asset("/projects/paymechap.jpg"), position: "center" },
-    coverAlt: { fr: "Site de PaymeChap : « Votre argent, à portée de main », avec l'écran d'accueil de l'application (solde, transferts, paiement par QR code)", en: "PaymeChap website: “Your money, at hand”, showing the app home screen (balance, transfers, QR code payment)" },
+    coverAlt: { fr: "Capture actuelle du site paymechap.com : présentation du portefeuille mobile PaymeChap et de son application", en: "Current screenshot of paymechap.com: presentation of the PaymeChap mobile wallet and its app" },
     tagline: {
       fr: "Un portefeuille mobile pour gérer ses wallets, transférer et payer par QR code — entre particuliers comme en boutique.",
       en: "A mobile wallet to manage wallets, transfer money and pay by QR code — between people and in shops.",
@@ -323,7 +323,7 @@ export const projects: Project[] = [
     year: "2026",
     highlight: { fr: "En ligne", en: "Live" },
     cover: { kind: "image", src: asset("/projects/ureport-cocody.jpg"), position: "center top" },
-    coverAlt: { fr: "Page d'accueil de U-Report Cocody : « Engagez-vous pour Cocody », plateforme de la jeunesse ivoirienne", en: "U-Report Cocody home page: “Get involved for Cocody”, a platform for Ivorian youth" },
+    coverAlt: { fr: "Capture actuelle de la page d'accueil de U-Report Cocody, la plateforme de la communauté de jeunes de Cocody", en: "Current screenshot of the U-Report Cocody home page, the platform of the Cocody youth community" },
     tagline: {
       fr: "La plateforme de la communauté U-Report de Cocody : événements, présence par QR Code, espace membre, cotisations et back-office.",
       en: "The platform of Cocody's U-Report community: events, QR-code attendance, member area, membership fees and back office.",
@@ -413,13 +413,13 @@ export const projects: Project[] = [
     links: { repo: "https://github.com/dav9fulldev/Alerto" },
   },
   {
-    slug: "sankofart-residence",
-    name: "Sankofart Résidence",
+    slug: "babi-residence",
+    name: "Babi Residence",
     category: { fr: "Hôtellerie · Web full-stack", en: "Hospitality · Full-stack web" },
     year: "2026",
     highlight: { fr: "Hôtellerie", en: "Hospitality" },
     cover: { kind: "image", src: asset("/projects/residence.jpg") },
-    coverAlt: { fr: "Page d'accueil de Sankofart Résidence : « Découvrez le Luxe et le Confort », réservation de résidences meublées en Côte d'Ivoire", en: "Sankofart Résidence home page: “Discover luxury and comfort”, booking furnished residences in Côte d'Ivoire" },
+    coverAlt: { fr: "Capture actuelle de la page d'accueil du site de réservation de résidences meublées à Abidjan, avec sa recherche par dates et par quartier", en: "Current screenshot of the home page of the furnished-residence booking site in Abidjan, with search by dates and neighbourhood" },
     tagline: {
       fr: "Réservation en ligne de résidences meublées en Côte d'Ivoire, de la vitrine à l'administration.",
       en: "Online booking for furnished residences in Côte d'Ivoire, from storefront to back office.",
