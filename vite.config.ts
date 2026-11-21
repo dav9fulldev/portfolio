@@ -46,4 +46,6 @@ function contentSecurityPolicy(): Plugin {
 export default defineConfig({
   base: process.env.BASE_PATH || "/portfolio/",
   plugins: [react(), tailwindcss(), contentSecurityPolicy()],
+  // Identifiant propre à chaque build : sert à forcer le rechargement des captures refaites à chaque publication.
+  define: { "import.meta.env.VITE_BUILD_ID": JSON.stringify(Date.now().toString(36)) },
 });

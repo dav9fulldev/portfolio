@@ -1,4 +1,4 @@
-import { asset } from "../lib/asset";
+import { asset, liveAsset } from "../lib/asset";
 import type { Lang } from "../i18n/translations";
 
 type L<T = string> = Record<Lang, T>;
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     category: { fr: "Fintech · Mobile · Paiement", en: "Fintech · Mobile · Payments" },
     year: "2026",
     featured: true,
-    cover: { kind: "image", src: asset("/projects/paymechap.jpg"), position: "center" },
+    cover: { kind: "image", src: liveAsset("/projects/paymechap.jpg"), position: "center" },
     coverAlt: { fr: "Capture actuelle du site paymechap.com : présentation du portefeuille mobile PaymeChap et de son application", en: "Current screenshot of paymechap.com: presentation of the PaymeChap mobile wallet and its app" },
     tagline: {
       fr: "Un portefeuille mobile pour gérer ses wallets, transférer et payer par QR code — entre particuliers comme en boutique.",
@@ -322,7 +322,7 @@ export const projects: Project[] = [
     category: { fr: "Civic tech · Plateforme web · Jeunesse", en: "Civic tech · Web platform · Youth" },
     year: "2026",
     highlight: { fr: "En ligne", en: "Live" },
-    cover: { kind: "image", src: asset("/projects/ureport-cocody.jpg"), position: "center top" },
+    cover: { kind: "image", src: liveAsset("/projects/ureport-cocody.jpg"), position: "center top" },
     coverAlt: { fr: "Capture actuelle de la page d'accueil de U-Report Cocody, la plateforme de la communauté de jeunes de Cocody", en: "Current screenshot of the U-Report Cocody home page, the platform of the Cocody youth community" },
     tagline: {
       fr: "La plateforme de la communauté U-Report de Cocody : événements, présence par QR Code, espace membre, cotisations et back-office.",
@@ -418,7 +418,7 @@ export const projects: Project[] = [
     category: { fr: "Hôtellerie · Web full-stack", en: "Hospitality · Full-stack web" },
     year: "2026",
     highlight: { fr: "Hôtellerie", en: "Hospitality" },
-    cover: { kind: "image", src: asset("/projects/residence.jpg") },
+    cover: { kind: "image", src: liveAsset("/projects/residence.jpg") },
     coverAlt: { fr: "Capture actuelle de la page d'accueil du site de réservation de résidences meublées à Abidjan, avec sa recherche par dates et par quartier", en: "Current screenshot of the home page of the furnished-residence booking site in Abidjan, with search by dates and neighbourhood" },
     tagline: {
       fr: "Réservation en ligne de résidences meublées en Côte d'Ivoire, de la vitrine à l'administration.",
